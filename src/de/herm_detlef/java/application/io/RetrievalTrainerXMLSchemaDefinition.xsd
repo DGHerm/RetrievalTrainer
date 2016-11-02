@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2016 Detlef Gregor Herm
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="RetrievalTrainer"
+           xmlns:tns="RetrievalTrainer"
+           elementFormDefault="qualified">
+
+
+<!-- definition of simple elements -->
+<xs:element name="ID" type="xs:positiveInteger"/>
+<xs:element name="CODE" type="xs:string"/>
+<xs:element name="TEXT2" type="xs:string"/>
+
+
+<!-- definition of complex elements -->
+<xs:element name="TEXT">
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="mark" type="xs:boolean" default="false"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="QUESTION">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="tns:TEXT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="tns:CODE" minOccurs="0" maxOccurs="1"/>
+            <xs:element ref="tns:TEXT2" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="SINGLE_CHOICE_ANSWER">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="tns:TEXT" minOccurs="2" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="MULTIPLE_CHOICE_ANSWER">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="tns:TEXT" minOccurs="2" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="SOLUTION">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="tns:TEXT" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="ITEM">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="tns:ID" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="tns:QUESTION" minOccurs="1" maxOccurs="1"/>
+            <xs:choice>
+                <xs:element ref="tns:SINGLE_CHOICE_ANSWER" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="tns:MULTIPLE_CHOICE_ANSWER" minOccurs="1" maxOccurs="1"/>
+            </xs:choice>
+            <xs:element ref="tns:SOLUTION" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="CATALOG">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="tns:ITEM" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:unique name="UniqueID">
+        <xs:selector xpath="tns:ITEM"/>
+        <xs:field xpath="tns:ID"/>
+    </xs:unique>
+</xs:element>
+
+</xs:schema>

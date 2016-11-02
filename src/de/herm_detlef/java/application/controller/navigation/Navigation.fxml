@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2016 Detlef Gregor Herm
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<?import javafx.scene.input.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<HBox alignment="CENTER_LEFT" spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="first" mnemonicParsing="false" text="%L10N_ToolBar_Button_First" />
+      <Button fx:id="previous" mnemonicParsing="false" text="%L10N_ToolBar_Button_Previous" />
+      <Button fx:id="next" mnemonicParsing="false" text="%L10N_ToolBar_Button_Next" />
+      <Button fx:id="last" mnemonicParsing="false" text="%L10N_ToolBar_Button_Last" />
+      <Label text="%L10N_ToolBar_Label_ExerciseItemID" />
+      <Label fx:id="exerciseItemNumber">
+         <padding>
+            <Insets left="50.0" right="50.0" />
+         </padding>
+      </Label>
+   </children>
+   <padding>
+      <Insets left="5.0" />
+   </padding>
+</HBox>

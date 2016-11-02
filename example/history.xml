@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG xmlns="RetrievalTrainer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="RetrievalTrainerXMLSchemaDefinition.xsd">
+  <ITEM>
+    <ID>1</ID>
+    <QUESTION>
+      <TEXT>When did the Berlin Wall fall?</TEXT>
+    </QUESTION>
+    <SINGLE_CHOICE_ANSWER>
+      <TEXT>1998</TEXT>
+      <TEXT mark="true">1989</TEXT>
+      <TEXT>1990</TEXT>
+    </SINGLE_CHOICE_ANSWER>
+    <SOLUTION>
+      <TEXT>1989</TEXT>
+    </SOLUTION>
+  </ITEM>
+  <ITEM>
+    <ID>2</ID>
+    <QUESTION>
+      <TEXT>What were the central ideas of the French Revolution?</TEXT>
+    </QUESTION>
+    <MULTIPLE_CHOICE_ANSWER>
+      <TEXT>Economy</TEXT>
+      <TEXT mark="true">Equality</TEXT>
+      <TEXT>Ecology</TEXT>
+      <TEXT mark="true">Liberty</TEXT>
+      <TEXT>Eternity</TEXT>
+      <TEXT mark="true">Fraternity</TEXT>
+    </MULTIPLE_CHOICE_ANSWER>
+    <SOLUTION>
+      <TEXT>Liberty, Equality, Fraternity</TEXT>
+    </SOLUTION>
+  </ITEM>
+  <ITEM>
+    <ID>3</ID>
+    <QUESTION>
+      <TEXT>Who were the first two men on the moon?</TEXT>
+    </QUESTION>
+    <MULTIPLE_CHOICE_ANSWER>
+      <TEXT>Charles "Pete" Conrad, Jr.</TEXT>
+      <TEXT mark="true">Neil A. Armstrong</TEXT>
+      <TEXT>Richard F. Gordon Jr.</TEXT>
+      <TEXT>Michael Collins</TEXT>
+      <TEXT mark="true">Buzz Aldrin</TEXT>
+      <TEXT>Alan LaVern Bean</TEXT>
+    </MULTIPLE_CHOICE_ANSWER>
+    <SOLUTION>
+      <TEXT>Neil A. Armstrong, Buzz Aldrin</TEXT>
+    </SOLUTION>
+  </ITEM>
+</CATALOG>

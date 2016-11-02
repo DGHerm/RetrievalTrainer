@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2016 Detlef Gregor Herm
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<?import javafx.scene.input.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<Menu fx:id="menuEdit" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit" visible="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <items>
+      <MenuItem fx:id="menuItemNewExerciseItem" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_AppendNewExerciseItem" />
+      <MenuItem fx:id="menuItemDeleteExerciseItem" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_DeleteCurrentExerciseItem" />
+      <CheckMenuItem fx:id="checkMenuItemPreviewExerciseItem" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_CheckMenuItem_PreviewCurrentExerciseItem" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem fx:id="menuItemNewQuestionText" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_NewQuestionPart_Text" />
+      <MenuItem fx:id="menuItemNewQuestionCode" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_NewQuestionPart_Code" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem fx:id="menuItemNewAnswerText" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_NewAnswerPart">
+         <accelerator>
+            <KeyCodeCombination alt="UP" code="A" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+         </accelerator></MenuItem>
+      <Menu fx:id="menuAnswerMode" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_Menu_AnswerMode">
+         <items>
+            <RadioMenuItem fx:id="radioMenuItemSingleChoice" mnemonicParsing="false" selected="true" text="%L10N_MenuBar_Menu_Edit_Menu_AnswerMode_RadioMenuItem_SingleChoice">
+               <toggleGroup>
+                  <ToggleGroup fx:id="choicePresetting" />
+               </toggleGroup>
+            </RadioMenuItem>
+            <RadioMenuItem fx:id="radioMenuItemMultipleChoice" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_Menu_AnswerMode_RadioMenuItem_MultipleChoice" toggleGroup="$choicePresetting" />
+         </items>
+      </Menu>
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem fx:id="menuItemNewSolutionText" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_NewSolutionPart" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <MenuItem fx:id="menuItemDeleteItemPart" disable="true" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_MenuItem_DeleteItemPart" />
+      <SeparatorMenuItem mnemonicParsing="false" />
+      <CheckMenuItem fx:id="checkMenuItemShowTools" mnemonicParsing="false" text="%L10N_MenuBar_Menu_Edit_CheckMenuItem_ToolsPanel_Show" />
+   </items>
+</Menu>

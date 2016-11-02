@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ Copyright 2016 Detlef Gregor Herm
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="150.0" spacing="10.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="%L10N_Stage_ToolsPanel_Label_ExerciseItem">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonAppendNewExerciseItem" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_ExerciseItem_AppendNew" />
+      <Button fx:id="buttonDeleteCurrentExerciseItem" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_ExerciseItem_DeleteCurrent" />
+      <ToggleButton fx:id="toggleButtonPreviewCurrentExerciseItem" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_ToggleButton_ExerciseItem_PreviewCurrent" />
+      <Separator prefWidth="200.0" />
+      <Label text="%L10N_Stage_ToolsPanel_Label_QuestionPart">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonAppendQuestionText" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_QuestionPart_Text" />
+      <Button fx:id="buttonAppendQuestionCode" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_QuestionPart_Code" />
+      <Separator prefWidth="200.0" />
+      <Label text="%L10N_Stage_ToolsPanel_Label_AnswerPart">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonAppendAnswer" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_AnswerPart_AppendNew" />
+      <VBox spacing="5.0">
+         <children>
+            <RadioButton fx:id="radioButtonSingleChoice" mnemonicParsing="false" selected="true" text="%L10N_Stage_ToolsPanel_RadioButton_SingleChoice">
+               <toggleGroup>
+                  <ToggleGroup fx:id="answerMode" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="radioButtonMultipleChoice" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_RadioButton_MultipleChoice" toggleGroup="$answerMode" />
+         </children>
+         <VBox.margin>
+            <Insets left="10.0" />
+         </VBox.margin>
+      </VBox>
+      <Separator prefWidth="200.0" />
+      <Label text="%L10N_Stage_ToolsPanel_Label_SolutionPart">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonAppendSolution" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_SolutionPart_AppendNew" />
+      <Separator prefWidth="200.0" />
+      <Button fx:id="buttonDeleteItemPart" disable="true" mnemonicParsing="false" text="%L10N_Stage_ToolsPanel_Button_DeleteItemPart" />
+   </children>
+</VBox>
