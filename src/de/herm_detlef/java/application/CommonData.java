@@ -135,7 +135,7 @@ public class CommonData {
                     exerciseItemListMaster.removeListener(
                         exerciseItemListMasterChangeListener );
                 }
-                
+
                 prepareEditingMode( newValue );
             } );
 
@@ -155,7 +155,7 @@ public class CommonData {
             }
         });
     }
-    
+
     private void prepareEditingMode( boolean isEditingMode) {
 
         for ( ExerciseItem exItem : exerciseItemListMaster ) {
@@ -346,7 +346,7 @@ public class CommonData {
      */
     public void setPreviewMode( boolean previewMode ) {
 
-        this.previewModeProperty.set(
+        previewModeProperty.set(
             previewMode );
     }
 
@@ -433,7 +433,7 @@ public class CommonData {
         return list;
     }
 
-    
+
     /**
      * TODO
      * <p>
@@ -441,7 +441,7 @@ public class CommonData {
      */
     public boolean checkNeedsSave() {
         boolean needsSave = false;
-        
+
         if ( ! isEditingMode() )
             return false;
 
@@ -522,7 +522,7 @@ public class CommonData {
      * @since 1.0
      */
     public void setRecentlyOpenedFile( File recentlyOpenedFile ) {
-        this.recentlyOpenedFileProperty.set( recentlyOpenedFile );
+        recentlyOpenedFileProperty.set( recentlyOpenedFile );
     }
 
     /**
@@ -540,7 +540,7 @@ public class CommonData {
      * @since 1.0
      */
     public void setRecentlySavedFile( File recentlySavedFile ) {
-        this.recentlySavedFileProperty.set( recentlySavedFile );
+        recentlySavedFileProperty.set( recentlySavedFile );
     }
 
     /**
