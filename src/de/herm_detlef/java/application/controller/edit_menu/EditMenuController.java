@@ -194,7 +194,7 @@ public class EditMenuController implements Initializable {
         menuItemNewQuestionCode    .setOnAction( this::onNewQuestionCode );
         menuItemNewAnswerText      .setOnAction( this::onNewAnswerText );
         menuItemNewSolutionText    .setOnAction( this::onNewSolutionText );
-        this.menuItemDeleteItemPart.setOnAction( this::onDeleteItemPart );
+        menuItemDeleteItemPart     .setOnAction( this::onDeleteItemPart );
 
         commonData.getEditingModeProperty().addListener( ( obj, oldValue, newValue ) -> {
             menuItemNewExerciseItem.setDisable( !newValue );
@@ -230,8 +230,6 @@ public class EditMenuController implements Initializable {
     }
 
     private void addReactionHandler() {
-
-
 
         // in case of currentExerciseItem == null:
         ExerciseItem.addHandlerToInitializeGUI( () -> {

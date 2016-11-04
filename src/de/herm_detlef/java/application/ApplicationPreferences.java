@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 
 /**
  * TODO
- * 
+ *
  * @author Detlef G. Herm, 2016-09-26
  * @since 1.0
  *
@@ -36,13 +36,13 @@ public class ApplicationPreferences {
 
     ApplicationPreferences() {
 
-        this.userPreferencesNode = Preferences.userNodeForPackage( getClass() );
+        userPreferencesNode = Preferences.userNodeForPackage( getClass() );
     }
 
     /**
      * TODO
      * <p>
-     * 
+     *
      * @since 1.0
      */
     public Preferences getUserPreferencesNode() {
@@ -53,7 +53,7 @@ public class ApplicationPreferences {
     /**
      * TODO
      * <p>
-     * 
+     *
      * @since 1.0
      */
     public void saveStagePositionAndSizeToUserPreferences( final Stage stage,
@@ -86,7 +86,7 @@ public class ApplicationPreferences {
     /**
      * TODO
      * <p>
-     * 
+     *
      * @since 1.0
      */
     public void setStagePositionAndSizeBasedOnUserPreferences( final Stage stage,
