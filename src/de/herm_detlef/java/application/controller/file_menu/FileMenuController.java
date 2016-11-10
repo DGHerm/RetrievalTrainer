@@ -123,7 +123,11 @@ public class FileMenuController implements Initializable {
             }
 
             list = ExerciseItemListFactory.importExerciseItemListFromFile( selectedFile.getAbsolutePath() );
-            if ( list == null ) return;
+            if ( list == null ) {
+                menuItemSave.setDisable( true );
+                menuItemSaveAs.setDisable( true );
+                return;
+            }
 
         } finally {
             if ( commonData.isEditingMode() ) {
