@@ -145,7 +145,7 @@ public class ApplicationConstants {
     }
 
     // --------------------------
-    public static final String TITLE_OF_MAIN_DIALOG          = "Java Exercises";
+    public static final String TITLE_OF_MAIN_DIALOG          = "RetrievalTrainer";
 
     // --------------------------
     public static final String TITLE_OF_DIALOG_FILE_CHOOSER_OPEN  = "Choose Resource File To Open";
