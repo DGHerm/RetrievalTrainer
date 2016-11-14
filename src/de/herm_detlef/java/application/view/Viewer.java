@@ -343,7 +343,7 @@ public class Viewer {
                         ( ( AnswerText ) obj ).setSelected( newValue );
                     });
 
-                    if ( ( ( AnswerText ) obj ).isSelected() && commonData.isEditingMode() ) {
+                    if ( ( ( AnswerText ) obj ).isSelected() ) {
                         choice.getToggleGroup().selectToggle( rb );
                     }
 
@@ -353,15 +353,15 @@ public class Viewer {
                 if ( isMultipleChoiceAnswerText ) {
                     CheckBox cb = new CheckBox();
                     choice.getCheckBoxList().add( cb );
-                    
+
 //                    cb.selectedProperty().bindBidirectional(
 //                        ( ( AnswerText ) obj ).getSelected() );
-                    
+
                     cb.selectedProperty().addListener( ( observable, oldValue, newValue ) -> {
                         ( ( AnswerText ) obj ).setSelected( newValue );
                     });
 
-                    if ( ( ( AnswerText ) obj ).isSelected() && commonData.isEditingMode() ) {
+                    if ( ( ( AnswerText ) obj ).isSelected() ) {
                         cb.setSelected( true );
                     }
 
