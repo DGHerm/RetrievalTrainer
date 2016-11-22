@@ -60,15 +60,9 @@ public class ApplicationConstants {
     public static final String         NAME_OF_XML_ATTRIBUTE_ANSWER_TEXT_MARK       = "mark";
 
     // --------------------------
-    public static final String         FILE_NAME_SEPARATOR;
+    public static final String         FILE_NAME_SEPARATOR                          = "/";
 
-    static {
         // see javafx/application/Preloader.java,
-        String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty(
-                "file.separator" ) );
-        FILE_NAME_SEPARATOR = prop != null ? prop : "/";
-    }
 
     // --------------------------
     public static final String PACKAGE_NAME_SEPARATOR = ".";
