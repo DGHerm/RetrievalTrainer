@@ -16,6 +16,7 @@
  limitations under the License.
 -->
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -23,17 +24,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+      <VBox>
          <children>
-            <Pane style="-fx-border-color: black; -fx-border-insets: 10; -fx-border-radius: 10; -fx-border-style: solid; -fx-border-width: 1;">
+            <VBox maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" prefHeight="100.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-insets: 10 10 5 10; -fx-border-radius: 10; -fx-border-style: solid; -fx-border-width: 1;">
                <children>
-                  <VBox>
-                     <children>
                         <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="600.0">
                            <children>
-                              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Label alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="279.0" text="%L10N_Stage_Preferences_Label_DisplayLanguage" VBox.vgrow="ALWAYS">
                                        <opaqueInsets>
@@ -44,23 +43,107 @@
                                        </padding>
                                     </Label>
                                  </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="11.0" />
+                           </padding>
                               </VBox>
-                              <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                                  <children>
                                     <ChoiceBox fx:id="languageChoice" onDragDetected="#onLanguageChoice" prefWidth="150.0" VBox.vgrow="ALWAYS" />
                                  </children>
+                           <padding>
+                              <Insets top="11.0" />
+                           </padding>
                               </VBox>
                            </children>
                         </HBox>
                         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label text="%L10N_Stage_Preferences_Label_DisplayLanguage_Hint" />
+                        <Label maxHeight="1.7976931348623157E308" text="%L10N_Stage_Preferences_Label_DisplayLanguage_Hint" />
+                     </children>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox maxHeight="100.0" maxWidth="1.7976931348623157E308" minHeight="100.0" prefHeight="100.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-insets: 5 10 5 10; -fx-border-radius: 10; -fx-border-style: solid; -fx-border-width: 1;">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="600.0">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" text="select exercise items randomly" VBox.vgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                 </children>
+                              </HBox>
                            </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <CheckBox fx:id="selectRandomly" mnemonicParsing="false" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
                         </HBox>
                      </children>
                   </VBox>
                </children>
-            </Pane>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="600.0">
+                     <children>
+                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" text="maximum number of selected exercise items" VBox.vgrow="ALWAYS">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <TextField fx:id="maxNumberOfItems" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
          </children>
       </VBox>
    </children>

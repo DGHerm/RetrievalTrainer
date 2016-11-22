@@ -20,6 +20,7 @@ package de.herm_detlef.java.application.controller.file_menu;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.CommonData;
@@ -146,8 +147,15 @@ public class FileMenuController implements Initializable {
         commonData.getExerciseItemListShuffledSubset().clear();
         commonData.getExerciseItemListShuffledSubset().addAll( commonData.getExerciseItemListMaster() );
 
-        // Collections.shuffle( commonData.getExerciseItemListShuffledSubset()
+        if ( commonData.isShuffledSubset() ) {
+            Collections.shuffle( commonData.getExerciseItemListShuffledSubset() );
         // ); // TODO preferences
+            int size   = commonData.getExerciseItemListShuffledSubset().size();
+            int maxLen = commonData.getMaxLengthOfSubset();
+            if ( size > maxLen ) {
+                commonData.getExerciseItemListShuffledSubset().remove( maxLen, size );
+            }
+        }
 
         remote.getExerciseMenuController().getCheckMenuItemEditExercise().setDisable( false );
 

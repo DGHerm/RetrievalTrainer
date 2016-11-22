@@ -64,6 +64,8 @@ public class CommonData {
     private final ObjectProperty< File >                        recentlySavedFileProperty;
 
     private boolean                                             convenient = true;
+    private boolean                                             shuffledSubset;
+    private int                                                 maxLengthOfSubset;
 
     /**
      * TODO
@@ -89,7 +91,16 @@ public class CommonData {
 
         recentlyOpenedFileProperty     = new SimpleObjectProperty<>();
         recentlySavedFileProperty      = new SimpleObjectProperty<>();
+        shuffledSubset                 = Boolean.parseBoolean(
+                                            applicationPreferences
+                                                .getUserPreferencesNode()
+                                                .get( "RandomOrder", "false" ) );
 
+        maxLengthOfSubset              = Integer.parseInt(
+                                            applicationPreferences
+                                                .getUserPreferencesNode()
+                                                .get( "MaximumLengthOfSubset", 
+                                                      Integer.toString( ApplicationConstants.MAXIMUM_NUMBER_OF_EXERCISE_ITEMS ) ) );
         exerciseItemListMasterChangeListener = c -> {
 
             if ( c.next() ) {
@@ -561,5 +572,17 @@ public class CommonData {
     public void setConvenient( boolean convenient ) {
 
         this.convenient = convenient;
+    }
+    public boolean isShuffledSubset() {
+        return shuffledSubset;
+    }
+    public void setShuffledSubset( boolean shuffledSubset ) {
+        this.shuffledSubset = shuffledSubset;
+    }
+    public int getMaxLengthOfSubset() {
+        return maxLengthOfSubset;
+    }
+    public void setMaxLengthOfSubset( int maxLengthOfSubset ) {
+        this.maxLengthOfSubset = maxLengthOfSubset;
     }
 }

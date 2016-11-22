@@ -31,7 +31,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -56,6 +59,10 @@ public class PreferencesController implements Initializable {
 
     @FXML
     private ChoiceBox< Locale >          languageChoice;
+    @FXML
+    private CheckBox                     selectRandomly;
+    @FXML
+    private TextField                    maxNumberOfItems;
 
     public PreferencesController( CommonData commonData,
                                   Remote remote ) {
@@ -82,9 +89,7 @@ public class PreferencesController implements Initializable {
             "Preferences",
             commonData );
 
-        final Scene scene = new Scene( root,
-                                       500,
-                                       500 );
+        final Scene scene = new Scene( root );
         // scene.getStylesheets().add(getClass().getResource("/de/herm_detlef/java/application/preferences/preferences.css").toExternalForm());
         stage.setScene(
             scene );
@@ -150,6 +155,33 @@ public class PreferencesController implements Initializable {
             "PreferencesStageOriginY",
             "PreferencesStageWidth",
             "PreferencesStageHeight" );
+        selectRandomly.setSelected( commonData.isShuffledSubset() );
+        maxNumberOfItems.setDisable( ! commonData.isShuffledSubset() );
+        selectRandomly.selectedProperty().addListener( (obj, oldValue, newValue) -> {
+            commonData.setShuffledSubset( newValue );
+            commonData.getApplicationPreferences()
+                      .getUserPreferencesNode()
+                      .put( "RandomOrder", newValue.toString() );
+            maxNumberOfItems.setDisable( ! newValue );
+        });
+        maxNumberOfItems.setText( Integer.toString( commonData.getMaxLengthOfSubset() ) );
+        maxNumberOfItems.addEventFilter( KeyEvent.KEY_TYPED, keyEvent -> {
+            String digits = "0123456789";
+            if ( ! digits.contains( keyEvent.getCharacter() ) )
+                keyEvent.consume();
+            if ( maxNumberOfItems.getText().isEmpty() )
+                return;
+            if ( maxNumberOfItems.getText().length() > 2 )
+                keyEvent.consume();
+        });
+        maxNumberOfItems.textProperty().addListener( (obj, oldValue, newValue) -> {
+            if ( ! newValue.isEmpty() ) {
+                commonData.setMaxLengthOfSubset( Integer.parseInt( newValue ) );
+                commonData.getApplicationPreferences().getUserPreferencesNode().put(
+                    "MaximumLengthOfSubset",
+                    newValue.toString() );
+            }
+        });
     }
 
     @FXML

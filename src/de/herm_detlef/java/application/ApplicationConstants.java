@@ -218,4 +218,5 @@ public class ApplicationConstants {
     // --------------------------
     public static final String CONFIRMATION_MESSAGE_DELETE_EXERCISEITEM = "Are you sure you want to delete the exercise item?";
 
+    public static final int MAXIMUM_NUMBER_OF_EXERCISE_ITEMS = 999;
 }
