@@ -216,7 +216,11 @@ public class ApplicationConstants {
     public static final String WARNING_MESSAGE_UNSAVED_MODIFICATIONS = "Some modifications need to be saved to disc";
 
     // --------------------------
+    public static final String CONFIRMATION_MESSAGE_DISCARD_UNSAVED_MODIFICATIONS = "Do you want to discard the modifications?";
+
+    // --------------------------
     public static final String CONFIRMATION_MESSAGE_DELETE_EXERCISEITEM = "Are you sure you want to delete the exercise item?";
 
+    // --------------------------
     public static final int MAXIMUM_NUMBER_OF_EXERCISE_ITEMS = 999;
 }

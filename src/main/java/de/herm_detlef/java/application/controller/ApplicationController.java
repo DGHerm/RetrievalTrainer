@@ -267,12 +267,15 @@ public class ApplicationController implements Initializable {
     public boolean checkExerciseItemListMasterNeedsSave() {
         boolean needsSave = commonData.checkNeedsSave();
 
-        if ( needsSave ) {
-            remote.getFileMenuController().getMenuItemSave().setDisable( false );
-            Utilities.showWarningMessage( null, ApplicationConstants.WARNING_MESSAGE_UNSAVED_MODIFICATIONS );
-        }
+        if ( ! needsSave ) return false;
 
-        return needsSave;
+        final boolean discard = Utilities.showConfirmationMessage(
+                ApplicationConstants.WARNING_MESSAGE_UNSAVED_MODIFICATIONS,
+                ApplicationConstants.CONFIRMATION_MESSAGE_DISCARD_UNSAVED_MODIFICATIONS);
+
+        remote.getFileMenuController().getMenuItemSave().setDisable( discard );
+
+        return ! discard;
     }
 
     /**

@@ -31,6 +31,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
 /* @formatter:off */
@@ -70,8 +71,7 @@ public class Utilities {
     public static void showWarningMessage( String header, String content ) {
 
         Alert alert = new Alert( AlertType.WARNING );
-        alert.setTitle(
-            ApplicationConstants.WARNING_MESSAGE_UNSAVED_MODIFICATIONS );
+        alert.setTitle(null);
         alert.setHeaderText(
             header );
         alert.setContentText(
@@ -81,15 +81,17 @@ public class Utilities {
 
     public static boolean showConfirmationMessage( String header, String content ) {
 
-        Alert alert = new Alert( AlertType.CONFIRMATION );
+        Alert alert = new Alert( AlertType.CONFIRMATION, content, ButtonType.YES, ButtonType.NO );
+        alert.setTitle(null);
         alert.setHeaderText( header );
-        alert.setContentText( content );
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            return true;
-        }
 
-        return false;
+        Button yesButton = (Button) alert.getDialogPane().lookupButton( ButtonType.YES );
+        yesButton.setDefaultButton( false );
+        Button noButton = (Button) alert.getDialogPane().lookupButton( ButtonType.NO );
+        noButton.setDefaultButton( true );
+
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.YES;
     }
 
     public static String createFilePath( Object obj, String fxmlResourceName ) {
