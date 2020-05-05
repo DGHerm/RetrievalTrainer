@@ -182,8 +182,9 @@ public class CustomPreloader extends Preloader {
             throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
         }
 
-        // launch(args);
+//         launch(args);
         LauncherImpl.launchApplicationWithArgs(
+                null,
             Main.class.getCanonicalName(),
             CustomPreloader.class.getCanonicalName(),
             args );
