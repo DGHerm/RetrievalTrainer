@@ -123,18 +123,18 @@ public class ApplicationConstants {
     }
 
     // --------------------------
+
+    public static final Integer MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT = 11;
+
+    // --------------------------
     public static final String INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE;
 
     static {
         StringBuilder msg = new StringBuilder();
-        msg.append(
-            "JRE 1.8.0 or higher " );
-        msg.append(
-            "is required to run this application. " );
-        msg.append(
-            "You have JRE " );
-        msg.append(
-            VERSION_OF_JAVA_RUNTIME_ENVIRONMENT );
+        msg.append( "JRE " )
+                .append( MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT.toString() )
+                .append( " or higher is required to run this application. You have JRE " )
+                .append( VERSION_OF_JAVA_RUNTIME_ENVIRONMENT );
         INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE = msg.toString();
     }
 
