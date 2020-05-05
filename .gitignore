@@ -17,9 +17,12 @@ bin/**
 tmp/**
 /build.fxbuild
 
+# IntelliJ
+.idea/
+*.iml
+
 # Mac OS X
 .DS_Store
 
-
-
+# Maven
 /target/
