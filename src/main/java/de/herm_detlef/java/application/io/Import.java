@@ -87,7 +87,7 @@ class Import {
             xmlFile );// XML validation happens here
     }
 
-    private static void createNode( Element child ) {
+    private static void createNode( Element child ) throws AssertionError {
 
         List< Element > children = child.getChildren();
 
@@ -108,7 +108,7 @@ class Import {
                             exerciseItem.addAnswerText( str, mark.getBooleanValue() );
                         } catch ( DataConversionException e ) {
                             Utilities.showErrorMessage( e.getClass().getSimpleName(), e.getMessage() );
-                            assert false : String.format( "DataConversionException: %s", mark.toString() ); // TODO
+                            assert false : String.format( "org.jdom2.DataConversionException: %s", mark.toString() ); // TODO
                             exerciseItem.addAnswerText( str, false );
                         }
                     } else {
@@ -134,7 +134,7 @@ class Import {
                 // TODO empty catalog file
                 break;
             default:
-                assert false : String.format( "%s", TAG.getValueOf( child.getName() ).name() ); // TODO
+                throw new AssertionError( String.format( "%s", TAG.getValueOf( child.getName() ).name() ) );
             }
 
             return;
@@ -167,7 +167,7 @@ class Import {
             case TEXT2:
                 break;
             default:
-                assert false : String.format( "%s", TAG.getValueOf( aChild.getName() ).name() ); // TODO
+                throw new AssertionError( String.format( "%s", TAG.getValueOf( aChild.getName() ).name() ) );
             }
 
             createNode( aChild );
@@ -214,7 +214,7 @@ class Import {
             isSolutionPart = true;
             break;
         default:
-            assert false : String.format( "%s", selector ); // TODO
+            throw new AssertionError( String.format( "%s", selector.name() ) );
         }
     }
 }
