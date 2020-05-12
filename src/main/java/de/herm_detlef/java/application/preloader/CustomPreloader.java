@@ -34,6 +34,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 /* @formatter:off */
 
@@ -178,24 +179,32 @@ public class CustomPreloader extends Preloader {
      */
     public static void main( String[] args ) {
 
-        if ( ! ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT
-                .matches("[1-9][0-9]*[.][0-9]+[.][0-9]+") ) {
-            throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
+        Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
+
+        try {
+
+            if (!ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT
+                    .matches("[1-9][0-9]*[.][0-9]+[.][0-9]+")) {
+                throw new RuntimeException(ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE);
+            }
+
+            final String[] version = ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT.split("[.]");
+
+            if (Arrays.stream(version)
+                    .findFirst()
+                    .map(Integer::valueOf)
+                    .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT) {
+                throw new IllegalArgumentException(ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE);
+            }
+
+            LauncherImpl.launchApplicationWithArgs(
+                    null,
+                    Main.class.getCanonicalName(),
+                    CustomPreloader.class.getCanonicalName(),
+                    args);
+
+        } catch ( RuntimeException e ) {
+            logger.severe( e.getMessage() );
         }
-
-        final String[] version = ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT.split("[.]");
-
-        if ( Arrays.stream( version )
-                .findFirst()
-                .map(Integer::valueOf)
-                .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT ) {
-            throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
-        }
-
-        LauncherImpl.launchApplicationWithArgs(
-                null,
-            Main.class.getCanonicalName(),
-            CustomPreloader.class.getCanonicalName(),
-            args );
     }
 }
