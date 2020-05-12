@@ -157,16 +157,6 @@ public class ApplicationController implements Initializable {
      * <p>
      * @since 1.0
      */
-    public EditMenuController getEditor() {
-
-        return editMenu;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
     public void updateView() {
 
         if ( commonData.getExerciseItemListShuffledSubset().size() == 0 ) {

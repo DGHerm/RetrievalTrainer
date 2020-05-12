@@ -44,9 +44,6 @@ public class Remote {
     private FileMenuController     fileMenuController;
     private ExerciseItemListMenuController exerciseMenuController;
     private EditMenuController     editMenuController;
-    private ToolsPanelController   toolsPanelController;
-    private NavigationController   navigationController;
-    private Navigation             navigation;
     private Viewer                 viewer;
 
     /**
@@ -156,66 +153,6 @@ public class Remote {
     public void setEditMenuController( EditMenuController editMenuController ) {
 
         this.editMenuController = editMenuController;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public ToolsPanelController getToolsPanelController() {
-
-        return toolsPanelController;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public void setToolsPanelController( ToolsPanelController toolsPanelController ) {
-
-        this.toolsPanelController = toolsPanelController;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public NavigationController getNavigationController() {
-
-        return navigationController;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public void setNavigationController( NavigationController navigationController ) {
-
-        this.navigationController = navigationController;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public Navigation getNavigation() {
-
-        return navigation;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public void setNavigation( Navigation navigation ) {
-
-        this.navigation = navigation;
     }
 
     /**

@@ -343,24 +343,9 @@ public class ToolsPanelController implements Initializable {
         return buttonAppendNewExerciseItem;
     }
 
-    public Button getButtonDeleteCurrentExerciseItem() {
-
-        return buttonDeleteCurrentExerciseItem;
-    }
-
     public ToggleButton getToggleButtonPreviewCurrentExerciseItem() {
 
         return toggleButtonPreviewCurrentExerciseItem;
-    }
-
-    public Button getButtonAppendQuestionText() {
-
-        return buttonAppendQuestionText;
-    }
-
-    public Button getButtonAppendQuestionCode() {
-
-        return buttonAppendQuestionCode;
     }
 
     public RadioButton getRadioButtonSingleChoice() {
@@ -373,8 +358,4 @@ public class ToolsPanelController implements Initializable {
         return radioButtonMultipleChoice;
     }
 
-    public Button getButtonAppendSolution() {
-
-        return buttonAppendSolution;
-    }
 }

@@ -433,24 +433,9 @@ public class EditMenuController implements Initializable {
         }
     }
 
-    public ToolsPanelController getTools() {
-
-        return tools;
-    }
-
-    public MenuItem getMenuItemDeleteExerciseItem() {
-
-        return menuItemDeleteExerciseItem;
-    }
-
     public Menu getMenuEdit() {
 
         return menuEdit;
-    }
-
-    public MenuItem getMenuItemNewExerciseItem() {
-
-        return menuItemNewExerciseItem;
     }
 
     public CheckMenuItem getCheckMenuItemPreviewExerciseItem() {

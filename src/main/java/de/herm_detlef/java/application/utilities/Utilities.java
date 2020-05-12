@@ -68,17 +68,6 @@ public class Utilities {
         alert.showAndWait();
     }
 
-    public static void showWarningMessage( String header, String content ) {
-
-        Alert alert = new Alert( AlertType.WARNING );
-        alert.setTitle(null);
-        alert.setHeaderText(
-            header );
-        alert.setContentText(
-            content );
-        alert.showAndWait();
-    }
-
     public static boolean showConfirmationMessage( String header, String content ) {
 
         Alert alert = new Alert( AlertType.CONFIRMATION, content, ButtonType.YES, ButtonType.NO );
@@ -140,71 +129,6 @@ public class Utilities {
         packagePath.append( ApplicationConstants.PACKAGE_NAME_SEPARATOR )
                 .append( resourceName );
         return packagePath.toString();
-    }
-
-    public static String readFile( final File fileObject ) {
-
-        FileInputStream fileInStream = null;
-
-        StringBuilder content = new StringBuilder();
-
-        try {
-            if ( fileObject != null ) {
-                fileInStream = new FileInputStream( fileObject );
-                int len = fileInStream.available();
-                if ( len > 0 ) {
-                    do {
-                        byte[] buf = new byte[ len ];
-                        fileInStream.read(
-                            buf );
-
-                        content.append(
-                            new String( buf ) );
-
-                        len = fileInStream.available();
-                    } while ( len > 0 );
-                }
-            }
-
-        } catch ( FileNotFoundException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
-        } catch ( IOException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
-            // e.printStackTrace();
-        } finally {
-            try {
-                if ( fileInStream != null ) {
-                    fileInStream.close();
-                }
-            } catch ( IOException e ) {
-                Utilities.showErrorMessage(
-                    e.getClass().getSimpleName(),
-                    e.getMessage() );
-                // e.printStackTrace();
-            }
-        }
-
-        return content.toString();
-    }
-
-    public static boolean isOrderedByAscendingId( ObservableList< ExerciseItem > list ) {
-
-        int prevId = 0;
-        boolean result = true;
-
-        for ( ExerciseItem item : list ) {
-            int id = item.getItemId();
-            assert id > 0;
-            assert prevId != id;
-            result = result && ( prevId < id );
-            prevId = id;
-        }
-
-        return result;
     }
 
     public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,

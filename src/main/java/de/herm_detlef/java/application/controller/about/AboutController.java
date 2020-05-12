@@ -152,23 +152,4 @@ public class AboutController {
         return progressBar;
     }
 
-    public void hideProgressBar() {
-
-        if ( progressBar == null ) {
-            assert false;
-            return;
-        }
-        progressBar.setVisible(
-            false );
-    }
-
-    public void showProgressBar() {
-
-        if ( progressBar == null ) {
-            assert false;
-            return;
-        }
-        progressBar.setVisible(
-            true );
-    }
 }

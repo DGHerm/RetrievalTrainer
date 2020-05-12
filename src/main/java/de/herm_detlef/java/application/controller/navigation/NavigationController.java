@@ -69,9 +69,6 @@ public class NavigationController implements Initializable {
         this.toolBar = toolBar;
         this.commonData = commonData;
         this.remote = remote;
-
-        remote.setNavigationController(
-            this );
     }
 
     public static NavigationController create( final ToolBar toolBar,
@@ -178,9 +175,4 @@ public class NavigationController implements Initializable {
             buttonLast );
     }
 
-
-    public Label getExerciseItemNumber() {
-
-        return exerciseItemNumber;
-    }
 }

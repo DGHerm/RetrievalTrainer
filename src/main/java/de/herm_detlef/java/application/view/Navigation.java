@@ -66,8 +66,6 @@ public class Navigation {
         this.commonData = commonData;
         this.forwards   = forwards;
 
-        remote.setNavigation( this );
-
         hasNextItem     = ( forwards ) ?     ListIterator::hasNext : ListIterator::hasPrevious;
         nextItemIndex   = ( forwards ) ?   ListIterator::nextIndex : ListIterator::previousIndex;
         nextItem        = ( forwards ) ?        ListIterator::next : ListIterator::previous;

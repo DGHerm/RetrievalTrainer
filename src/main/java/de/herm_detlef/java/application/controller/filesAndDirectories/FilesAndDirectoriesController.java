@@ -96,7 +96,7 @@ public class FilesAndDirectoriesController {
         final Stage stage = new Stage();
         stage.setTitle( ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_SAVE );
 
-        Parent root = Utilities.< FilesAndDirectoriesController, Parent >createSceneGraphObjectFromFXMLResource(
+        Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
             "FilesAndDirectories.fxml",
             null,

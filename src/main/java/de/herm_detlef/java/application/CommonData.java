@@ -412,36 +412,6 @@ public class CommonData {
         }
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public boolean hasUnmarkedAnswerPartItems() {
-
-        for ( ExerciseItem exItem : exerciseItemListMaster ) {
-            if ( !exItem.hasMarkedAnswerPartItems() )
-                return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public ObservableList<ExerciseItem> getExerciseItemListUnmarkedAnswerPartItems() {
-
-        FilteredList< ExerciseItem > filteredList = exerciseItemListMaster.filtered( ( item ) -> ! item.hasMarkedAnswerPartItems() );
-
-        ObservableList<ExerciseItem> list = FXCollections.observableArrayList();
-        list.addAll( filteredList );
-
-        return list;
-    }
-
 
     /**
      * TODO
@@ -561,15 +531,6 @@ public class CommonData {
         return convenient;
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public void setConvenient( boolean convenient ) {
-
-        this.convenient = convenient;
-    }
     public boolean isShuffledSubset() {
         return shuffledSubset;
     }

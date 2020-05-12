@@ -76,12 +76,6 @@ public class ExerciseItem {
             return type.isInstance( obj ) ? obj : null;
         }
 
-
-        public ExerciseItem getParent() {
-
-            return parent;
-        }
-
         public boolean needsSave() {
             return initialHashCodeOfStr != str.get().hashCode();
         }
@@ -185,11 +179,6 @@ public class ExerciseItem {
         @Override
         public Object get() {
             return ItemPart.get( this, type, function );
-        }
-
-        // needed for multiple choice ( bindBidirectional CheckBox )
-        public BooleanProperty getSelected() {
-            return selected;
         }
 
         public void setSelected( boolean selected ) {
@@ -428,26 +417,6 @@ public class ExerciseItem {
         handlersToAllowMoreQuestionCode.add( allowMoreQuestionCode );
     }
 
-    public void addHandlerToPreventMoreSingleChoiceAnswerText( Runnable preventMoreSingleChoiceAnswerText ) {
-
-        handlersToPreventMoreSingleChoiceAnswerText.add( preventMoreSingleChoiceAnswerText );
-    }
-
-    public void addHandlerToAllowMoreSingleChoiceAnswerText( Runnable allowMoreSingleChoiceAnswerText ) {
-
-        handlersToAllowMoreSingleChoiceAnswerText.add( allowMoreSingleChoiceAnswerText );
-    }
-
-    public void addHandlerToPreventMoreMultipleChoiceAnswerText( Runnable preventMoreMultipleChoiceAnswerText ) {
-
-        handlersToPreventMoreMultipleChoiceAnswerText.add( preventMoreMultipleChoiceAnswerText );
-    }
-
-    public void addHandlerToAllowMoreMultipleChoiceAnswerText( Runnable allowMoreMultipleChoiceAnswerText ) {
-
-        handlersToAllowMoreMultipleChoiceAnswerText.add( allowMoreMultipleChoiceAnswerText );
-    }
-
     public void addHandlerOnChangeAnswerMode( Runnable changeAnswerMode ) {
         handlersOnConvertAnswerTextParts.add( changeAnswerMode );
     }
@@ -653,16 +622,6 @@ public class ExerciseItem {
         return filteredList.size() >= count;
     }
 
-    public static boolean contains( ExerciseItem item, Class< ? extends ItemPart > type, int count ) {
-
-        return item.contains( type, count );
-    }
-
-    public static boolean containsAtLeast( ExerciseItem item, Class< ? extends ItemPart > type, int count ) {
-
-        return item.containsAtLeast( type, count );
-    }
-
     public static void initializeGUI() {
 
         for ( Runnable r : handlersToInitializeGUI ) {
@@ -747,11 +706,6 @@ public class ExerciseItem {
     public void createMultipleChoiceModel() {
 
         choiceModelProperty.set( new MultipleChoiceAnswerText( null, false, this ) );
-    }
-
-    public ObjectProperty< AnswerText > getChoiceModelProperty() {
-
-        return choiceModelProperty;
     }
 
     public AnswerText getChoiceModel() {
