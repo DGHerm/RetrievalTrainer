@@ -35,9 +35,7 @@ import javafx.scene.Scene;
  */
 public class Main extends Application {
 
-    private ApplicationPreferences applicationPreferences;
     private CommonData             commonData;
-    private Remote                 remote;
 
     /**
      * TODO
@@ -59,16 +57,16 @@ public class Main extends Application {
     @Override
     public void start( Stage primaryStage ) {
 
-        applicationPreferences = new ApplicationPreferences();
+        ApplicationPreferences applicationPreferences = new ApplicationPreferences();
         commonData = new CommonData( primaryStage,
-                                     applicationPreferences );
-        remote = new Remote( commonData );
+                applicationPreferences);
+        Remote remote = new Remote(commonData);
 
         primaryStage.setTitle(
             ApplicationConstants.TITLE_OF_MAIN_DIALOG );
 
         ApplicationController appController = new ApplicationController( commonData,
-                                                                         remote );
+                remote);
 
         // System.out.println( Platform.isFxApplicationThread() );
         //

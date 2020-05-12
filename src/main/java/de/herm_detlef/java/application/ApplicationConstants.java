@@ -83,14 +83,10 @@ public class ApplicationConstants {
 
     static {
         StringBuilder licenseText = new StringBuilder();
-        licenseText.append(
-            "Copyright 2016 Detlef Gregor Herm" );
-        licenseText.append(
-            LINE_SEPARATOR );
-        licenseText.append(
-            LINE_SEPARATOR );
-        licenseText.append(
-            "Licensed under the Apache License, Version 2.0" );
+        licenseText.append( "Copyright 2016 Detlef Gregor Herm" )
+                .append( LINE_SEPARATOR )
+                .append( LINE_SEPARATOR )
+                .append( "Licensed under the Apache License, Version 2.0" );
         LICENSE_NOTICE = licenseText.toString();
     }
 
@@ -196,16 +192,11 @@ public class ApplicationConstants {
 
     static {
         StringBuilder msg = new StringBuilder();
-        msg.append(
-            "count of questions: %d" );
-        msg.append(
-            LINE_SEPARATOR );
-        msg.append(
-            "count of correct answers:  %d" );
-        msg.append(
-            LINE_SEPARATOR );
-        msg.append(
-            "success rate: %3.1f%%" );
+        msg.append( "count of questions: %d" )
+                .append( LINE_SEPARATOR )
+                .append( "count of correct answers:  %d" )
+                .append( LINE_SEPARATOR )
+                .append( "success rate: %3.1f%%" );
         FORM_OF_SCORE_MESSAGE = msg.toString();
     }
 

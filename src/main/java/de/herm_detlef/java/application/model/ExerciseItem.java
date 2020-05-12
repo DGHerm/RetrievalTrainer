@@ -325,15 +325,13 @@ public class ExerciseItem {
         choiceModelProperty.addListener( (obj, oldValue, newValue) -> {
             if ( newValue == null || newValue.get() == null )
                 return;
-            convertAnswerTextParts( newValue.getClass() );
+            convertAnswerTextParts();
         });
     }
 
-    private void convertAnswerTextParts( Class< ? > type ) {
+    private void convertAnswerTextParts() {
 
-        FilteredList< ItemPart > filteredList = components.filtered( ( item ) -> {
-            return item instanceof AnswerText;
-        } );
+        FilteredList< ItemPart > filteredList = components.filtered( ( item ) -> item instanceof AnswerText );
 
         if ( filteredList.isEmpty() )
             return;
@@ -551,13 +549,13 @@ public class ExerciseItem {
 
             int size = components.size();
 
-            /********************************************************
-             *
-             * DO NOT CHANGE THE ORDER OF FOLLOWING RULES !
-             *
-             * DO NOT CHANGE THE ORDER OF THE PARTS OF ANY RULE !
-             *
-             ********************************************************/
+            // ********************************************************
+            //
+            // DO NOT CHANGE THE ORDER OF FOLLOWING RULES !
+            //
+            // DO NOT CHANGE THE ORDER OF THE PARTS OF ANY RULE !
+            //
+            // ********************************************************
 
             // Rule 1: 'Empty Components List' -----------------
             if ( size == 0 ) {
@@ -638,25 +636,20 @@ public class ExerciseItem {
                 if ( contains( SolutionText.class, 0 ) ) {
                     // always at the end of components list
                     components.add( part );
-                    return;
                 }
             }
         }
     }
 
-    private < T > boolean contains( Class< ? extends ItemPart > type, int count ) {
+    private boolean contains(Class< ? extends ItemPart > type, int count ) {
 
-        FilteredList< ItemPart > filteredList = components.filtered( ( item ) -> {
-            return type.isInstance( item );
-        } );
+        FilteredList< ItemPart > filteredList = components.filtered( type::isInstance );
         return filteredList.size() == count;
     }
 
-    private < T > boolean containsAtLeast( Class< ? extends ItemPart > type, int count ) {
+    private boolean containsAtLeast(Class< ? extends ItemPart > type, int count ) {
 
-        FilteredList< ItemPart > filteredList = components.filtered( ( item ) -> {
-            return type.isInstance( item );
-        } );
+        FilteredList< ItemPart > filteredList = components.filtered( type::isInstance );
         return filteredList.size() >= count;
     }
 

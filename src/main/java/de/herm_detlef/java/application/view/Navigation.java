@@ -68,14 +68,14 @@ public class Navigation {
 
         remote.setNavigation( this );
 
-        hasNextItem     = ( forwards ) ?     trav -> trav.hasNext() : trav -> trav.hasPrevious();
-        nextItemIndex   = ( forwards ) ?   trav -> trav.nextIndex() : trav -> trav.previousIndex();
-        nextItem        = ( forwards ) ?        trav -> trav.next() : trav -> trav.previous();
-        hasPreviousItem = ( forwards ) ? trav -> trav.hasPrevious() : trav -> trav.hasNext();
-        jumpFirstBtn    = ( forwards ) ?                () -> first : () -> last;
-        stepPrevBtn     = ( forwards ) ?             () -> previous : () -> next;
-        stepNextBtn     = ( forwards ) ?                 () -> next : () -> previous;
-        jumpLastBtn     = ( forwards ) ?                 () -> last : () -> first;
+        hasNextItem     = ( forwards ) ?     ListIterator::hasNext : ListIterator::hasPrevious;
+        nextItemIndex   = ( forwards ) ?   ListIterator::nextIndex : ListIterator::previousIndex;
+        nextItem        = ( forwards ) ?        ListIterator::next : ListIterator::previous;
+        hasPreviousItem = ( forwards ) ? ListIterator::hasPrevious : ListIterator::hasNext;
+        jumpFirstBtn    = ( forwards ) ?               () -> first : () -> last;
+        stepPrevBtn     = ( forwards ) ?            () -> previous : () -> next;
+        stepNextBtn     = ( forwards ) ?                () -> next : () -> previous;
+        jumpLastBtn     = ( forwards ) ?                () -> last : () -> first;
     }
 
     public static void init( CommonData                        commonData,

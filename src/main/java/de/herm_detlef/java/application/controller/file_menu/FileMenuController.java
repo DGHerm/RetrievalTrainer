@@ -116,7 +116,7 @@ public class FileMenuController implements Initializable {
         final File selectedFile = fdCtrl.openFileChooserDialog( commonData.getPrimaryStage(), commonData );
         if ( selectedFile == null ) return;
 
-        ArrayList< ExerciseItem > list = null;
+        ArrayList< ExerciseItem > list;
 
         try {
             if ( commonData.isEditingMode() ) {

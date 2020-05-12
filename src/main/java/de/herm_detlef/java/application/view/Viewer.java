@@ -339,9 +339,8 @@ public class Viewer {
                     RadioButton rb = new RadioButton();
                     rb.setToggleGroup( choice.getToggleGroup() );
 
-                    rb.selectedProperty().addListener( ( observable, oldValue, newValue ) -> {
-                        ( ( AnswerText ) obj ).setSelected( newValue );
-                    });
+                    rb.selectedProperty().addListener(
+                            ( observable, oldValue, newValue ) -> ( ( AnswerText ) obj ).setSelected( newValue ) );
 
                     if ( ( ( AnswerText ) obj ).isSelected() ) {
                         choice.getToggleGroup().selectToggle( rb );
@@ -357,9 +356,8 @@ public class Viewer {
 //                    cb.selectedProperty().bindBidirectional(
 //                        ( ( AnswerText ) obj ).getSelected() );
 
-                    cb.selectedProperty().addListener( ( observable, oldValue, newValue ) -> {
-                        ( ( AnswerText ) obj ).setSelected( newValue );
-                    });
+                    cb.selectedProperty().addListener(
+                            ( observable, oldValue, newValue ) -> ( ( AnswerText ) obj ).setSelected( newValue ) );
 
                     if ( ( ( AnswerText ) obj ).isSelected() ) {
                         cb.setSelected( true );
@@ -450,8 +448,8 @@ public class Viewer {
 
             cb.selectedProperty().addListener( (objX, oldValueX, newValueX) -> {
                 StringBuilder style = new StringBuilder();
-                style.append( String.format( "-fx-background-color: %s;", newValueX ? "red" : "transparent" ) );
-                style.append( "-fx-alignment: bottom-left;" );
+                style.append( String.format( "-fx-background-color: %s;", newValueX ? "red" : "transparent" ) )
+                        .append( "-fx-alignment: bottom-left;" );
                 hb.setStyle( style.toString() );
 
                 if ( newValueX ) {

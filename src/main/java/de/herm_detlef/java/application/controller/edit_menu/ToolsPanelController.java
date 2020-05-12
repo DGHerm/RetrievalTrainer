@@ -227,9 +227,7 @@ public class ToolsPanelController implements Initializable {
             "ToolsPanelStageWidth",
             "ToolsPanelStageHeight" );
 
-        stage.setOnCloseRequest( e -> {
-            remote.getEditMenuController().getCheckMenuItemShowTools().selectedProperty().set( false );
-        } );
+        stage.setOnCloseRequest( e -> remote.getEditMenuController().getCheckMenuItemShowTools().selectedProperty().set( false ) );
 
         commonData.getEditingModeProperty().addListener( ( obj, oldValue, newValue ) -> {
             buttonAppendNewExerciseItem.setDisable( !newValue );
@@ -291,21 +289,13 @@ public class ToolsPanelController implements Initializable {
             // TODO
         } );
 
-        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionText( () -> {
-            buttonAppendQuestionText.setDisable( true );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionText( () -> buttonAppendQuestionText.setDisable( true ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionText( () -> {
-            buttonAppendQuestionText.setDisable( false );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionText( () -> buttonAppendQuestionText.setDisable( false ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionCode( () -> {
-            buttonAppendQuestionCode.setDisable( true );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionCode( () -> buttonAppendQuestionCode.setDisable( true ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionCode( () -> {
-            buttonAppendQuestionCode.setDisable( false );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionCode( () -> buttonAppendQuestionCode.setDisable( false ) );
 
 //        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSingleChoiceAnswerText( () -> {
 //            radioButtonSingleChoice.setDisable( true );
@@ -323,13 +313,9 @@ public class ToolsPanelController implements Initializable {
 //            radioButtonMultipleChoice.setDisable( false );
 //        } );
 
-        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> {
-            buttonAppendSolution.setDisable( true );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> buttonAppendSolution.setDisable( true ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToAllowMoreSolutionText( () -> {
-            buttonAppendSolution.setDisable( false );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToAllowMoreSolutionText( () -> buttonAppendSolution.setDisable( false ) );
     }
 
     public void openDialog() {

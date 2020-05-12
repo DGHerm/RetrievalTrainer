@@ -74,7 +74,6 @@ public class TextAreaHelper extends TextArea {
                 //end();// sets the caret to after the last char of the text
                         // and calls the private method 'updateContent'
                 layout();
-                return;
             }
         });
 
@@ -109,8 +108,7 @@ public class TextAreaHelper extends TextArea {
                                             viewportHeight,
                                             b.getDepth() );
 
-        sp.viewportBoundsProperty().set(
-            ( BoundingBox ) bBox );
+        sp.viewportBoundsProperty().set( bBox );
 
         double m = Math.ceil( viewportHeight / getMinHeight() ) * getMinHeight();
         setPrefHeight( m );

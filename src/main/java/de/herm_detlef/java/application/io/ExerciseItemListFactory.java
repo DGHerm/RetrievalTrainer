@@ -20,8 +20,6 @@ package de.herm_detlef.java.application.io;
 import java.io.File;
 import java.util.ArrayList;
 
-import org.jdom2.Document;
-
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.model.ExerciseItem;
 
@@ -44,11 +42,11 @@ public class ExerciseItemListFactory {
             filename );
     }
 
-    public static Document exportExerciseItemListToFile( CommonData commonData,
-                                                         File file ) {
+    public static void exportExerciseItemListToFile(CommonData commonData,
+                                                    File file ) {
 
-        return Export.exportExerciseItemListToFile(
-            commonData,
-            file );
+        Export.exportExerciseItemListToFile(
+                commonData,
+                file);
     }
 }

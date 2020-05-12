@@ -273,29 +273,19 @@ public class EditMenuController implements Initializable {
             menuItemNewAnswerText           .setDisable( false );
         } );
 
-        commonData.getExerciseItemPrototype().addHandlerOnDeleteExerciseItem( () -> {
-            ExerciseItem.initializeGUI();
-        } );
+        commonData.getExerciseItemPrototype().addHandlerOnDeleteExerciseItem( ExerciseItem::initializeGUI );
 
         commonData.getExerciseItemPrototype().addHandlerOnPreviewExerciseItem( () -> {
             // TODO
         } );
 
-        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionText( () -> {
-            menuItemNewQuestionText.setDisable( true );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionText( () -> menuItemNewQuestionText.setDisable( true ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionText( () -> {
-            menuItemNewQuestionText.setDisable( false );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionText( () -> menuItemNewQuestionText.setDisable( false ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionCode( () -> {
-            menuItemNewQuestionCode.setDisable( true );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionCode( () -> menuItemNewQuestionCode.setDisable( true ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionCode( () -> {
-            menuItemNewQuestionCode.setDisable( false );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionCode( () -> menuItemNewQuestionCode.setDisable( false ) );
 
 //        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSingleChoiceAnswerText( () -> {
 //            menuItemSelectorSingleChoice.setDisable( true );
@@ -313,13 +303,9 @@ public class EditMenuController implements Initializable {
 //            menuItemSelectorMultipleChoice.setDisable( false );
 //        } );
 
-        commonData.getExerciseItemPrototype().addHandlerOnChangeAnswerMode( () -> {
-            remote.getApplicationController().updateView();
-        });
+        commonData.getExerciseItemPrototype().addHandlerOnChangeAnswerMode( () -> remote.getApplicationController().updateView() );
 
-        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> {
-            menuItemNewSolutionText.setDisable( true );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> menuItemNewSolutionText.setDisable( true ) );
 
         commonData.getExerciseItemPrototype().addHandlerToAllowMoreSolutionText( () -> {
             menuItemNewSolutionText.setDisable( false );

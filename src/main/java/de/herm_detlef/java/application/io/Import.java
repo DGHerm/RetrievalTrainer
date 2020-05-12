@@ -56,7 +56,7 @@ class Import {
 
     public static ArrayList< ExerciseItem > importExerciseItemListFromFile( String filename ) {
 
-        exerciseItemList = new ArrayList< ExerciseItem >();
+        exerciseItemList = new ArrayList<>();
 
         try {
             Document doc = createDocument(

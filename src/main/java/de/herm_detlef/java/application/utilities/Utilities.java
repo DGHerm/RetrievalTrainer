@@ -137,10 +137,8 @@ public class Utilities {
         if ( cls.getPackage() == null ) return resourceName; // default package
 
         StringBuilder packagePath = new StringBuilder( cls.getPackage().getName() );
-        packagePath.append(
-            ApplicationConstants.PACKAGE_NAME_SEPARATOR );
-        packagePath.append(
-            resourceName );
+        packagePath.append( ApplicationConstants.PACKAGE_NAME_SEPARATOR )
+                .append( resourceName );
         return packagePath.toString();
     }
 
@@ -251,8 +249,6 @@ public class Utilities {
             return null;
         }
 
-        R root = fxmlLoader.< R >getRoot();
-
-        return root;
+        return fxmlLoader.getRoot();
     }
 }

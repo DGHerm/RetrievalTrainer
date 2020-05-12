@@ -50,8 +50,6 @@ public class AboutController {
     @FXML
     private ProgressBar progressBar;
 
-    private Scene       scene;
-
     public Scene createScene() {
 
         String packagePath = Utilities.createFilePath(
@@ -113,9 +111,9 @@ public class AboutController {
             false );
 
         Parent root = fxmlLoader.< Parent >getRoot();
-        scene = new Scene( root,
-                           400,
-                           250 );
+        Scene scene = new Scene(root,
+                400,
+                250);
         // scene.getStylesheets().add(getClass().getResource("/de/herm_detlef/java/application/about/about.css").toExternalForm());
         return scene;
     }

@@ -45,7 +45,6 @@ import java.util.Arrays;
  */
 public class CustomPreloader extends Preloader {
 
-    private AboutController ac;
     private ProgressBar     bar;
     private Stage           stage;
     private boolean         pretendProgress = true;
@@ -59,7 +58,7 @@ public class CustomPreloader extends Preloader {
 
         this.stage = stage;
 
-        ac = new AboutController();
+        AboutController ac = new AboutController();
         Scene scene = ac.createScene();
         if ( scene == null ) {
             assert false;
@@ -182,14 +181,14 @@ public class CustomPreloader extends Preloader {
         if ( ! ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT
                 .matches("[1-9][0-9]*[.][0-9]+[.][0-9]+") ) {
             throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
-        };
+        }
 
         final String[] version = ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT.split("[.]");
 
         if ( Arrays.stream( version )
                 .findFirst()
                 .map(Integer::valueOf)
-                .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT.intValue() ) {
+                .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT ) {
             throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
         }
 

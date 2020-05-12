@@ -177,13 +177,13 @@ public class Export {
                     if ( itemPart instanceof QuestionText ) {
                         Element text = new Element( TAG.TEXT.name(), ns );
                         element.addContent( text );
-                        text.addContent( ( ( QuestionText ) itemPart ).getStr().get() );
+                        text.addContent( itemPart.getStr().get() );
                     }
 
                     if ( itemPart instanceof QuestionText2 ) {
                         Element text = new Element( TAG.TEXT2.name(), ns );
                         element.addContent( text );
-                        text.addContent( ( ( QuestionText2 ) itemPart ).getStr().get() );
+                        text.addContent( itemPart.getStr().get() );
                     }
                 }
 
