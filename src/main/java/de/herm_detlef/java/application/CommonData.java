@@ -173,7 +173,7 @@ public class CommonData {
             for ( ExerciseItem.ItemPart itemPart : exItem.getExerciseItemParts() ) {
                 if ( itemPart instanceof ExerciseItem.AnswerText ) {
                     ExerciseItem.AnswerText answerPart = (ExerciseItem.AnswerText) itemPart;
-                    answerPart.setSelected( isEditingMode ? answerPart.isInitialMark() : false );
+                    answerPart.setSelected( isEditingMode && answerPart.isInitialMark() );
                 }
             }
         }
@@ -285,7 +285,7 @@ public class CommonData {
      */
     public void setCurrentExerciseItem( ExerciseItem currentExerciseItem ) {
 
-        assert currentExerciseItemProperty.getValue() != null ? currentExerciseItemProperty.getValue().getItemId() > 0 : true;
+        assert currentExerciseItemProperty.getValue() == null || currentExerciseItemProperty.getValue().getItemId() > 0;
         currentExerciseItemProperty.setValue( currentExerciseItem );
     }
 
@@ -456,7 +456,7 @@ public class CommonData {
         if ( ! isEditingMode() )
             return false;
 
-        needsSave = needsSave || ! exerciseItemListMaster.containsAll( exerciseItemListInitialMaster );
+        needsSave = ! exerciseItemListMaster.containsAll( exerciseItemListInitialMaster );
         needsSave = needsSave || ! exerciseItemListInitialMaster.containsAll( exerciseItemListMaster );
 
         for ( ExerciseItem exItem : exerciseItemListMaster ) {

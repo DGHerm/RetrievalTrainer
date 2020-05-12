@@ -184,12 +184,12 @@ public class ApplicationController implements Initializable {
             int index = viewer.prepareExerciseItem( commonData.getCurrentExerciseItem() );
 
             navi.setDisable(
-                index == 0 ? true : false,
-                index == 0 ? true : false,
-                commonData.getExerciseItemListShuffledSubset().size() - 1 == index ? true : false,
-                commonData.getExerciseItemListShuffledSubset().size() - 1 == index ? true : false );
+                    index == 0,
+                    index == 0,
+                    commonData.getExerciseItemListShuffledSubset().size() - 1 == index,
+                    commonData.getExerciseItemListShuffledSubset().size() - 1 == index);
 
-            buttonScore.setDisable( commonData.isEditingMode() ? true : false );
+            buttonScore.setDisable( commonData.isEditingMode() );
 
             Navigation.init( commonData, remote, navi, viewer::prepareExerciseItem, root );
 
@@ -198,12 +198,12 @@ public class ApplicationController implements Initializable {
             viewer.prepareExerciseItem( 0 );
 
             navi.setDisable(
-                true,
-                true,
-                commonData.getExerciseItemListShuffledSubset().size() > 1 ? false : true,
-                commonData.getExerciseItemListShuffledSubset().size() > 1 ? false : true );
+                    true,
+                    true,
+                    commonData.getExerciseItemListShuffledSubset().size() <= 1,
+                    commonData.getExerciseItemListShuffledSubset().size() <= 1);
 
-            buttonScore.setDisable( commonData.isEditingMode() ? true : false );
+            buttonScore.setDisable( commonData.isEditingMode() );
 
             Navigation.init( commonData, remote, navi, viewer::prepareExerciseItem, root );
         }

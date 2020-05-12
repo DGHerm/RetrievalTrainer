@@ -176,7 +176,7 @@ public class EditMenuController implements Initializable {
             ( ListChangeListener< ? super ExerciseItem.ItemPart > ) c -> {
                 if ( c.next() ) {
                     boolean isEmpty = commonData.getComponentsMarkedToBeDeleted().isEmpty();
-                    menuItemDeleteItemPart.setDisable( isEmpty ? true : false );
+                    menuItemDeleteItemPart.setDisable( isEmpty );
                 }
             } );
 

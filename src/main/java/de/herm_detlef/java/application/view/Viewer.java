@@ -259,9 +259,9 @@ public class Viewer {
             q.setPromptText( ApplicationConstants.PLACEHOLDER_QUESTION_TEXT );
 
             q.setEditable(
-                commonData.isEditingMode() && ! commonData.isPreviewMode() ? true : false );
+                    commonData.isEditingMode() && !commonData.isPreviewMode());
             q.setMouseTransparent(
-                commonData.isEditingMode() && ! commonData.isPreviewMode() ? false : true );
+                    !commonData.isEditingMode() || commonData.isPreviewMode());
             q.setFocusTraversable(
                 false );
 
@@ -292,9 +292,9 @@ public class Viewer {
                 q.setPromptText( ApplicationConstants.PLACEHOLDER_QUESTION_CODE );
 
                 q.setEditable(
-                    commonData.isEditingMode() && ! commonData.isPreviewMode() ? true : false );
+                        commonData.isEditingMode() && !commonData.isPreviewMode());
                 q.setMouseTransparent(
-                    commonData.isEditingMode() && ! commonData.isPreviewMode() ? false : true );
+                        !commonData.isEditingMode() || commonData.isPreviewMode());
                 q.setFocusTraversable(
                     false );
                 q.setFont(
@@ -394,10 +394,10 @@ public class Viewer {
                 a.setPromptText( ApplicationConstants.PLACEHOLDER_ANSWER_TEXT );
 
                 a.setEditable(
-                    commonData.isEditingMode() && ! commonData.isPreviewMode() ? true : false );
+                        commonData.isEditingMode() && !commonData.isPreviewMode());
 
                 a.setMouseTransparent(
-                    commonData.isEditingMode() && ! commonData.isPreviewMode() ? false : true );
+                        !commonData.isEditingMode() || commonData.isPreviewMode());
 
                 a.setFocusTraversable( false );
 
@@ -428,13 +428,13 @@ public class Viewer {
                 s.setPromptText( ApplicationConstants.PLACEHOLDER_SOLUTION_TEXT );
 
                 s.setEditable(
-                    commonData.isEditingMode() && ! commonData.isPreviewMode() ? true : false );
+                        commonData.isEditingMode() && !commonData.isPreviewMode());
                 s.setMouseTransparent(
-                    commonData.isEditingMode() && ! commonData.isPreviewMode() ? false : true );
+                        !commonData.isEditingMode() || commonData.isPreviewMode());
                 s.setFocusTraversable(
                     false );
                 solutionPart.setVisible(
-                    commonData.isEditingMode() ? true : false );
+                        commonData.isEditingMode());
 
                 return addCheckBoxDeleteMark( s, obj );
             } );

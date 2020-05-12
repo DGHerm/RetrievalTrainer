@@ -216,7 +216,7 @@ public class ToolsPanelController implements Initializable {
             ( ListChangeListener< ? super ExerciseItem.ItemPart > ) c -> {
                 if ( c.next() ) {
                     boolean isEmpty = commonData.getComponentsMarkedToBeDeleted().isEmpty();
-                    buttonDeleteItemPart.setDisable( isEmpty ? true : false );
+                    buttonDeleteItemPart.setDisable( isEmpty );
                 }
             } );
 

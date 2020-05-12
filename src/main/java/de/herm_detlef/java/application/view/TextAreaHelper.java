@@ -93,7 +93,7 @@ public class TextAreaHelper extends TextArea {
             return;
         }
 
-        assert newValue != null ? ( newValue.getMinY() == b.getMinY() ) : true;
+        assert newValue == null || (newValue.getMinY() == b.getMinY());
 
         double viewportHeight = b.getHeight() + Math.abs( newValue != null ? newValue.getMinY() : b.getMinY() );
 
