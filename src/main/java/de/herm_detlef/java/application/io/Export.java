@@ -65,8 +65,8 @@ public class Export {
 
     private static XMLReaderJDOMFactory schemafac;
 
-    private static boolean              isQuestionPart = false;
-    private static boolean              isAnswerPart   = false;
+    private static boolean isQuestionPart = false;
+    private static boolean isAnswerPart   = false;
 
     static {
 

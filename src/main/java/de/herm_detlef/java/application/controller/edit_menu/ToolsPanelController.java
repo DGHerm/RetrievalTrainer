@@ -281,14 +281,6 @@ public class ToolsPanelController implements Initializable {
             radioButtonMultipleChoice             .setDisable( false );
         } );
 
-        commonData.getExerciseItemPrototype().addHandlerOnDeleteExerciseItem( () -> {
-            //ExerciseItem.initializeGUI();
-        } );
-
-        commonData.getExerciseItemPrototype().addHandlerOnPreviewExerciseItem( () -> {
-            // TODO
-        } );
-
         commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionText( () -> buttonAppendQuestionText.setDisable( true ) );
 
         commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionText( () -> buttonAppendQuestionText.setDisable( false ) );
@@ -296,22 +288,6 @@ public class ToolsPanelController implements Initializable {
         commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionCode( () -> buttonAppendQuestionCode.setDisable( true ) );
 
         commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionCode( () -> buttonAppendQuestionCode.setDisable( false ) );
-
-//        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSingleChoiceAnswerText( () -> {
-//            radioButtonSingleChoice.setDisable( true );
-//        } );
-//
-//        commonData.getExerciseItemPrototype().addHandlerToAllowMoreSingleChoiceAnswerText( () -> {
-//            radioButtonSingleChoice.setDisable( false );
-//        } );
-//
-//        commonData.getExerciseItemPrototype().addHandlerToPreventMoreMultipleChoiceAnswerText( () -> {
-//            radioButtonMultipleChoice.setDisable( true );
-//        } );
-//
-//        commonData.getExerciseItemPrototype().addHandlerToAllowMoreMultipleChoiceAnswerText( () -> {
-//            radioButtonMultipleChoice.setDisable( false );
-//        } );
 
         commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> buttonAppendSolution.setDisable( true ) );
 

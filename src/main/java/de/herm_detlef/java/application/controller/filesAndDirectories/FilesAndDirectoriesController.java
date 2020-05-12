@@ -42,8 +42,7 @@ public class FilesAndDirectoriesController {
     public File openFileChooserDialog( final Stage primaryStage, CommonData commonData ) {
 
         final Stage stage = new Stage();
-        stage.setTitle(
-            ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_OPEN );
+        stage.setTitle( ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_OPEN );
 
         prepareStageForFileChooser( primaryStage, commonData, stage );
 

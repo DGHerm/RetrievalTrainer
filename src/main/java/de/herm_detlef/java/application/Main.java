@@ -60,7 +60,7 @@ public class Main extends Application {
         ApplicationPreferences applicationPreferences = new ApplicationPreferences();
         commonData = new CommonData( primaryStage,
                 applicationPreferences);
-        Remote remote = new Remote(commonData);
+        Remote remote = new Remote();
 
         primaryStage.setTitle(
             ApplicationConstants.TITLE_OF_MAIN_DIALOG );
@@ -118,19 +118,7 @@ public class Main extends Application {
 
 //    public static void main( String[] args ) {
 //
-//        if ( ! ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT
-//                .matches("[1-9][0-9]*[.][0-9]+[.][0-9]+") ) {
-//            throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
-//        };
-//
-//        final String[] version = ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT.split("[.]");
-//
-//        if ( Arrays.stream( version )
-//                .findFirst()
-//                .map(Integer::valueOf)
-//                .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT ) {
-//            throw new RuntimeException( ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE );
-//        }
+//         // --- see CustomPreloader.main ---
 //
 //         launch(args);
 //    }

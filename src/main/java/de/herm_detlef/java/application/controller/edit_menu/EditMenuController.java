@@ -275,10 +275,6 @@ public class EditMenuController implements Initializable {
 
         commonData.getExerciseItemPrototype().addHandlerOnDeleteExerciseItem( ExerciseItem::initializeGUI );
 
-        commonData.getExerciseItemPrototype().addHandlerOnPreviewExerciseItem( () -> {
-            // TODO
-        } );
-
         commonData.getExerciseItemPrototype().addHandlerToPreventMoreQuestionText( () -> menuItemNewQuestionText.setDisable( true ) );
 
         commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionText( () -> menuItemNewQuestionText.setDisable( false ) );
@@ -287,31 +283,11 @@ public class EditMenuController implements Initializable {
 
         commonData.getExerciseItemPrototype().addHandlerToAllowMoreQuestionCode( () -> menuItemNewQuestionCode.setDisable( false ) );
 
-//        commonData.getExerciseItemPrototype().addHandlerToPreventMoreSingleChoiceAnswerText( () -> {
-//            menuItemSelectorSingleChoice.setDisable( true );
-//        } );
-//
-//        commonData.getExerciseItemPrototype().addHandlerToAllowMoreSingleChoiceAnswerText( () -> {
-//            menuItemSelectorSingleChoice.setDisable( false );
-//        } );
-//
-//        commonData.getExerciseItemPrototype().addHandlerToPreventMoreMultipleChoiceAnswerText( () -> {
-//            menuItemSelectorMultipleChoice.setDisable( true );
-//        } );
-//
-//        commonData.getExerciseItemPrototype().addHandlerToAllowMoreMultipleChoiceAnswerText( () -> {
-//            menuItemSelectorMultipleChoice.setDisable( false );
-//        } );
-
         commonData.getExerciseItemPrototype().addHandlerOnChangeAnswerMode( () -> remote.getApplicationController().updateView() );
 
         commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> menuItemNewSolutionText.setDisable( true ) );
 
         commonData.getExerciseItemPrototype().addHandlerToAllowMoreSolutionText( () -> menuItemNewSolutionText.setDisable( false ) );
-
-        commonData.getExerciseItemPrototype().addHandlerOnModifiedExerciseItemPart( () -> {
-            //remote.getApplicationController().getButtonCheck().setDisable( false );
-        });
     }
 
     private void onNewExerciseItem( ActionEvent event ) {

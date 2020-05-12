@@ -81,7 +81,6 @@ public class ExerciseItemListMenuController implements Initializable {
 
     @Override
     public void initialize( URL location, ResourceBundle resources ) {
-        // TODO Auto-generated method stub
 
         checkMenuItemEditExercise.selectedProperty().addListener( ( observable, oldValue, newValue ) -> {
             if ( revertUncheck.getValue() ) {

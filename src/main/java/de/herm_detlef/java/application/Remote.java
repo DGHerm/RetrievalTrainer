@@ -37,23 +37,12 @@ import de.herm_detlef.java.application.view.Viewer;
  */
 public class Remote {
 
-    private final CommonData       commonData;
-
     private ApplicationController  applicationController;
     private AppMenuController      appMenuController;
     private FileMenuController     fileMenuController;
     private ExerciseItemListMenuController exerciseMenuController;
     private EditMenuController     editMenuController;
     private Viewer                 viewer;
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public Remote( CommonData commonData ) {
-        this.commonData = commonData;
-    }
 
     /**
      * TODO

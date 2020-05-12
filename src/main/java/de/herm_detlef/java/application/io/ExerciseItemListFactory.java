@@ -38,15 +38,12 @@ public class ExerciseItemListFactory {
 
     public static ArrayList< ExerciseItem > importExerciseItemListFromFile( String filename ) {
 
-        return Import.importExerciseItemListFromFile(
-            filename );
+        return Import.importExerciseItemListFromFile( filename );
     }
 
     public static void exportExerciseItemListToFile(CommonData commonData,
                                                     File file ) {
 
-        Export.exportExerciseItemListToFile(
-                commonData,
-                file);
+        Export.exportExerciseItemListToFile( commonData, file );
     }
 }

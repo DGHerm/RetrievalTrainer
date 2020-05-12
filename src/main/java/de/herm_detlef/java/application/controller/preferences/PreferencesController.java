@@ -73,8 +73,7 @@ public class PreferencesController implements Initializable {
             return;
         }
 
-        stage.setTitle(
-            ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES );
+        stage.setTitle( ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES );
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
@@ -84,16 +83,12 @@ public class PreferencesController implements Initializable {
 
         assert root != null;
         final Scene scene = new Scene( root );
-        stage.setScene(
-            scene );
-        stage.setResizable(
-            false );
+        stage.setScene( scene );
+        stage.setResizable( false );
         stage.centerOnScreen();
         stage.sizeToScene();
-        stage.initOwner(
-            commonData.getPrimaryStage() );
-        stage.initModality(
-            Modality.APPLICATION_MODAL );
+        stage.initOwner( commonData.getPrimaryStage() );
+        stage.initModality( Modality.APPLICATION_MODAL );
 
         commonData.getApplicationPreferences().setStagePositionAndSizeBasedOnUserPreferences(
             stage,
@@ -203,7 +198,6 @@ public class PreferencesController implements Initializable {
                                  stage.getScene().getHeight() );
 
         // change scene
-        stage.setScene(
-            scene );
+        stage.setScene( scene );
     }
 }
