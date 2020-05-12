@@ -16,38 +16,8 @@
 
 package de.herm_detlef.java.application;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import static org.hamcrest.CoreMatchers.*;
-
 
 public class CommonDataTest {
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {}
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {}
-
-    @Before
-    public void setUp() throws Exception {}
-
-    @After
-    public void tearDown() throws Exception {}
-
-    @Test
-    public void testCreateExerciseItem() {
-
-//        fail( "Not yet implemented" );
-
-        int actualResult = 7;
-        assertThat(actualResult, equalTo(7));
-    }
 
 }

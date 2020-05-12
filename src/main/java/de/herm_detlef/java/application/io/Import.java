@@ -93,7 +93,7 @@ class Import {
 
         if ( children.isEmpty() ) {
 
-            switch ( TAG.getValueOf( child.getName() ) ) {
+            switch ( TAG.valueOf( child.getName() ) ) {
             case ID:
                 exerciseItem.setItemId( Integer.parseInt( child.getTextTrim() ) );
                 break;
@@ -134,7 +134,7 @@ class Import {
                 // TODO empty catalog file
                 break;
             default:
-                throw new AssertionError( String.format( "%s", TAG.getValueOf( child.getName() ).name() ) );
+                throw new AssertionError( String.format( "%s", TAG.valueOf( child.getName() ).name() ) );
             }
 
             return;
@@ -142,7 +142,7 @@ class Import {
 
         for ( Element aChild : children ) {
 
-            switch ( TAG.getValueOf( aChild.getName() ) ) {
+            switch ( TAG.valueOf( aChild.getName() ) ) {
             case ITEM:
                 exerciseItem = new ExerciseItem();
                 exerciseItemList.add( exerciseItem );
@@ -167,7 +167,7 @@ class Import {
             case TEXT2:
                 break;
             default:
-                throw new AssertionError( String.format( "%s", TAG.getValueOf( aChild.getName() ).name() ) );
+                throw new AssertionError( String.format( "%s", TAG.valueOf( aChild.getName() ).name() ) );
             }
 
             createNode( aChild );

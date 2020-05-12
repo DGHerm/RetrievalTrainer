@@ -38,22 +38,5 @@ enum TAG {
     SOLUTION,
     TEXT,
     CODE,
-    TEXT2;
-
-    private static Hashtable< String, TAG > initializeMapping() {
-
-        // initial capacity: prime number !
-        Hashtable< String, TAG > m = new Hashtable<>( 53 );
-        for ( TAG enumerator : TAG.values() ) {
-            m.put( enumerator.name(), enumerator );
-            m.put( enumerator.name().toLowerCase( Locale.ROOT ), enumerator );
-        }
-        return m;
-    }
-
-    private final static Hashtable< String, TAG > map = initializeMapping();
-
-    public static TAG getValueOf( String s ) {
-        return map.get( s );
-    }
+    TEXT2
 }
