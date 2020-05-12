@@ -87,8 +87,7 @@ public class AppMenuController implements Initializable {
     @FXML
     private void onOpenPreferences( ActionEvent event ) {
 
-        PreferencesController pc = new PreferencesController( commonData,
-                                                              remote );
+        PreferencesController pc = new PreferencesController( commonData );
         pc.openDialog();
     }
 

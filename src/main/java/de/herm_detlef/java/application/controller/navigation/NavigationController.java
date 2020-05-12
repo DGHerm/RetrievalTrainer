@@ -85,9 +85,7 @@ public class NavigationController implements Initializable {
             "Navigation",
             commonData );
 
-        toolBar.getItems().add(
-            0,
-            root );
+        toolBar.getItems().add(0, root );
 
         return navi;
     }

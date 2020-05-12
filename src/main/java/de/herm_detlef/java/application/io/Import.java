@@ -194,7 +194,7 @@ class Import {
         setSelector( TAG.QUESTION );
     }
 
-    private static void setSelector( TAG selector ) {
+    private static void setSelector( TAG selector ) throws AssertionError {
 
         switch ( selector ) {
         case QUESTION:
@@ -214,7 +214,7 @@ class Import {
             isSolutionPart = true;
             break;
         default:
-            assert false : String.format( "%d", selector ); // TODO
+            assert false : String.format( "%s", selector ); // TODO
         }
     }
 }

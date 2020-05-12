@@ -59,10 +59,8 @@ public class AboutController {
             this,
             "About.fxml" );
 
-        final FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource(
-            packagePath ) );
-        fxmlLoader.setController(
-            this );
+        final FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( packagePath ) );
+        fxmlLoader.setController( this );
 
         try {
             fxmlLoader.load();
@@ -70,7 +68,6 @@ public class AboutController {
             Utilities.showErrorMessage(
                 e.getClass().getSimpleName(),
                 e.getMessage() );
-            // e.printStackTrace();
             return null;
         }
 
@@ -114,11 +111,8 @@ public class AboutController {
             false );
 
         Parent root = fxmlLoader.getRoot();
-        Scene scene = new Scene(root,
-                400,
-                250);
-        // scene.getStylesheets().add(getClass().getResource("/de/herm_detlef/java/application/about/about.css").toExternalForm());
-        return scene;
+
+        return new Scene(root,400,250);
     }
 
     public void showAbout( Stage primaryStage ) {

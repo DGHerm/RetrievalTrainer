@@ -22,9 +22,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.ApplicationConstants;
-import de.herm_detlef.java.application.ApplicationPreferences;
 import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,10 +47,8 @@ import javafx.util.StringConverter;
  */
 public class PreferencesController implements Initializable {
 
-    private final ApplicationPreferences applicationPreferences;
     private final Stage                  stage;
     private final CommonData             commonData;
-    private final Remote                 remote;
 
     @FXML
     private Parent                       root;
@@ -64,12 +60,9 @@ public class PreferencesController implements Initializable {
     @FXML
     private TextField                    maxNumberOfItems;
 
-    public PreferencesController( CommonData commonData,
-                                  Remote remote ) {
+    public PreferencesController( CommonData commonData ) {
 
         this.commonData = commonData;
-        this.remote = remote;
-        this.applicationPreferences = commonData.getApplicationPreferences();
         stage = new Stage();
     }
 
@@ -89,8 +82,8 @@ public class PreferencesController implements Initializable {
             "Preferences",
             commonData );
 
+        assert root != null;
         final Scene scene = new Scene( root );
-        // scene.getStylesheets().add(getClass().getResource("/de/herm_detlef/java/application/preferences/preferences.css").toExternalForm());
         stage.setScene(
             scene );
         stage.setResizable(
@@ -204,10 +197,10 @@ public class PreferencesController implements Initializable {
             "Preferences",
             commonData );
 
+        assert root != null;
         Scene scene = new Scene( root,
                                  stage.getScene().getWidth(),
                                  stage.getScene().getHeight() );
-        // scene.getStylesheets().add(getClass().getResource("/de/herm_detlef/java/application/preferences/preferences.css").toExternalForm());
 
         // change scene
         stage.setScene(

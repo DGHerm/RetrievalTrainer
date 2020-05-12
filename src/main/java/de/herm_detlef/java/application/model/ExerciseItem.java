@@ -43,19 +43,15 @@ public class ExerciseItem {
 
     public static abstract class ItemPart {
 
-        private final ExerciseItem parent;
-
-        private StringProperty     str = new SimpleStringProperty();
-        private int                initialHashCodeOfStr;
+        private final StringProperty str = new SimpleStringProperty();
+        private int initialHashCodeOfStr;
 
         private ItemPart( String str, ExerciseItem parent ) {
             this.str.set( str == null ? "" : str );
-            this.parent = parent;
 
             initialHashCodeOfStr = this.str.get().hashCode();
 
             this.str.addListener( (obj, oldValue, newValue) -> {
-                //currentHashCodeOfStr = newValue.hashCode();
                 for ( Runnable r : parent.handlersOnModifiedExerciseItemPart ) {
                     r.run();
                 }
@@ -155,7 +151,7 @@ public class ExerciseItem {
 
         private static Class< ? >              type;
         private static Function< ItemPart, ? > function;
-        private BooleanProperty                selected = new SimpleBooleanProperty( false );
+        private final BooleanProperty          selected = new SimpleBooleanProperty( false );
 
         // value of xml node attribute "mark" at reading data from disc
         private boolean                        initialMark;
@@ -191,10 +187,6 @@ public class ExerciseItem {
 
         public boolean isInitialMark() {
             return initialMark;
-        }
-
-        public void setMark( boolean mark ) {
-            this.mark = mark;
         }
 
         public boolean isMarked() {
@@ -677,25 +669,22 @@ public class ExerciseItem {
         this.itemId = itemId;// value of node ID in catalog_of_questions.xml
     }
 
-    public ItemPart addQuestionText( String str ) {
+    public void addQuestionText(String str ) {
 
         ItemPart part = new QuestionText( str, this );
         ruleDrivenAdd( QuestionText.class, part );
-        return part;
     }
 
-    public ItemPart addQuestionText2( String str ) {
+    public void addQuestionText2(String str ) {
 
         ItemPart part = new QuestionText2( str, this );
         ruleDrivenAdd( QuestionText2.class, part );
-        return part;
     }
 
-    public ItemPart addQuestionCode( String str ) {
+    public void addQuestionCode(String str ) {
 
         ItemPart part = new QuestionCode( str, this );
         ruleDrivenAdd( QuestionCode.class, part );
-        return part;
     }
 
     public void createSingleChoiceModel() {
@@ -713,13 +702,13 @@ public class ExerciseItem {
         return choiceModelProperty.getValue();
     }
 
-    public ItemPart addAnswerText( String str, boolean initialMark ) {
+    public void addAnswerText(String str, boolean initialMark ) {
 
         assert choiceModelProperty != null
                && ( choiceModelProperty.get() instanceof SingleChoiceAnswerText
                     || choiceModelProperty.get() instanceof MultipleChoiceAnswerText );
 
-        ItemPart part = null;
+        ItemPart part;
 
         if ( choiceModelProperty.get() instanceof SingleChoiceAnswerText ) {
             part = new SingleChoiceAnswerText( str, initialMark, this );
@@ -731,14 +720,12 @@ public class ExerciseItem {
             ruleDrivenAdd( MultipleChoiceAnswerText.class, part );
         }
 
-        return part;
     }
 
-    public ItemPart addSolutionText( String str ) {
+    public void addSolutionText(String str ) {
 
         ItemPart part = new SolutionText( str, this );
         ruleDrivenAdd( SolutionText.class, part );
-        return part;
     }
 
     public boolean isFinalQuestionPart() {
@@ -753,15 +740,4 @@ public class ExerciseItem {
         }
     }
 
-    public boolean hasMarkedAnswerPartItems() {
-
-        for ( ItemPart itemPart : components ) {
-            if ( itemPart instanceof AnswerText )  {
-                if ( ((AnswerText) itemPart).isMarked() )
-                    return true;
-            }
-        }
-
-        return false;
-    }
 }

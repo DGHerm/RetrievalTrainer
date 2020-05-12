@@ -45,26 +45,7 @@ public class FilesAndDirectoriesController {
         stage.setTitle(
             ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_OPEN );
 
-        Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
-            this,
-            "FilesAndDirectories.fxml",
-            null,
-            commonData );
-
-        final Scene scene = new Scene( root,
-                                       712,
-                                       0 );
-        // scene.getStylesheets().add(getClass().getResource("/filesAndDirectories/filesanddirectories.css").toExternalForm());
-        stage.setScene(
-            scene );
-        stage.setResizable(
-            false );
-        stage.centerOnScreen();
-        stage.sizeToScene();
-        stage.initOwner(
-            primaryStage );
-        stage.initModality(
-            Modality.APPLICATION_MODAL );
+        prepareStageForFileChooser( primaryStage, commonData, stage );
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle( ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_OPEN );
@@ -73,14 +54,9 @@ public class FilesAndDirectoriesController {
         fileChooser.getExtensionFilters().addAll( filterXml, filterTxt, new ExtensionFilter("All Files", "*.*") );
         fileChooser.setSelectedExtensionFilter( filterXml );
 
-//        System.out.println( fileChooser.getInitialDirectory() );
-//        fileChooser.setInitialDirectory( new File( System.getProperty("user.home") ) );
-//        System.out.println( fileChooser.getInitialDirectory() );
-
         stage.show();
 
-        File selectedFile = fileChooser.showOpenDialog(
-            stage );
+        File selectedFile = fileChooser.showOpenDialog( stage );
 
         stage.close();
 
@@ -91,21 +67,15 @@ public class FilesAndDirectoriesController {
         return selectedFile;
     }
 
-    public File openFileSaveDialog( final Stage primaryStage, final CommonData commonData ) {
-
-        final Stage stage = new Stage();
-        stage.setTitle( ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_SAVE );
-
+    private void prepareStageForFileChooser(Stage primaryStage, CommonData commonData, Stage stage) {
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
             "FilesAndDirectories.fxml",
             null,
             commonData );
 
-        final Scene scene = new Scene( root,
-                                       712,
-                                       0 );
-        // scene.getStylesheets().add(getClass().getResource("/filesAndDirectories/filesanddirectories.css").toExternalForm());
+        assert root != null;
+        final Scene scene = new Scene( root,712,0 );
         stage.setScene(
             scene );
         stage.setResizable(
@@ -116,6 +86,14 @@ public class FilesAndDirectoriesController {
             primaryStage );
         stage.initModality(
             Modality.APPLICATION_MODAL );
+    }
+
+    public File openFileSaveDialog( final Stage primaryStage, final CommonData commonData ) {
+
+        final Stage stage = new Stage();
+        stage.setTitle( ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_SAVE );
+
+        prepareStageForFileChooser( primaryStage, commonData, stage );
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(ApplicationConstants.TITLE_OF_DIALOG_FILE_CHOOSER_SAVE);
@@ -123,14 +101,9 @@ public class FilesAndDirectoriesController {
         fileChooser.setSelectedExtensionFilter(filter);
         fileChooser.setInitialFileName("untitled.xml");
 
-//        System.out.println( fileChooser.getInitialDirectory() );
-//        fileChooser.setInitialDirectory( new File( System.getProperty("user.home") ) );
-//        System.out.println( fileChooser.getInitialDirectory() );
-
         stage.show();
 
-        File saveToFile = fileChooser.showSaveDialog(
-            stage );
+        File saveToFile = fileChooser.showSaveDialog( stage );
 
         stage.close();
 

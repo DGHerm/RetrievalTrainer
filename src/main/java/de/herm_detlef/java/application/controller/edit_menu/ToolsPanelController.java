@@ -164,8 +164,8 @@ public class ToolsPanelController implements Initializable {
             "ToolsPanel",
             commonData );
 
+        assert root != null;
         final Scene scene = new Scene( root );
-        // scene.getStylesheets().add(getClass().getResource("/de/herm_detlef/java/application/edit_menu/toolspanelcontroller.css").toExternalForm());
         tools.getStage().setScene( scene );
         tools.getStage().setResizable( false );
         tools.getStage().centerOnScreen();

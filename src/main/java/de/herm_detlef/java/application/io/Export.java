@@ -82,8 +82,8 @@ public class Export {
         }
     }
 
-    public static Document exportExerciseItemListToFile( CommonData commonData,
-                                                         File file ) {
+    public static void exportExerciseItemListToFile(CommonData commonData,
+                                                    File file ) {
 
         commonData.markSelectedAnswerPartItems();
 
@@ -112,10 +112,8 @@ public class Export {
         } catch ( IOException | JDOMException e ) {
             Utilities.showErrorMessage( e.getClass().getSimpleName(), e.getMessage() );
             // e.printStackTrace();
-            return null;
         }
 
-        return doc;
     }
 
     private static void validateDocument( ByteArrayInputStream inputStream ) throws JDOMException, IOException {
@@ -201,7 +199,7 @@ public class Export {
                     Element code = new Element( TAG.CODE.name(), ns );
                     element.addContent( code );
 
-                    code.addContent( ( ( QuestionCode ) itemPart ).getStr().get() );
+                    code.addContent( itemPart.getStr().get() );
                 }
 
                 else if ( itemPart instanceof SingleChoiceAnswerText ) {

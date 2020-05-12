@@ -54,7 +54,7 @@ public class CustomPreloader extends Preloader {
      * <p>
      * @since 1.0
      */
-    public void start( Stage stage ) throws Exception {
+    public void start( Stage stage ) {
 
         this.stage = stage;
 

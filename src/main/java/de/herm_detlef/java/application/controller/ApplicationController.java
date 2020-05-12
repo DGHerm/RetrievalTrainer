@@ -61,8 +61,6 @@ public class ApplicationController implements Initializable {
     private Viewer                         viewer;
     private NavigationController           navi;
 
-    private EditMenuController             editMenu;
-
     @FXML
     private Parent                 root;
 
@@ -131,7 +129,7 @@ public class ApplicationController implements Initializable {
 
         ExerciseItemListMenuController.create( menuBar, commonData, remote );
 
-        editMenu = EditMenuController.create( menuBar, commonData, remote );
+        EditMenuController.create( menuBar, commonData, remote );
 
         navi = NavigationController.create( toolBar, commonData, remote );
 
