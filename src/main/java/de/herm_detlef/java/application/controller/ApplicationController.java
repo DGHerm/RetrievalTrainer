@@ -118,9 +118,7 @@ public class ApplicationController implements Initializable {
             remote.getAppMenuController().quit();
         });
 
-        commonData.getEditingModeProperty().addListener( (obj, oldValue, newValue) -> {
-            buttonScore.setDisable( newValue );
-        });
+        commonData.getEditingModeProperty().addListener( (obj, oldValue, newValue) -> buttonScore.setDisable( newValue ) );
 
         String[] lang = commonData.getApplicationPreferences()
                                   .getUserPreferencesNode().get( "Locale", "en_US" ).split( "_" );

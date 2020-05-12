@@ -111,7 +111,7 @@ public class EditMenuController implements Initializable {
 
         EditMenuController editor = new EditMenuController( commonData, remote );
 
-        Menu root = Utilities.< EditMenuController, Menu >createSceneGraphObjectFromFXMLResource(
+        Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             editor,
             "EditMenu.fxml",
             "EditMenu",
@@ -307,9 +307,7 @@ public class EditMenuController implements Initializable {
 
         commonData.getExerciseItemPrototype().addHandlerToPreventMoreSolutionText( () -> menuItemNewSolutionText.setDisable( true ) );
 
-        commonData.getExerciseItemPrototype().addHandlerToAllowMoreSolutionText( () -> {
-            menuItemNewSolutionText.setDisable( false );
-        } );
+        commonData.getExerciseItemPrototype().addHandlerToAllowMoreSolutionText( () -> menuItemNewSolutionText.setDisable( false ) );
 
         commonData.getExerciseItemPrototype().addHandlerOnModifiedExerciseItemPart( () -> {
             //remote.getApplicationController().getButtonCheck().setDisable( false );

@@ -50,6 +50,9 @@ public class AboutController {
     @FXML
     private ProgressBar progressBar;
 
+    public AboutController() {
+    }
+
     public Scene createScene() {
 
         String packagePath = Utilities.createFilePath(
@@ -110,7 +113,7 @@ public class AboutController {
         javaNotice.setFocusTraversable(
             false );
 
-        Parent root = fxmlLoader.< Parent >getRoot();
+        Parent root = fxmlLoader.getRoot();
         Scene scene = new Scene(root,
                 400,
                 250);

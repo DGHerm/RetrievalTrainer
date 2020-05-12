@@ -59,7 +59,7 @@ public class AppMenuController implements Initializable {
         AppMenuController appMenu = new AppMenuController( commonData,
                                                            remote );
 
-        Menu root = Utilities.< AppMenuController, Menu >createSceneGraphObjectFromFXMLResource(
+        Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             appMenu,
             "AppMenu.fxml",
             null,

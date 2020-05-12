@@ -105,16 +105,9 @@ public class ApplicationConstants {
 
     static {
         StringBuilder javaVersion = new StringBuilder();
-        javaVersion.append(
-            String.format(
-                "Java Version: %s",
-                VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ) );
-        javaVersion.append(
-            LINE_SEPARATOR );
-        javaVersion.append(
-            String.format(
-                "JavaFX Version: %s",
-                FXMLLoader.JAVAFX_VERSION ) );
+        javaVersion.append( String.format( "Java Version: %s", VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ) )
+                .append( LINE_SEPARATOR )
+                .append( String.format( "JavaFX Version: %s", FXMLLoader.JAVAFX_VERSION ) );
         JAVA_VERSION_NOTICE = javaVersion.toString();
     }
 

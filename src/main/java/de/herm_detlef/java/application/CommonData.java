@@ -434,9 +434,7 @@ public class CommonData {
      */
     public ObservableList<ExerciseItem> getExerciseItemListUnmarkedAnswerPartItems() {
 
-        FilteredList< ExerciseItem > filteredList = exerciseItemListMaster.filtered( ( item ) -> {
-            return ! item.hasMarkedAnswerPartItems();
-        });
+        FilteredList< ExerciseItem > filteredList = exerciseItemListMaster.filtered( ( item ) -> ! item.hasMarkedAnswerPartItems() );
 
         ObservableList<ExerciseItem> list = FXCollections.observableArrayList();
         list.addAll( filteredList );
@@ -451,12 +449,11 @@ public class CommonData {
      * @since 1.0
      */
     public boolean checkNeedsSave() {
-        boolean needsSave = false;
 
         if ( ! isEditingMode() )
             return false;
 
-        needsSave = ! exerciseItemListMaster.containsAll( exerciseItemListInitialMaster );
+        boolean needsSave = ! exerciseItemListMaster.containsAll( exerciseItemListInitialMaster );
         needsSave = needsSave || ! exerciseItemListInitialMaster.containsAll( exerciseItemListMaster );
 
         for ( ExerciseItem exItem : exerciseItemListMaster ) {

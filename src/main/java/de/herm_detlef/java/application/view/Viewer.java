@@ -268,13 +268,13 @@ public class Viewer {
             return addCheckBoxDeleteMark( q, obj );
         };
 
-        ExerciseItem.QuestionText.< Node >setFunction( Node.class, func );
-        ExerciseItem.QuestionText2.< Node >setFunction( Node.class, func );
+        ExerciseItem.QuestionText.setFunction( Node.class, func );
+        ExerciseItem.QuestionText2.setFunction( Node.class, func );
     }
 
     private void setFunctionQuestionCode() {
 
-        ExerciseItem.QuestionCode.< Node >setFunction(
+        ExerciseItem.QuestionCode.setFunction(
             Node.class,
             obj -> {
                 TextArea q;
@@ -308,7 +308,7 @@ public class Viewer {
 
         choice = new Choice();
 
-        ExerciseItem.AnswerText.< Node >setFunction(
+        ExerciseItem.AnswerText.setFunction(
             Node.class,
             obj -> {
                 boolean isSingleChoiceAnswerText = obj instanceof SingleChoiceAnswerText;
@@ -408,7 +408,7 @@ public class Viewer {
 
     private void setFunctionSolutionText() {
 
-        ExerciseItem.SolutionText.< Node >setFunction(
+        ExerciseItem.SolutionText.setFunction(
             Node.class,
             obj -> {
                 TextArea s;

@@ -71,7 +71,7 @@ public class FileMenuController implements Initializable {
 
         FileMenuController fileMenu = new FileMenuController( commonData, remote );
 
-        Menu root = Utilities.< FileMenuController, Menu >createSceneGraphObjectFromFXMLResource(
+        Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             fileMenu,
             FileMenuController.xmlResourceName,
             FileMenuController.languageResourceBundleName,

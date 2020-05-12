@@ -68,7 +68,7 @@ public class ExerciseItemListMenuController implements Initializable {
 
         ExerciseItemListMenuController exerciseMenu = new ExerciseItemListMenuController( commonData, remote );
 
-        Menu root = Utilities.< ExerciseItemListMenuController, Menu >createSceneGraphObjectFromFXMLResource(
+        Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             exerciseMenu,
             "ExerciseItemListMenu.fxml",
             "ExerciseItemListMenu",

@@ -83,7 +83,7 @@ public class PreferencesController implements Initializable {
         stage.setTitle(
             ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES );
 
-        Parent root = Utilities.< PreferencesController, Parent >createSceneGraphObjectFromFXMLResource(
+        Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
             "Preferences.fxml",
             "Preferences",
@@ -179,7 +179,7 @@ public class PreferencesController implements Initializable {
                 commonData.setMaxLengthOfSubset( Integer.parseInt( newValue ) );
                 commonData.getApplicationPreferences().getUserPreferencesNode().put(
                     "MaximumLengthOfSubset",
-                    newValue.toString() );
+                    newValue );
             }
         });
     }
@@ -198,7 +198,7 @@ public class PreferencesController implements Initializable {
         stage.setTitle(
             ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES );
 
-        Parent root = Utilities.< PreferencesController, Parent >createSceneGraphObjectFromFXMLResource(
+        Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
             "Preferences.fxml",
             "Preferences",
