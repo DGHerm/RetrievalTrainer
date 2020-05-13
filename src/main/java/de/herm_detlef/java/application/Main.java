@@ -106,16 +106,6 @@ public class Main extends Application {
             new StageNotification( primaryStage ) );
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public CommonData getCommonData() {
-
-        return commonData;
-    }
-
 //    public static void main( String[] args ) {
 //
 //         // --- see CustomPreloader.main ---
