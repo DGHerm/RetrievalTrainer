@@ -164,26 +164,27 @@ public class CustomPreloader extends Preloader {
             }
             return Outcome.success();
         } catch (Exception e) {
-            return Outcome.failure( e.getClass() + ": " + e.getMessage() );
+            return Outcome.failure( e.getClass() + " -- " + e.getMessage() );
         }
     }
 
     public static Outcome checkMinimumRequiredJRE( final String version ) {
         try {
             final String[] versionSequence = version.split("[.]");
-            if (Arrays.stream(versionSequence)
+            if ( Arrays.stream(versionSequence)
                     .findFirst()
                     .map(Integer::valueOf)
-                    .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT) {
-                throw new IllegalArgumentException(ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE);
+                    .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT ) {
+                throw new RuntimeException(ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE);
             }
             return Outcome.success();
         } catch (Exception e) {
-            return Outcome.failure( e.getClass() + ": " + e.getMessage() );
+            return Outcome.failure( e.getClass() + " -- " + e.getMessage() );
         }
     }
 
     public static class Outcome {
+        final public boolean success;
         final public boolean failure;
         final public String message;
         final private Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
@@ -191,14 +192,21 @@ public class CustomPreloader extends Preloader {
         private Outcome( boolean failure, String message ) {
             this.failure = failure;
             this.message = message;
+            this.success = ! failure;
         }
 
-        public static Outcome failure( final String message ) {
-            return new Outcome( false, message );
+        private Outcome( boolean success ) {
+            this.success = success;
+            this.message = "";
+            this.failure = ! success;
         }
 
         public static Outcome success() {
-            return new Outcome( true, "" );
+            return new Outcome( true );
+        }
+
+        public static Outcome failure( final String message ) {
+            return new Outcome( true, message );
         }
 
         public Outcome log() {
