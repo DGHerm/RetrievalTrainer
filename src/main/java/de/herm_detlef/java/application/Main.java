@@ -35,8 +35,6 @@ import javafx.scene.Scene;
  */
 public class Main extends Application {
 
-    private CommonData             commonData;
-
     /**
      * TODO
      * <p>
@@ -45,8 +43,7 @@ public class Main extends Application {
     @Override
     public void init() {
 
-        notifyPreloader(
-            new Preloader.ProgressNotification( 0.2 ) );
+        notifyPreloader( new Preloader.ProgressNotification( 0.2 ) );
     }
 
     /**
@@ -58,15 +55,12 @@ public class Main extends Application {
     public void start( Stage primaryStage ) {
 
         ApplicationPreferences applicationPreferences = new ApplicationPreferences();
-        commonData = new CommonData( primaryStage,
-                applicationPreferences);
+        CommonData commonData = new CommonData( primaryStage, applicationPreferences );
         Remote remote = new Remote();
 
-        primaryStage.setTitle(
-            ApplicationConstants.TITLE_OF_MAIN_DIALOG );
+        primaryStage.setTitle( ApplicationConstants.TITLE_OF_MAIN_DIALOG );
 
-        ApplicationController appController = new ApplicationController( commonData,
-                remote);
+        ApplicationController appController = new ApplicationController( commonData, remote );
 
         // System.out.println( Platform.isFxApplicationThread() );
         //
@@ -75,35 +69,34 @@ public class Main extends Application {
         // primaryStage.setAlwaysOnTop( true );
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
-            appController,
-            "Application.fxml",
-            null,
-            commonData );
+                appController,
+                "Application.fxml",
+                null,
+                commonData);
 
-        Scene scene = new Scene( root,
-                                 800,
-                                 800 );
-        scene.getStylesheets().add(
-            getClass().getResource(
-                "/de/herm_detlef/java/application/controller/application.css" ).toExternalForm() );
-        primaryStage.setScene(
-            scene );
-        primaryStage.setResizable(
-            true );
+        assert root != null;
+        Scene scene = new Scene( root, 800, 800 );
+        scene.getStylesheets()
+                .add( getClass()
+                        .getResource("/de/herm_detlef/java/application/controller/application.css" )
+                        .toExternalForm() );
+
+        primaryStage.setScene( scene );
+        primaryStage.setResizable( true );
         primaryStage.centerOnScreen();
         // primaryStage.sizeToScene(); // TODO
 
-        commonData.getApplicationPreferences().setStagePositionAndSizeBasedOnUserPreferences(
-            primaryStage,
-            "ApplicationStageOriginX",
-            "ApplicationStageOriginY",
-            "ApplicationStageWidth",
-            "ApplicationStageHeight" );
+        commonData.getApplicationPreferences()
+                .setStagePositionAndSizeBasedOnUserPreferences(
+                        primaryStage,
+                        "ApplicationStageOriginX",
+                        "ApplicationStageOriginY",
+                        "ApplicationStageWidth",
+                        "ApplicationStageHeight" );
 
         primaryStage.show();
 
-        notifyPreloader(
-            new StageNotification( primaryStage ) );
+        notifyPreloader( new StageNotification( primaryStage ) );
     }
 
 //    public static void main( String[] args ) {
