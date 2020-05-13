@@ -50,11 +50,7 @@ public class CustomPreloader extends Preloader {
     private Stage           stage;
     private boolean         pretendProgress = true;
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
+
     public void start( Stage stage ) {
 
         this.stage = stage;
@@ -71,28 +67,19 @@ public class CustomPreloader extends Preloader {
             assert false;
             return;
         }
-        bar.setVisible(
-            true );
+        bar.setVisible( true );
 
-        stage.setScene(
-            scene );
+        stage.setScene( scene );
         stage.sizeToScene();
         stage.centerOnScreen();
-        stage.setResizable(
-            false );
+        stage.setResizable(  false );
 
         // prevent to be obscured by main application window:
-        stage.setAlwaysOnTop(
-            true );
+        stage.setAlwaysOnTop( true );
 
         stage.show();
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
     @Override
     public void handleProgressNotification( ProgressNotification pn ) {
 
@@ -100,49 +87,36 @@ public class CustomPreloader extends Preloader {
         // Even if there is nothing to load, two events were in any case send:
         // the events relating to progress values 0 percent and 100 percent.
         if ( bar != null && ( pn.getProgress() != 1.0 || pretendProgress ) ) {
-            bar.setProgress(
-                pn.getProgress() / 2 );
+            bar.setProgress( pn.getProgress() / 2 );
             if ( pn.getProgress() > 0 ) {
                 pretendProgress = false;
             }
         }
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
     @Override
     public void handleApplicationNotification( PreloaderNotification pn ) {
 
         if ( pn instanceof ProgressNotification ) {
             // Expect application to send us progress notifications
             // with progress ranging from 0 percent to 100 percent
-            double v = ( ( ProgressNotification ) pn ).getProgress();
+            double progress = ( ( ProgressNotification ) pn ).getProgress();
             if ( !pretendProgress ) {
                 // If we were receiving loading progress notifications
                 // then progress is already at 50 percent.
                 // Rescale application progress to start from 50 percent
-                v = 0.5 + v / 2;
+                progress = 0.5 + progress / 2;
             }
             if ( bar != null ) {
-                bar.setProgress(
-                    v );
+                bar.setProgress( progress );
             }
         }
 
         if ( pn instanceof StageNotification ) {
-            changeStage(
-                ( ( StageNotification ) pn ).stage );
+            changeStage( ( ( StageNotification ) pn ).stage );
         }
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
     private void changeStage( Stage primaryStage ) {
 
         if ( primaryStage == null || stage == null || bar == null ) {
@@ -152,59 +126,84 @@ public class CustomPreloader extends Preloader {
 
         Stage preloaderStage = stage;
         stage = new Stage();
-        stage.setScene(
-            preloaderStage.getScene() );
-        stage.initOwner(
-            primaryStage );
-        stage.initModality(
-            Modality.APPLICATION_MODAL );
+        stage.setScene( preloaderStage.getScene() );
+        stage.initOwner( primaryStage );
+        stage.initModality( Modality.APPLICATION_MODAL );
         stage.sizeToScene();
         stage.centerOnScreen();
-        stage.setResizable(
-            false );
+        stage.setResizable( false );
 
-        bar.setVisible(
-            false );
+        bar.setVisible( false );
 
         preloaderStage.close();
-        stage.setAlwaysOnTop(
-            true );
+        stage.setAlwaysOnTop( true );
         stage.show();
     }
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
     public static void main( String[] args ) {
 
-        Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
+        if ( checkVersionPatternJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure ) {
+            return;
+        }
 
+        if ( checkMinimumRequiredJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure ) {
+            return;
+        }
+
+        LauncherImpl.launchApplicationWithArgs(
+                null,
+                Main.class.getCanonicalName(),
+                CustomPreloader.class.getCanonicalName(),
+                args);
+    }
+
+    public static Outcome checkVersionPatternJRE( final String version ) {
         try {
-
-            if (!ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT
-                    .matches("[1-9][0-9]*[.][0-9]+[.][0-9]+")) {
+            if ( ! version.matches("[1-9][0-9]*[.][0-9]+[.][0-9_]+") ) {
                 throw new RuntimeException(ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE);
             }
+            return Outcome.success();
+        } catch (Exception e) {
+            return Outcome.failure( e.getClass() + ": " + e.getMessage() );
+        }
+    }
 
-            final String[] version = ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT.split("[.]");
-
-            if (Arrays.stream(version)
+    public static Outcome checkMinimumRequiredJRE( final String version ) {
+        try {
+            final String[] versionSequence = version.split("[.]");
+            if (Arrays.stream(versionSequence)
                     .findFirst()
                     .map(Integer::valueOf)
                     .get() < ApplicationConstants.MINIMUM_REQUIRED_JAVA_RUNTIME_ENVIRONMENT) {
                 throw new IllegalArgumentException(ApplicationConstants.INCOMPATIBLE_JAVA_RUNTIME_ENVIRONMENT_NOTICE);
             }
+            return Outcome.success();
+        } catch (Exception e) {
+            return Outcome.failure( e.getClass() + ": " + e.getMessage() );
+        }
+    }
 
-            LauncherImpl.launchApplicationWithArgs(
-                    null,
-                    Main.class.getCanonicalName(),
-                    CustomPreloader.class.getCanonicalName(),
-                    args);
+    public static class Outcome {
+        final public boolean failure;
+        final public String message;
+        final private Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
 
-        } catch ( RuntimeException e ) {
-            logger.severe( e.getMessage() );
+        private Outcome( boolean failure, String message ) {
+            this.failure = failure;
+            this.message = message;
+        }
+
+        public static Outcome failure( final String message ) {
+            return new Outcome( false, message );
+        }
+
+        public static Outcome success() {
+            return new Outcome( true, "" );
+        }
+
+        public Outcome log() {
+            if ( failure ) logger.severe( message );
+            return this;
         }
     }
 }
