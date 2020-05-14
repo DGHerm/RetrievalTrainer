@@ -25,39 +25,39 @@ class CustomPreloaderTest {
 
         version = "1.8.0_202";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertTrue( out.success );
+        assertTrue( out.succeeded );
 
         version = "11.0.2";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertTrue( out.success );
+        assertTrue( out.succeeded );
 
         version = "0.0.0";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "11";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "11.0";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "11.0.2.3";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = null;
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "A.B.C";
         out = CustomPreloader.checkVersionPatternJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
     }
 
     @Test
@@ -68,26 +68,26 @@ class CustomPreloaderTest {
 
         version = "11.0.2";
         out = CustomPreloader.checkMinimumRequiredJRE( version );
-        assertTrue( out.success );
+        assertTrue( out.succeeded );
 
         version = "14.0.1";
         out = CustomPreloader.checkMinimumRequiredJRE( version );
-        assertTrue( out.success );
+        assertTrue( out.succeeded );
 
         version = "10.0.2";
         out = CustomPreloader.checkMinimumRequiredJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "1.8.0_202";
         out = CustomPreloader.checkMinimumRequiredJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = "";
         out = CustomPreloader.checkMinimumRequiredJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
 
         version = null;
         out = CustomPreloader.checkMinimumRequiredJRE( version );
-        assertFalse( out.success );
+        assertFalse( out.succeeded );
     }
 }

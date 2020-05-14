@@ -142,8 +142,8 @@ public class CustomPreloader extends Preloader {
 
     public static void main( String[] args ) {
 
-        if ( checkVersionPatternJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure
-                || checkMinimumRequiredJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure ) {
+        if ( checkVersionPatternJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).failed
+                || checkMinimumRequiredJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).failed ) {
             return;
         }
 
@@ -161,7 +161,7 @@ public class CustomPreloader extends Preloader {
             }
             return Outcome.success();
         } catch (Exception e) {
-            return Outcome.failure( e.getClass() + " -- " + e.getMessage() );
+            return Outcome.failure( e.getClass() + " -- " + e.getMessage() ).log();
         }
     }
 
@@ -176,26 +176,26 @@ public class CustomPreloader extends Preloader {
             }
             return Outcome.success();
         } catch (Exception e) {
-            return Outcome.failure( e.getClass() + " -- " + e.getMessage() );
+            return Outcome.failure( e.getClass() + " -- " + e.getMessage() ).log();
         }
     }
 
-    public static class Outcome {
-        final public boolean success;
-        final public boolean failure;
-        final public String message;
+    public final static class Outcome {
+        final public boolean succeeded;
+        final public boolean failed;
+        final private String message;
         final private Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
 
-        private Outcome( boolean failure, String message ) {
-            this.failure = failure;
+        private Outcome( boolean failed, String message ) {
+            this.failed = failed;
             this.message = message;
-            this.success = ! failure;
+            this.succeeded = !failed;
         }
 
-        private Outcome( boolean success ) {
-            this.success = success;
+        private Outcome( boolean succeeded ) {
+            this.succeeded = succeeded;
             this.message = "";
-            this.failure = ! success;
+            this.failed = !succeeded;
         }
 
         public static Outcome success() {
@@ -207,7 +207,7 @@ public class CustomPreloader extends Preloader {
         }
 
         public Outcome log() {
-            if ( failure ) logger.severe( message );
+            if ( failed ) logger.severe( message );
             return this;
         }
     }
