@@ -142,11 +142,8 @@ public class CustomPreloader extends Preloader {
 
     public static void main( String[] args ) {
 
-        if ( checkVersionPatternJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure ) {
-            return;
-        }
-
-        if ( checkMinimumRequiredJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure ) {
+        if ( checkVersionPatternJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure
+                || checkMinimumRequiredJRE( ApplicationConstants.VERSION_OF_JAVA_RUNTIME_ENVIRONMENT ).log().failure ) {
             return;
         }
 
