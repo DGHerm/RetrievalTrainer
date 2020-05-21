@@ -221,7 +221,7 @@ public class Export {
                         answer.setAttribute( mark );
                     }
 
-                    answer.addContent( ( ( SingleChoiceAnswerText ) itemPart ).getStr().get() );
+                    answer.addContent( itemPart.getStr().get() );
                 }
 
                 else if ( itemPart instanceof MultipleChoiceAnswerText ) {
@@ -243,7 +243,7 @@ public class Export {
                         answer.setAttribute( mark );
                     }
 
-                    answer.addContent( ( ( MultipleChoiceAnswerText ) itemPart ).getStr().get() );
+                    answer.addContent( itemPart.getStr().get() );
                 }
 
                 else if ( itemPart instanceof SolutionText ) {
@@ -257,7 +257,7 @@ public class Export {
                     Element solution = new Element( TAG.TEXT.name(), ns );
                     element.addContent( solution );
 
-                    solution.addContent( ( ( SolutionText ) itemPart ).getStr().get() );
+                    solution.addContent( itemPart.getStr().get() );
                 }
 
                 if ( element == null ) {
