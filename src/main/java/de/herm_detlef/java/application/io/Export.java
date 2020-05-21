@@ -70,11 +70,10 @@ public class Export {
 
     static {
 
-        try {
-            InputStream in = Import.class.getResourceAsStream( ApplicationConstants.XML_SCHEMA_DEFINITION ); 
+        try ( InputStream in = Import.class.getResourceAsStream( ApplicationConstants.XML_SCHEMA_DEFINITION ) ) {
             schemafac = new XMLReaderXSDFactory( new StreamSource( in ) );
 
-        } catch ( JDOMException e ) {
+        } catch ( JDOMException | IOException e ) {
             Utilities.showErrorMessage(
                 e.getClass().getSimpleName(),
                 e.getMessage() );

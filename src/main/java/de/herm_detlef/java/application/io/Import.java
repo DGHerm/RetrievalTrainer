@@ -79,12 +79,12 @@ class Import {
 
     private static Document createDocument( String filename ) throws JDOMException, IOException {
         
-        InputStream in = Import.class.getResourceAsStream( ApplicationConstants.XML_SCHEMA_DEFINITION ); 
-        XMLReaderJDOMFactory schemafac = new XMLReaderXSDFactory( new StreamSource( in ) );
-        SAXBuilder builder = new SAXBuilder( schemafac );
-        File xmlFile = new File( filename );
-        return builder.build(
-            xmlFile );// XML validation happens here
+        try ( InputStream in = Import.class.getResourceAsStream( ApplicationConstants.XML_SCHEMA_DEFINITION ) ) {
+            XMLReaderJDOMFactory schemafac = new XMLReaderXSDFactory( new StreamSource(in) );
+            SAXBuilder builder = new SAXBuilder(schemafac);
+            File xmlFile = new File(filename);
+            return builder.build( xmlFile );// XML validation happens here
+        }
     }
 
     private static void createNode( Element child ) throws AssertionError {
