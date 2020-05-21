@@ -21,7 +21,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.model.ExerciseItem;
+import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 
 /* @formatter:off */
 

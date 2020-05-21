@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import de.herm_detlef.java.application.io.Export;
-import de.herm_detlef.java.application.model.ExerciseItem;
+import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -30,7 +30,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.stage.Stage;
 
 /* @formatter:off */
@@ -209,7 +208,7 @@ public class CommonData {
      * of class {@link de.herm_detlef.java.application.Main Main}.
      * <p>
      * This stage uses the scene for the root node, which is
-     * controlled by the instance of class {@link de.herm_detlef.java.application.controller.ApplicationController ApplicationController}
+     * controlled by the instance of class {@link de.herm_detlef.java.application.mvc.controller.ApplicationController ApplicationController}
      * <p>
      * @since 1.0
      */

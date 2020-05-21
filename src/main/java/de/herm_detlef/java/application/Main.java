@@ -17,7 +17,7 @@
 package de.herm_detlef.java.application;
 
 
-import de.herm_detlef.java.application.controller.ApplicationController;
+import de.herm_detlef.java.application.mvc.controller.ApplicationController;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Application;
 import javafx.application.Preloader;
@@ -78,7 +78,7 @@ public class Main extends Application {
         Scene scene = new Scene( root, 800, 800 );
         scene.getStylesheets()
                 .add( getClass()
-                        .getResource("/de/herm_detlef/java/application/controller/application.css" )
+                        .getResource("/de/herm_detlef/java/application/mvc/controller/application.css")
                         .toExternalForm() );
 
         primaryStage.setScene( scene );

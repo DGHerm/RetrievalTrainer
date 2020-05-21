@@ -35,7 +35,7 @@ import org.jdom2.input.sax.XMLReaderJDOMFactory;
 import org.jdom2.input.sax.XMLReaderXSDFactory;
 
 import de.herm_detlef.java.application.ApplicationConstants;
-import de.herm_detlef.java.application.model.ExerciseItem;
+import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
 
 /* @formatter:off */
