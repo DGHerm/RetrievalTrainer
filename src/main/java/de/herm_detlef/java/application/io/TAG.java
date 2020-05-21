@@ -17,8 +17,6 @@
 package de.herm_detlef.java.application.io;
 
 
-import java.util.Hashtable;
-import java.util.Locale;
 
 /* @formatter:off */
 
