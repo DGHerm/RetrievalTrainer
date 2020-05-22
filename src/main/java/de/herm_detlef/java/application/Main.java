@@ -77,8 +77,8 @@ public class Main extends Application {
         assert root != null;
         Scene scene = new Scene( root, 800, 800 );
         scene.getStylesheets()
-                .add( getClass()
-                        .getResource("/de/herm_detlef/java/application/mvc/controller/app/application.css")
+                .add( ApplicationController.class
+                        .getResource("application.css")
                         .toExternalForm() );
 
         primaryStage.setScene( scene );
