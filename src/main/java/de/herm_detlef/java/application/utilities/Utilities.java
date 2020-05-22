@@ -78,35 +78,6 @@ public class Utilities {
         return result.isPresent() && result.get() == ButtonType.YES;
     }
 
-    public static String createFilePath( Object obj, String fxmlResourceName ) {
-
-        return Utilities.createFilePath(
-            obj.getClass(),
-            fxmlResourceName );
-    }
-
-    public static String createFilePath( Class< ? > cls, String fxmlResourceName ) {
-
-        if ( fxmlResourceName == null ) return null;
-
-        if ( cls.getPackage() == null ) return fxmlResourceName; // default package
-
-        StringBuilder filePath = new StringBuilder( ApplicationConstants.FILE_NAME_SEPARATOR );
-
-        for ( String name : cls.getPackage().getName().split(
-            "\\" + ApplicationConstants.PACKAGE_NAME_SEPARATOR ) ) {
-            filePath.append(
-                name );
-            filePath.append(
-                ApplicationConstants.FILE_NAME_SEPARATOR );
-        }
-
-        filePath.append(
-            fxmlResourceName );
-
-        return filePath.toString();
-    }
-
     public static String createPackagePath( Object obj, String resourceName ) {
 
         return Utilities.createPackagePath(
@@ -147,13 +118,9 @@ public class Utilities {
                 commonData.getCurrentLocale() );
         }
 
-        String packagePath = Utilities.createFilePath(
-            controller,
-            xmlResourceName );
-
-        FXMLLoader fxmlLoader = new FXMLLoader( controller.getClass().getResource(
-            packagePath ),
-                                                languageResourcesBundle );
+        FXMLLoader fxmlLoader = new FXMLLoader(
+                controller.getClass().getResource( xmlResourceName ),
+                languageResourcesBundle );
 
         fxmlLoader.setController(
             controller );

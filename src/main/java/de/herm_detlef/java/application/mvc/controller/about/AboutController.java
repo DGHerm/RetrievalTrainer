@@ -55,11 +55,7 @@ public class AboutController {
 
     public Scene createScene() {
 
-        String packagePath = Utilities.createFilePath(
-            this,
-            "About.fxml" );
-
-        final FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( packagePath ) );
+        final FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "About.fxml" ) );
         fxmlLoader.setController( this );
 
         try {
