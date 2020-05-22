@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import de.herm_detlef.java.application.io.Export;
+import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -208,7 +209,7 @@ public class CommonData {
      * of class {@link de.herm_detlef.java.application.Main Main}.
      * <p>
      * This stage uses the scene for the root node, which is
-     * controlled by the instance of class {@link de.herm_detlef.java.application.mvc.controller.ApplicationController ApplicationController}
+     * controlled by the instance of class {@link ApplicationController ApplicationController}
      * <p>
      * @since 1.0
      */

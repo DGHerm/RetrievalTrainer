@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller;
+package de.herm_detlef.java.application.mvc.controller.app;
 
 
 import java.net.URL;

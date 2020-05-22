@@ -6,5 +6,5 @@
  * @since 1.0
  *
  */
-package de.herm_detlef.java.application.mvc.controller;
+package de.herm_detlef.java.application.mvc.controller.app;
 
