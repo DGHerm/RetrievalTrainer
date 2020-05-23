@@ -65,5 +65,20 @@ class ImportTest {
 
         message = exception.getMessage();
         assertTrue( message.matches("^content of xml node ID cannot be parsed as integer$") );
+
+
+
+        // xml node ID has invalid content: value represents a negative Integer
+        String fileName05 = ImportTest.class.getResource("05.xml").getPath();
+
+        exception = assertThrows( JDOMParseException.class, () -> Import.importExerciseItemListFromFile( fileName05 ) );
+
+        className = exception.getClass().getName();
+        assertEquals("org.jdom2.input.JDOMParseException", className );
+
+        message = exception.getMessage();
+        assertTrue( message.startsWith("Error on line 4 of document ") );
+        assertTrue( message.matches(".*(05[.]xml:).*") );
+        assertTrue( message.endsWith(" cvc-minInclusive-valid: Value '-1' is not facet-valid with respect to minInclusive '1' for type 'positiveInteger'.") );
     }
 }

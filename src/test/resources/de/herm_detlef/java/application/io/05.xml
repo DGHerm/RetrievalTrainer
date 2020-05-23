@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG xmlns="RetrievalTrainer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="RetrievalTrainerXMLSchemaDefinition.xsd">
+    <ITEM>
+        <ID>-1</ID>
+        <QUESTION>
+            <TEXT></TEXT>
+        </QUESTION>
+        <SINGLE_CHOICE_ANSWER>
+            <TEXT></TEXT>
+            <TEXT mark="true"></TEXT>
+        </SINGLE_CHOICE_ANSWER>
+        <SOLUTION>
+            <TEXT></TEXT>
+        </SOLUTION>
+    </ITEM>
+</CATALOG>
