@@ -1,5 +1,6 @@
 package de.herm_detlef.java.application.io;
 
+import org.jdom2.input.JDOMParseException;
 import org.junit.jupiter.api.Test;
 
 
@@ -13,7 +14,7 @@ class ImportTest {
         // empty file
         String fileName01 = ImportTest.class.getResource("01.xml").getPath();
 
-        Exception exception = assertThrows( Exception.class, () -> Import.importExerciseItemListFromFile( fileName01 ) );
+        Exception exception = assertThrows( JDOMParseException.class, () -> Import.importExerciseItemListFromFile( fileName01 ) );
 
         String className = exception.getClass().getName();
         assertEquals("org.jdom2.input.JDOMParseException", className );
