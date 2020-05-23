@@ -96,12 +96,7 @@ class Import {
                     exerciseItem.addQuestionText( str );
                 } else if ( isAnswerPart ) {
                     Attribute mark = child.getAttribute( ApplicationConstants.NAME_OF_XML_ATTRIBUTE_ANSWER_TEXT_MARK );
-                    if ( mark != null ) {
-                        exerciseItem.addAnswerText( str, mark.getBooleanValue() );
-                    } else {
-                        exerciseItem.addAnswerText( str, false );
-                    }
-
+                    exerciseItem.addAnswerText( str, (mark != null) && mark.getBooleanValue() );
                 } else if ( isSolutionPart ) {
                     exerciseItem.addSolutionText( str );
                 }
