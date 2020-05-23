@@ -207,4 +207,23 @@ public class ApplicationConstants {
 
     // --------------------------
     public static final int MAXIMUM_NUMBER_OF_EXERCISE_ITEMS = 999;
+
+
+
+
+    // -----------------------------------------
+    // ------------ for debugging --------------
+    // -----------------------------------------
+    public static boolean DEBUG;
+    public static boolean ASSERTS;
+
+    static {
+        DEBUG = false;
+        assert DEBUG = true;
+
+        ASSERTS = false;
+        assert ASSERTS = true;
+
+        // see JLS, 14.21
+    }
 }

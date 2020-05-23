@@ -20,11 +20,14 @@ package de.herm_detlef.java.application.io;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
 import org.jdom2.JDOMException;
+
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 
 /* @formatter:off */
 
@@ -36,17 +39,20 @@ import org.jdom2.JDOMException;
  */
 public class ExerciseItemListFactory {
 
+    private static final Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
+
     private ExerciseItemListFactory() {}
 
     public static ArrayList<ExerciseItem> importExerciseItemListFromFile( String filename ) {
         try {
             return Import.importExerciseItemListFromFile( filename );
         } catch ( JDOMException | IOException e ) {
+            if (DEBUG) e.printStackTrace();
+            logger.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
             Utilities.showErrorMessage(
                     e.getClass().getSimpleName(),
                     e.getMessage());
-            e.printStackTrace();
-            return null;
+            return new ArrayList<>(0);
         }
     }
 

@@ -124,7 +124,7 @@ public class FileMenuController implements Initializable {
             }
 
             list = ExerciseItemListFactory.importExerciseItemListFromFile( selectedFile.getAbsolutePath() );
-            if ( list == null ) {
+            if ( list.isEmpty() ) {
                 menuItemSave.setDisable( true );
                 menuItemSaveAs.setDisable( true );
                 return;
