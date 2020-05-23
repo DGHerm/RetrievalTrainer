@@ -18,10 +18,13 @@ package de.herm_detlef.java.application.io;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
+import de.herm_detlef.java.application.utilities.Utilities;
+import org.jdom2.JDOMException;
 
 /* @formatter:off */
 
@@ -33,12 +36,18 @@ import de.herm_detlef.java.application.mvc.model.ExerciseItem;
  */
 public class ExerciseItemListFactory {
 
-    // no instantiation allowed
     private ExerciseItemListFactory() {}
 
-    public static ArrayList< ExerciseItem > importExerciseItemListFromFile( String filename ) {
-
-        return Import.importExerciseItemListFromFile( filename );
+    public static ArrayList<ExerciseItem> importExerciseItemListFromFile( String filename ) {
+        try {
+            return Import.importExerciseItemListFromFile( filename );
+        } catch ( JDOMException | IOException e ) {
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static void exportExerciseItemListToFile(CommonData commonData,

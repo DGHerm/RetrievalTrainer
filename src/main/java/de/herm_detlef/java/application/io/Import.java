@@ -54,25 +54,13 @@ class Import {
     private static boolean                   isAnswerPart   = false;
     private static boolean                   isSolutionPart = false;
 
-    public static ArrayList< ExerciseItem > importExerciseItemListFromFile( String filename ) {
+    public static ArrayList<ExerciseItem> importExerciseItemListFromFile(String filename) throws JDOMException, IOException {
 
         exerciseItemList = new ArrayList<>();
 
-        try {
-            Document doc = createDocument(
-                filename );
-            Element catalogElement = doc.getRootElement();
-
-            createNode(
-                catalogElement );
-
-        } catch ( JDOMException | IOException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
-            e.printStackTrace();
-            return null;
-        }
+        Document doc = createDocument( filename );
+        Element catalogElement = doc.getRootElement();
+        createNode( catalogElement );
 
         return exerciseItemList;
     }
