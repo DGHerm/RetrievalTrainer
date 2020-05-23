@@ -159,21 +159,19 @@ class Import {
 
     private static void setSelector( TAG selector ) throws SAXException {
 
+        isQuestionPart = false;
+        isAnswerPart = false;
+        isSolutionPart = false;
+
         switch ( selector ) {
         case QUESTION:
             isQuestionPart = true;
-            isAnswerPart = false;
-            isSolutionPart = false;
             break;
         case SINGLE_CHOICE_ANSWER:
         case MULTIPLE_CHOICE_ANSWER:
-            isQuestionPart = false;
             isAnswerPart = true;
-            isSolutionPart = false;
             break;
         case SOLUTION:
-            isQuestionPart = false;
-            isAnswerPart = false;
             isSolutionPart = true;
             break;
         default:
