@@ -47,7 +47,7 @@ public class ExerciseItemListFactory {
     public static ArrayList<ExerciseItem> importExerciseItemListFromFile( String filename ) {
         try {
             return Import.importExerciseItemListFromFile( filename );
-        } catch ( JDOMException | IOException | SAXException e ) {
+        } catch ( Exception e ) {
             if (DEBUG) e.printStackTrace();
             logger.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
             Utilities.showErrorMessage(
