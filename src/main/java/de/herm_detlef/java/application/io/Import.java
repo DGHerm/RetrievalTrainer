@@ -26,7 +26,6 @@ import java.util.List;
 import javax.xml.transform.stream.StreamSource;
 
 import org.jdom2.Attribute;
-import org.jdom2.DataConversionException;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -36,7 +35,6 @@ import org.jdom2.input.sax.XMLReaderXSDFactory;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
-import de.herm_detlef.java.application.utilities.Utilities;
 import org.xml.sax.SAXException;
 
 /* @formatter:off */
@@ -76,7 +74,7 @@ class Import {
         }
     }
 
-    private static void createNode( Element child ) throws SAXException {
+    private static void createNode( Element child ) throws JDOMException, SAXException {
 
         List< Element > children = child.getChildren();
 
@@ -95,13 +93,7 @@ class Import {
                 } else if ( isAnswerPart ) {
                     Attribute mark = child.getAttribute( ApplicationConstants.NAME_OF_XML_ATTRIBUTE_ANSWER_TEXT_MARK );
                     if ( mark != null ) {
-                        try {
-                            exerciseItem.addAnswerText( str, mark.getBooleanValue() );
-                        } catch ( DataConversionException e ) {
-                            Utilities.showErrorMessage( e.getClass().getSimpleName(), e.getMessage() );
-                            assert false : String.format( "org.jdom2.DataConversionException: %s", mark.toString() ); // TODO
-                            exerciseItem.addAnswerText( str, false );
-                        }
+                        exerciseItem.addAnswerText( str, mark.getBooleanValue() );
                     } else {
                         exerciseItem.addAnswerText( str, false );
                     }

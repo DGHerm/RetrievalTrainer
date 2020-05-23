@@ -37,5 +37,20 @@ class ImportTest {
 
         message = exception.getMessage();
         assertTrue( message.matches("^xml node CATALOG has no children$") );
+
+
+
+        // xml node with invalid attribute value
+        String fileName03 = ImportTest.class.getResource("03.xml").getPath();
+
+        exception = assertThrows( JDOMParseException.class, () -> Import.importExerciseItemListFromFile( fileName03 ) );
+
+        className = exception.getClass().getName();
+        assertEquals("org.jdom2.input.JDOMParseException", className );
+
+        message = exception.getMessage();
+        assertTrue( message.startsWith("Error on line 10 of document ") );
+        assertTrue( message.matches(".*(03[.]xml:).*") );
+        assertTrue( message.endsWith(" cvc-datatype-valid.1.2.1: 'tru' is not a valid value for 'boolean'.") );
     }
 }
