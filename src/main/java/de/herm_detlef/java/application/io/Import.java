@@ -76,7 +76,7 @@ class Import {
         }
     }
 
-    private static void createNode( Element child ) throws AssertionError, SAXException {
+    private static void createNode( Element child ) throws SAXException {
 
         List< Element > children = child.getChildren();
 
@@ -122,9 +122,9 @@ class Import {
                 }
                 break;
             case CATALOG:
-                throw new SAXException( "xml node " + tag.name() + " has no children" );
+                throw new SAXException( String.format( "xml node %s has no children", tag.name() ) );
             default:
-                throw new AssertionError( String.format( "%s", tag.name() ) );
+                throw new SAXException( String.format( "unexpected xml tag %s", tag.name() ) );
             }
 
             return;
@@ -132,7 +132,9 @@ class Import {
 
         for ( Element aChild : children ) {
 
-            switch ( TAG.valueOf( aChild.getName() ) ) {
+            final TAG tag = TAG.valueOf( aChild.getName() );
+
+            switch ( tag ) {
             case ITEM:
                 exerciseItem = new ExerciseItem();
                 exerciseItemList.add( exerciseItem );
@@ -157,34 +159,34 @@ class Import {
             case TEXT2:
                 break;
             default:
-                throw new AssertionError( String.format( "%s", TAG.valueOf( aChild.getName() ).name() ) );
+                throw new SAXException( String.format( "unexpected xml tag %s", tag.name() ) );
             }
 
             createNode( aChild );
         }
     }
 
-    private static void signalSolution() {
+    private static void signalSolution() throws SAXException {
 
         setSelector( TAG.SOLUTION );
     }
 
-    private static void signalMultipleChoiceAnswer() {
+    private static void signalMultipleChoiceAnswer() throws SAXException {
 
         setSelector( TAG.MULTIPLE_CHOICE_ANSWER );
     }
 
-    private static void signalSingleChoiceAnswer() {
+    private static void signalSingleChoiceAnswer() throws SAXException {
 
         setSelector( TAG.SINGLE_CHOICE_ANSWER );
     }
 
-    private static void signalQuestion() {
+    private static void signalQuestion() throws SAXException {
 
         setSelector( TAG.QUESTION );
     }
 
-    private static void setSelector( TAG selector ) throws AssertionError {
+    private static void setSelector( TAG selector ) throws SAXException {
 
         switch ( selector ) {
         case QUESTION:
@@ -204,7 +206,7 @@ class Import {
             isSolutionPart = true;
             break;
         default:
-            throw new AssertionError( String.format( "%s", selector.name() ) );
+            throw new SAXException( String.format( "unexpected xml tag %s", selector.name() ) );
         }
     }
 }
