@@ -132,18 +132,18 @@ class Import {
                 exerciseItemList.add( exerciseItem );
                 break;
             case QUESTION:
-                signalQuestion();
+                setSelector( tag );
                 break;
             case SINGLE_CHOICE_ANSWER:
-                signalSingleChoiceAnswer();
+                setSelector( tag );
                 exerciseItem.createSingleChoiceModel();
                 break;
             case MULTIPLE_CHOICE_ANSWER:
-                signalMultipleChoiceAnswer();
+                setSelector( tag );
                 exerciseItem.createMultipleChoiceModel();
                 break;
             case SOLUTION:
-                signalSolution();
+                setSelector( tag );
                 break;
             case ID:
             case TEXT:
@@ -156,26 +156,6 @@ class Import {
 
             createNode( aChild );
         }
-    }
-
-    private static void signalSolution() throws SAXException {
-
-        setSelector( TAG.SOLUTION );
-    }
-
-    private static void signalMultipleChoiceAnswer() throws SAXException {
-
-        setSelector( TAG.MULTIPLE_CHOICE_ANSWER );
-    }
-
-    private static void signalSingleChoiceAnswer() throws SAXException {
-
-        setSelector( TAG.SINGLE_CHOICE_ANSWER );
-    }
-
-    private static void signalQuestion() throws SAXException {
-
-        setSelector( TAG.QUESTION );
     }
 
     private static void setSelector( TAG selector ) throws SAXException {
