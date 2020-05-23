@@ -37,6 +37,7 @@ import org.jdom2.input.sax.XMLReaderXSDFactory;
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
+import org.xml.sax.SAXException;
 
 /* @formatter:off */
 
@@ -54,7 +55,7 @@ class Import {
     private static boolean                   isAnswerPart   = false;
     private static boolean                   isSolutionPart = false;
 
-    public static ArrayList<ExerciseItem> importExerciseItemListFromFile(String filename) throws JDOMException, IOException {
+    public static ArrayList<ExerciseItem> importExerciseItemListFromFile(String filename) throws JDOMException, IOException, SAXException {
 
         exerciseItemList = new ArrayList<>();
 
@@ -75,13 +76,15 @@ class Import {
         }
     }
 
-    private static void createNode( Element child ) throws AssertionError {
+    private static void createNode( Element child ) throws AssertionError, SAXException {
 
         List< Element > children = child.getChildren();
 
         if ( children.isEmpty() ) {
 
-            switch ( TAG.valueOf( child.getName() ) ) {
+            final TAG tag = TAG.valueOf( child.getName() );
+
+            switch ( tag ) {
             case ID:
                 exerciseItem.setItemId( Integer.parseInt( child.getTextTrim() ) );
                 break;
@@ -119,10 +122,9 @@ class Import {
                 }
                 break;
             case CATALOG:
-                // TODO empty catalog file
-                break;
+                throw new SAXException( "xml node " + tag.name() + " has no children" );
             default:
-                throw new AssertionError( String.format( "%s", TAG.valueOf( child.getName() ).name() ) );
+                throw new AssertionError( String.format( "%s", tag.name() ) );
             }
 
             return;

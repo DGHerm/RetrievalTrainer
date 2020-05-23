@@ -26,6 +26,7 @@ import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
 import org.jdom2.JDOMException;
+import org.xml.sax.SAXException;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 
@@ -46,7 +47,7 @@ public class ExerciseItemListFactory {
     public static ArrayList<ExerciseItem> importExerciseItemListFromFile( String filename ) {
         try {
             return Import.importExerciseItemListFromFile( filename );
-        } catch ( JDOMException | IOException e ) {
+        } catch ( JDOMException | IOException | SAXException e ) {
             if (DEBUG) e.printStackTrace();
             logger.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
             Utilities.showErrorMessage(
