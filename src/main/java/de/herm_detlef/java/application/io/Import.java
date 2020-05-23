@@ -84,7 +84,11 @@ class Import {
 
             switch ( tag ) {
             case ID:
-                exerciseItem.setItemId( Integer.parseInt( child.getTextTrim() ) );
+                try {
+                    exerciseItem.setItemId( Integer.parseInt(child.getTextTrim()) );
+                } catch ( Exception e ) {
+                    throw new SAXException( String.format( "content of xml node %s cannot be parsed as integer", tag.name() ), e );
+                }
                 break;
             case TEXT: {
                 final String str = child.getTextTrim();

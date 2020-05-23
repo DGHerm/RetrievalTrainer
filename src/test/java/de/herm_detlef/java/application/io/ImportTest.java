@@ -52,5 +52,18 @@ class ImportTest {
         assertTrue( message.startsWith("Error on line 10 of document ") );
         assertTrue( message.matches(".*(03[.]xml:).*") );
         assertTrue( message.endsWith(" cvc-datatype-valid.1.2.1: 'tru' is not a valid value for 'boolean'.") );
+
+
+
+        // xml node ID has invalid content: value cannot be parsed as integer, too big
+        String fileName04 = ImportTest.class.getResource("04.xml").getPath();
+
+        exception = assertThrows( SAXException.class, () -> Import.importExerciseItemListFromFile( fileName04 ) );
+
+        className = exception.getClass().getName();
+        assertEquals("org.xml.sax.SAXException", className );
+
+        message = exception.getMessage();
+        assertTrue( message.matches("^content of xml node ID cannot be parsed as integer$") );
     }
 }
