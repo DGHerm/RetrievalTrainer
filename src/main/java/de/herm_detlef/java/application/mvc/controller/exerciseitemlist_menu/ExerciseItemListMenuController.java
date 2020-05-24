@@ -120,6 +120,8 @@ public class ExerciseItemListMenuController implements Initializable {
                 remote.getViewer().getChoice().setChoiceImmutable( false );
             }
 
+            remote.getEditMenuController().getCheckMenuItemShowTools().setSelected( newValue );
+
             remote.getApplicationController().getButtonCheck().setVisible( newValue );
 
             remote.getFileMenuController().getMenuItemSaveAs().setDisable( !newValue );
