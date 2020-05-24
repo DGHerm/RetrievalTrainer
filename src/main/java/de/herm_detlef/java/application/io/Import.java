@@ -53,7 +53,8 @@ class Import {
     private static boolean                   isAnswerPart   = false;
     private static boolean                   isSolutionPart = false;
 
-    public static ArrayList<ExerciseItem> importExerciseItemListFromFile(String filename) throws JDOMException, IOException, SAXException {
+    public static ArrayList<ExerciseItem> importExerciseItemListFromFile(String filename)
+            throws JDOMException, IOException, SAXException {
 
         exerciseItemList = new ArrayList<>();
 
@@ -131,6 +132,7 @@ class Import {
                 exerciseItemList.add( exerciseItem );
                 break;
             case QUESTION:
+            case SOLUTION:
                 setSelector( tag );
                 break;
             case SINGLE_CHOICE_ANSWER:
@@ -141,10 +143,7 @@ class Import {
                 setSelector( tag );
                 exerciseItem.createMultipleChoiceModel();
                 break;
-            case SOLUTION:
-                setSelector( tag );
-                break;
-            case ID:
+                case ID:
             case TEXT:
             case CODE:
             case TEXT2:
@@ -153,7 +152,7 @@ class Import {
                 throw new SAXException( String.format( "unexpected xml tag %s", tag.name() ) );
             }
 
-            createNode( aChild );
+            createNode( aChild );// recursive call
         }
     }
 
