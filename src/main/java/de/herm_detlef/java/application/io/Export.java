@@ -22,9 +22,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-
-import javax.xml.transform.stream.StreamSource;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -32,12 +29,9 @@ import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.Namespace;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.input.sax.XMLReaderJDOMFactory;
-import org.jdom2.input.sax.XMLReaderXSDFactory;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem.AnswerText;
@@ -52,6 +46,8 @@ import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import static de.herm_detlef.java.application.ApplicationConstants.*;
+
 /* @formatter:off */
 
 /**
@@ -63,63 +59,39 @@ import javafx.collections.ObservableList;
  */
 public class Export {
 
-    private static XMLReaderJDOMFactory schemafac;
-
     private static boolean isQuestionPart = false;
     private static boolean isAnswerPart   = false;
 
-    static {
-
-        try ( InputStream in = Import.class.getResourceAsStream( ApplicationConstants.XML_SCHEMA_DEFINITION ) ) {
-            schemafac = new XMLReaderXSDFactory( new StreamSource( in ) );
-
-        } catch ( JDOMException | IOException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
-            e.printStackTrace();
-        }
-    }
-
-    public static void exportExerciseItemListToFile(CommonData commonData,
-                                                    File file ) {
+    public static void exportExerciseItemListToFile( CommonData commonData, File file ) throws JDOMException, IOException {
 
         commonData.markSelectedAnswerPartItems();
 
         final Document doc = createJdomDocument( commonData.getExerciseItemListMaster() );
-        assert doc != null;
+        if (DEBUG) assert doc != null;
 
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat( Format.getPrettyFormat() );
 
-        try {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1_000_000);
+        xmlOutput.output(doc, outputStream);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+        validateDocument(inputStream);
 
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream( 1_000_000 );
-            xmlOutput.output( doc, outputStream );
-            ByteArrayInputStream inputStream = new ByteArrayInputStream( outputStream.toByteArray() );
-            validateDocument( inputStream );
+        xmlOutput.output(doc, new FileWriter(file.getCanonicalPath()));
 
-            xmlOutput.output( doc, new FileWriter( file.getCanonicalPath() ) );
+        commonData.savedExerciseItemListMaster();
+        commonData.setRecentlySavedFile(file);
+        commonData.setRecentlyOpenedFile(file);
 
-            commonData.savedExerciseItemListMaster();
-            commonData.setRecentlySavedFile( file );
-            commonData.setRecentlyOpenedFile( file );
-
-            commonData.getExerciseItemListInitialMaster().clear();
-            commonData.getExerciseItemListInitialMaster().addAll( commonData.getExerciseItemListMaster() );
-
-        } catch ( IOException | JDOMException e ) {
-            Utilities.showErrorMessage( e.getClass().getSimpleName(), e.getMessage() );
-            // e.printStackTrace();
-        }
-
+        commonData.getExerciseItemListInitialMaster().clear();
+        commonData.getExerciseItemListInitialMaster().addAll(commonData.getExerciseItemListMaster());
     }
 
     private static void validateDocument( ByteArrayInputStream inputStream ) throws JDOMException, IOException {
 
-        assert schemafac != null;
+        if (DEBUG) assert XML_READER_JDOM_FACTORY != null;
 
-        SAXBuilder builder = new SAXBuilder( schemafac );
+        SAXBuilder builder = new SAXBuilder( XML_READER_JDOM_FACTORY );
 
         // XML validation against schema definition happens here:
         builder.build( inputStream );
@@ -127,24 +99,21 @@ public class Export {
 
     private static Document createJdomDocument( ObservableList< ExerciseItem > exerciseItemList ) {
 
-        Namespace ns = Namespace.getNamespace( ApplicationConstants.XML_NAMESPACE );
+        Namespace ns = Namespace.getNamespace( XML_NAMESPACE );
         Element catalog = new Element( TAG.CATALOG.name(), ns );
         Document doc = new Document( catalog );
-        Namespace xsi = Namespace.getNamespace( "xsi", ApplicationConstants.XML_SCHEMA_INSTANCE );
+        Namespace xsi = Namespace.getNamespace( "xsi", XML_SCHEMA_INSTANCE );
         doc.getRootElement().addNamespaceDeclaration( xsi );
-        doc.getRootElement().setAttribute(
-            "schemaLocation",
-            ApplicationConstants.XML_SCHEMA_DEFINITION,
-            xsi );
+        doc.getRootElement().setAttribute("schemaLocation", XML_SCHEMA_DEFINITION, xsi );
 
-        int count = 0;
+        int count = 0;// FIXME
         for ( ExerciseItem exItem : exerciseItemList ) {
 
             Element item = new Element( TAG.ITEM.name(), ns );
             catalog.addContent( item );
 
             Element id = new Element( TAG.ID.name(), ns );
-            id.addContent( String.valueOf( ++count ) );
+            id.addContent( String.valueOf( ++count ) );// FIXME
             item.addContent( id );
 
             Element element = null;
@@ -153,9 +122,7 @@ public class Export {
                 Object obj = itemPart.get();
 
                 if ( obj == null ) {
-                    // assert false : String.format(
-                    // "%s",
-                    // itemPart.getClass() ); // TODO
+                     if (DEBUG) assert false : String.format( "%s", itemPart.getClass() );
                     continue;
                 }
 
@@ -260,7 +227,6 @@ public class Export {
                 }
 
                 if ( element == null ) {
-                    assert false;
                     return null;
                 }
             }
@@ -295,13 +261,13 @@ public class Export {
                 return false;
 
             Utilities.showErrorMessage( e.getClass().getSimpleName(), e.getMessage() );
-            //e.printStackTrace();
+            if (DEBUG) e.printStackTrace();
             return false;
 
         } catch ( IOException e ) {
 
             Utilities.showErrorMessage( e.getClass().getSimpleName(), e.getMessage() );
-            //e.printStackTrace();
+            if (DEBUG) e.printStackTrace();
             return false;
         }
 

@@ -17,14 +17,22 @@
 package de.herm_detlef.java.application;
 
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.logging.Logger;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.text.Font;
+import org.jdom2.JDOMException;
+import org.jdom2.input.sax.XMLReaderJDOMFactory;
+import org.jdom2.input.sax.XMLReaderXSDFactory;
+
+import javax.xml.transform.stream.StreamSource;
 
 /* @formatter:off */
 
@@ -35,6 +43,24 @@ import javafx.scene.text.Font;
  *
  */
 public class ApplicationConstants {
+
+    public static final Logger LOGGER = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
+
+    // -----------------------------------------
+    // ------------ for debugging --------------
+    // -----------------------------------------
+    public static boolean DEBUG;
+    public static boolean ASSERTS;
+
+    static {
+        DEBUG = false;
+        assert DEBUG = true;
+
+        ASSERTS = false;
+        assert ASSERTS = true;
+
+        // see JLS, 14.21
+    }
 
     // --------------------------
     public static final KeyCombination ESC                                          = new KeyCodeCombination( KeyCode.ESCAPE );
@@ -49,6 +75,19 @@ public class ApplicationConstants {
      *
      */
     public static final String         XML_SCHEMA_DEFINITION                        = "RetrievalTrainerXMLSchemaDefinition.xsd";
+
+    public static final XMLReaderJDOMFactory XML_READER_JDOM_FACTORY;
+
+    static {
+        XMLReaderJDOMFactory tmp = null;
+        try ( InputStream in = ApplicationConstants.class.getResourceAsStream( XML_SCHEMA_DEFINITION ) ) {
+             tmp = new XMLReaderXSDFactory( new StreamSource( in ) );
+        } catch ( JDOMException | IOException e ) {
+            if (DEBUG) e.printStackTrace();
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+        }
+        XML_READER_JDOM_FACTORY = tmp;// null indicates uninitialized status
+    }
 
     // --------------------------
     public static final String         XML_SCHEMA_INSTANCE                          = "http://www.w3.org/2001/XMLSchema-instance";
@@ -211,19 +250,5 @@ public class ApplicationConstants {
 
 
 
-    // -----------------------------------------
-    // ------------ for debugging --------------
-    // -----------------------------------------
-    public static boolean DEBUG;
-    public static boolean ASSERTS;
 
-    static {
-        DEBUG = false;
-        assert DEBUG = true;
-
-        ASSERTS = false;
-        assert ASSERTS = true;
-
-        // see JLS, 14.21
-    }
 }

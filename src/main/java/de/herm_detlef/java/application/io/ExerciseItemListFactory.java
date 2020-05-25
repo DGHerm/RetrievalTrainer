@@ -18,17 +18,14 @@ package de.herm_detlef.java.application.io;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
-import org.jdom2.JDOMException;
-import org.xml.sax.SAXException;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ApplicationConstants.LOGGER;
 
 /* @formatter:off */
 
@@ -40,8 +37,6 @@ import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
  */
 public class ExerciseItemListFactory {
 
-    private static final Logger logger = Logger.getLogger( Logger.GLOBAL_LOGGER_NAME );
-
     private ExerciseItemListFactory() {}
 
     public static ArrayList<ExerciseItem> importExerciseItemListFromFile( String filename ) {
@@ -49,7 +44,7 @@ public class ExerciseItemListFactory {
             return Import.importExerciseItemListFromFile( filename );
         } catch ( Exception e ) {
             if (DEBUG) e.printStackTrace();
-            logger.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
             Utilities.showErrorMessage(
                     e.getClass().getSimpleName(),
                     e.getMessage());
@@ -57,9 +52,15 @@ public class ExerciseItemListFactory {
         }
     }
 
-    public static void exportExerciseItemListToFile(CommonData commonData,
-                                                    File file ) {
-
-        Export.exportExerciseItemListToFile( commonData, file );
+    public static void exportExerciseItemListToFile( CommonData commonData, File file ) {
+        try {
+            Export.exportExerciseItemListToFile( commonData, file );
+        } catch ( Exception e ) {
+            if (DEBUG) e.printStackTrace();
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+        }
     }
 }

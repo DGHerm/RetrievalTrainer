@@ -83,8 +83,8 @@ public class ExerciseItem {
 
     public static class QuestionText extends ItemPart {
 
-        private static Class< ? >              type;
-        private static Function< ItemPart, ? > function;
+        private static Class< ? >              type = Object.class;
+        private static Function< ItemPart, ? > function = obj -> { return obj; };
 
         public QuestionText( String str, ExerciseItem parent ) {
             super( str, parent );
@@ -105,8 +105,8 @@ public class ExerciseItem {
 
     public static class QuestionText2 extends ItemPart {
 
-        private static Class< ? >              type;
-        private static Function< ItemPart, ? > function;
+        private static Class< ? >              type = Object.class;
+        private static Function< ItemPart, ? > function = obj -> { return obj; };
 
         public QuestionText2( String str, ExerciseItem parent ) {
             super( str, parent );
@@ -127,8 +127,8 @@ public class ExerciseItem {
 
     public static class QuestionCode extends ItemPart {
 
-        private static Class< ? >              type;
-        private static Function< ItemPart, ? > function;
+        private static Class< ? >              type = Object.class;
+        private static Function< ItemPart, ? > function = obj -> { return obj; };
 
         public QuestionCode( String str, ExerciseItem parent ) {
             super( str, parent );
@@ -149,8 +149,8 @@ public class ExerciseItem {
 
     public static abstract class AnswerText extends ItemPart {
 
-        private static Class< ? >              type;
-        private static Function< ItemPart, ? > function;
+        private static Class< ? >              type = Object.class;
+        private static Function< ItemPart, ? > function = obj -> { return obj; };
         private final BooleanProperty          selected = new SimpleBooleanProperty( false );
 
         // value of xml node attribute "mark" at reading data from disc
@@ -229,8 +229,8 @@ public class ExerciseItem {
 
     public static class SolutionText extends ItemPart {
 
-        private static Class< ? >              type;
-        private static Function< ItemPart, ? > function;
+        private static Class< ? >              type = Object.class;
+        private static Function< ItemPart, ? > function = obj -> { return obj; };
 
         public SolutionText( String str, ExerciseItem parent ) {
             super( str, parent );

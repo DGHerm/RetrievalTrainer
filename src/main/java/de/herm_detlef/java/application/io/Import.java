@@ -19,23 +19,20 @@ package de.herm_detlef.java.application.io;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.transform.stream.StreamSource;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.input.sax.XMLReaderJDOMFactory;
-import org.jdom2.input.sax.XMLReaderXSDFactory;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import org.xml.sax.SAXException;
+
+import static de.herm_detlef.java.application.ApplicationConstants.XML_READER_JDOM_FACTORY;
 
 /* @formatter:off */
 
@@ -66,13 +63,10 @@ class Import {
     }
 
     private static Document createDocument( String filename ) throws JDOMException, IOException {
-        
-        try ( InputStream in = Import.class.getResourceAsStream( ApplicationConstants.XML_SCHEMA_DEFINITION ) ) {
-            XMLReaderJDOMFactory schemafac = new XMLReaderXSDFactory( new StreamSource(in) );
-            SAXBuilder builder = new SAXBuilder(schemafac);
-            File xmlFile = new File(filename);
-            return builder.build( xmlFile );// XML validation happens here
-        }
+
+        SAXBuilder builder = new SAXBuilder( XML_READER_JDOM_FACTORY );
+        File xmlFile = new File(filename);
+        return builder.build( xmlFile );// XML validation happens here
     }
 
     private static void createNode( Element child ) throws JDOMException, SAXException {

@@ -33,6 +33,8 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -56,7 +58,7 @@ public class CommonData {
     private final BooleanProperty                               previewModeProperty;
 
     private final ListChangeListener< ? super ExerciseItem >    exerciseItemListMasterChangeListener;
-    private ListChangeListener< ? super ExerciseItem.ItemPart > exerciseItemComponentsChangeListener;
+    private ListChangeListener< ? super ExerciseItem.ItemPart > exerciseItemComponentsChangeListener = c -> {};
 
     private Locale                                              currentLocale;
 
@@ -70,15 +72,18 @@ public class CommonData {
     /**
      * TODO
      * <p>
-     * @param primaryStage TODO
-     * @param applicationPreferences TODO
+     * @param thePrimaryStage TODO
+     * @param theApplicationPreferences TODO
      * @since 1.0
      */
-    public CommonData( Stage primaryStage,
-                       ApplicationPreferences applicationPreferences ) {
+    public CommonData( Stage thePrimaryStage,
+                       ApplicationPreferences theApplicationPreferences ) {
 
-        this.applicationPreferences = applicationPreferences;
-        this.primaryStage = primaryStage;
+        applicationPreferences =
+                ( theApplicationPreferences != null )
+                        ? theApplicationPreferences
+                        : new ApplicationPreferences();
+        primaryStage = thePrimaryStage;
 
         exerciseItemListInitialMaster  = new ArrayList<>();
         exerciseItemListMaster         = FXCollections.observableArrayList();
@@ -285,7 +290,10 @@ public class CommonData {
      */
     public void setCurrentExerciseItem( ExerciseItem currentExerciseItem ) {
 
-        assert currentExerciseItemProperty.getValue() == null || currentExerciseItemProperty.getValue().getItemId() > 0;
+        if (DEBUG) {
+            assert currentExerciseItemProperty.getValue() == null
+                    || currentExerciseItemProperty.getValue().getItemId() > 0;
+        }
         currentExerciseItemProperty.setValue( currentExerciseItem );
     }
 
@@ -396,7 +404,7 @@ public class CommonData {
 
             newItem.addSolutionText(null);
 
-            Export.validateCurrentExerciseItem( this, true );
+            Export.validateCurrentExerciseItem( this, false );
         }
     }
 
