@@ -21,10 +21,12 @@ tmp/**
 .idea/
 *.iml
 
-# Mac OS X
+# macOS
 .DS_Store
+/launcher/unix/envsubst_options
+
+# Windows
+/launcher/windows/envsubst_options
 
 # Maven
 /target/
-/launcher/unix/envsubst_options
-/launcher/windows/envsubst_options
