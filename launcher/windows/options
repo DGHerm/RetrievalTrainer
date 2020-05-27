@@ -1,0 +1,7 @@
+--module-path %PATH_TO_FX%\lib;%MAVEN_REPOSITORY%\org\jdom\jdom2\2.0.6\jdom2-2.0.6.jar
+
+--add-modules javafx.controls,javafx.fxml,jdom2
+
+--add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
+
+--add-opens javafx.graphics/com.sun.javafx.application=ALL-UNNAMED
