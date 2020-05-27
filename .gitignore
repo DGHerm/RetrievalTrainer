@@ -27,3 +27,4 @@ tmp/**
 # Maven
 /target/
 /launcher/unix/envsubst_options
+/launcher/windows/envsubst_options
