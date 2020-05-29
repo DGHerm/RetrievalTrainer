@@ -40,6 +40,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -116,6 +118,9 @@ public class EditMenuController implements Initializable {
             "EditMenu.fxml",
             "EditMenu",
             commonData );
+
+        if (DEBUG) assert root != null;
+        if ( root == null ) return null;
 
         if ( menuBar != null ) {
             menuBar.getMenus().add( root );

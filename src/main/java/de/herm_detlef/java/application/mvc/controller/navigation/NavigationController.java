@@ -33,6 +33,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -84,6 +86,9 @@ public class NavigationController implements Initializable {
             "Navigation.fxml",
             "Navigation",
             commonData );
+
+        if (DEBUG) assert root != null;
+        if ( root == null ) return null;
 
         toolBar.getItems().add(0, root );
 

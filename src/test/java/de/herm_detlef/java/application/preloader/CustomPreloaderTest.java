@@ -1,27 +1,17 @@
 package de.herm_detlef.java.application.preloader;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static de.herm_detlef.java.application.preloader.CustomPreloader.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CustomPreloaderTest {
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
 
     @Test
     void checkVersionPatternJRE() {
 
         String version;
-        Outcome out;
+        CustomPreloader.Outcome out;
 
         version = "1.8.0_202";
         out = CustomPreloader.checkVersionPatternJRE( version );
@@ -64,7 +54,7 @@ class CustomPreloaderTest {
     void checkMinimumRequiredJRE() {
 
         String version;
-        Outcome out;
+        CustomPreloader.Outcome out;
 
         version = "11.0.2";
         out = CustomPreloader.checkMinimumRequiredJRE( version );

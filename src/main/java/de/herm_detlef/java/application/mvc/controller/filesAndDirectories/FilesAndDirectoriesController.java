@@ -29,6 +29,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -73,18 +75,16 @@ public class FilesAndDirectoriesController {
             null,
             commonData );
 
-        assert root != null;
+        if (DEBUG) assert root != null;
+        if ( root == null ) return;
+
         final Scene scene = new Scene( root,712,0 );
-        stage.setScene(
-            scene );
-        stage.setResizable(
-            false );
+        stage.setScene( scene );
+        stage.setResizable( false );
         stage.centerOnScreen();
         stage.sizeToScene();
-        stage.initOwner(
-            primaryStage );
-        stage.initModality(
-            Modality.APPLICATION_MODAL );
+        stage.initOwner( primaryStage );
+        stage.initModality( Modality.APPLICATION_MODAL );
     }
 
     public File openFileSaveDialog( final Stage primaryStage, final CommonData commonData ) {

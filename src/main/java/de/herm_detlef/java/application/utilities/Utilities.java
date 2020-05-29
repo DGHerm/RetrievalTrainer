@@ -29,6 +29,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -128,9 +130,11 @@ public class Utilities {
         try {
             fxmlLoader.load(); // invokes method 'initialize' on return
         } catch ( IOException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
+            // TODO
+//            Utilities.showErrorMessage(
+//                e.getClass().getSimpleName(),
+//                e.getMessage() );
+            if (DEBUG) e.printStackTrace();
             e.printStackTrace();
             return null;
         }

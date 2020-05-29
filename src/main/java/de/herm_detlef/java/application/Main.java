@@ -17,6 +17,8 @@
 package de.herm_detlef.java.application;
 
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Application;
@@ -24,6 +26,8 @@ import javafx.application.Preloader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 
 /* @formatter:off */
 
@@ -54,13 +58,15 @@ public class Main extends Application {
     @Override
     public void start( Stage primaryStage ) {
 
-        ApplicationPreferences applicationPreferences = new ApplicationPreferences();
-        CommonData commonData = new CommonData( primaryStage, applicationPreferences );
-        Remote remote = new Remote();
-
         primaryStage.setTitle( ApplicationConstants.TITLE_OF_MAIN_DIALOG );
 
-        ApplicationController appController = new ApplicationController( commonData, remote );
+        Injector injector = Guice.createInjector(
+                new StageModule<>( Stage.class, primaryStage ),
+                new BasicModule() );
+
+        CommonData commonData = injector.getInstance(CommonData.class);
+
+        ApplicationController appController = injector.getInstance( ApplicationController.class );
 
         // System.out.println( Platform.isFxApplicationThread() );
         //
@@ -74,7 +80,9 @@ public class Main extends Application {
                 null,
                 commonData);
 
-        assert root != null;
+        if (DEBUG) assert root != null;
+        if ( root == null ) return;
+
         Scene scene = new Scene( root, 800, 800 );
         scene.getStylesheets()
                 .add( ApplicationController.class
@@ -86,7 +94,7 @@ public class Main extends Application {
         primaryStage.centerOnScreen();
         // primaryStage.sizeToScene(); // TODO
 
-        commonData.getApplicationPreferences()
+        injector.getInstance( ApplicationPreferences.class )
                 .setStagePositionAndSizeBasedOnUserPreferences(
                         primaryStage,
                         "ApplicationStageOriginX",

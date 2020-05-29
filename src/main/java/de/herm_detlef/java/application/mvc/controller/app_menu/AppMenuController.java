@@ -32,6 +32,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -64,6 +66,9 @@ public class AppMenuController implements Initializable {
             "AppMenu.fxml",
             null,
             commonData );
+
+        if (DEBUG) assert root != null;
+        if ( root == null ) return null;
 
         menuBar.getMenus().add( root );
 

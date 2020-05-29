@@ -39,6 +39,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -164,7 +166,9 @@ public class ToolsPanelController implements Initializable {
             "ToolsPanel",
             commonData );
 
-        assert root != null;
+        if (DEBUG) assert root != null;
+        if ( root == null ) return null;
+
         final Scene scene = new Scene( root );
         tools.getStage().setScene( scene );
         tools.getStage().setResizable( false );

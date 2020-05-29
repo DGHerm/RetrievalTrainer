@@ -33,6 +33,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -73,6 +75,9 @@ public class ExerciseItemListMenuController implements Initializable {
             "ExerciseItemListMenu.fxml",
             "ExerciseItemListMenu",
             commonData );
+
+        if (DEBUG) assert root != null;
+        if ( root == null ) return null;
 
         menuBar.getMenus().add( root );
 

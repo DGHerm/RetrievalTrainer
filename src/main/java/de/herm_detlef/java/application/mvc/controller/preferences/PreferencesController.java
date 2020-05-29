@@ -21,7 +21,9 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+import com.google.inject.Inject;
 import de.herm_detlef.java.application.ApplicationConstants;
+import de.herm_detlef.java.application.ApplicationPreferences;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.event.ActionEvent;
@@ -37,6 +39,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+
 /* @formatter:off */
 
 /**
@@ -49,6 +53,9 @@ public class PreferencesController implements Initializable {
 
     private final Stage                  stage;
     private final CommonData             commonData;
+
+    @Inject
+    private final ApplicationPreferences applicationPreferences;
 
     @FXML
     private Parent                       root;
@@ -64,6 +71,7 @@ public class PreferencesController implements Initializable {
 
         this.commonData = commonData;
         stage = new Stage();
+        applicationPreferences = commonData.getApplicationPreferences();
     }
 
     public void openDialog() {
@@ -81,7 +89,9 @@ public class PreferencesController implements Initializable {
             "Preferences",
             commonData );
 
-        assert root != null;
+        if (DEBUG) assert root != null;
+        if ( root == null ) return;
+
         final Scene scene = new Scene( root );
         stage.setScene( scene );
         stage.setResizable( false );
@@ -90,7 +100,7 @@ public class PreferencesController implements Initializable {
         stage.initOwner( commonData.getPrimaryStage() );
         stage.initModality( Modality.APPLICATION_MODAL );
 
-        commonData.getApplicationPreferences().setStagePositionAndSizeBasedOnUserPreferences(
+        applicationPreferences.setStagePositionAndSizeBasedOnUserPreferences(
             stage,
             "PreferencesStageOriginX",
             "PreferencesStageOriginY",
@@ -131,13 +141,13 @@ public class PreferencesController implements Initializable {
             ( obj, oldValue, newValue ) -> {
                 commonData.setCurrentLocale(
                     newValue );
-                commonData.getApplicationPreferences().getUserPreferencesNode().put(
+                applicationPreferences.getUserPreferencesNode().put(
                     "Locale",
                     newValue.toString() );
                 reloadFXML();
             } );
 
-        commonData.getApplicationPreferences().saveStagePositionAndSizeToUserPreferences(
+        applicationPreferences.saveStagePositionAndSizeToUserPreferences(
             stage,
             "PreferencesStageOriginX",
             "PreferencesStageOriginY",
@@ -147,7 +157,7 @@ public class PreferencesController implements Initializable {
         maxNumberOfItems.setDisable( ! commonData.isShuffledSubset() );
         selectRandomly.selectedProperty().addListener( (obj, oldValue, newValue) -> {
             commonData.setShuffledSubset( newValue );
-            commonData.getApplicationPreferences()
+            applicationPreferences
                       .getUserPreferencesNode()
                       .put( "RandomOrder", newValue.toString() );
             maxNumberOfItems.setDisable( ! newValue );
@@ -165,7 +175,7 @@ public class PreferencesController implements Initializable {
         maxNumberOfItems.textProperty().addListener( (obj, oldValue, newValue) -> {
             if ( ! newValue.isEmpty() ) {
                 commonData.setMaxLengthOfSubset( Integer.parseInt( newValue ) );
-                commonData.getApplicationPreferences().getUserPreferencesNode().put(
+                applicationPreferences.getUserPreferencesNode().put(
                     "MaximumLengthOfSubset",
                     newValue );
             }
@@ -192,7 +202,9 @@ public class PreferencesController implements Initializable {
             "Preferences",
             commonData );
 
-        assert root != null;
+        if (DEBUG) assert root != null;
+        if ( root == null ) return;
+
         Scene scene = new Scene( root,
                                  stage.getScene().getWidth(),
                                  stage.getScene().getHeight() );
