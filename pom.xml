@@ -103,5 +103,12 @@
 			<artifactId>javafx-fxml</artifactId>
 			<version>14.0.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>4.2.3</version>
+			<classifier>no_aop</classifier>
+		</dependency>
 	</dependencies>
 </project>

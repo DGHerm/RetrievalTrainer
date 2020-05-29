@@ -1,6 +1,6 @@
---module-path %PATH_TO_FX%\lib;%MAVEN_REPOSITORY%\org\jdom\jdom2\2.0.6\jdom2-2.0.6.jar
+--module-path %PATH_TO_FX%\lib;%MAVEN_REPOSITORY%\org\jdom\jdom2\2.0.6\jdom2-2.0.6.jar;%MAVEN_REPOSITORY%\com\google\inject\guice\4.2.3\guice-4.2.3-no_aop.jar;%MAVEN_REPOSITORY%\javax\inject\javax.inject\1\javax.inject-1.jar;%MAVEN_REPOSITORY%\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;%MAVEN_REPOSITORY%\com\google\guava\guava\27.1-jre\guava-27.1-jre.jar;%MAVEN_REPOSITORY%\com\google\errorprone\error_prone_annotations\2.2.0\error_prone_annotations-2.2.0.jar;%MAVEN_REPOSITORY%\com\google\j2objc\j2objc-annotations\1.1\j2objc-annotations-1.1.jar;%MAVEN_REPOSITORY%\com\google\guava\failureaccess\1.0.1\failureaccess-1.0.1.jar;%MAVEN_REPOSITORY%\org\checkerframework\checker-qual\2.5.2\checker-qual-2.5.2.jar;%MAVEN_REPOSITORY%\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;%MAVEN_REPOSITORY%\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;%MAVEN_REPOSITORY%\org\codehaus\mojo\animal-sniffer-annotations\1.17\animal-sniffer-annotations-1.17.jar
 
---add-modules javafx.controls,javafx.fxml,jdom2
+--add-modules javafx.controls,javafx.fxml,jdom2,com.google.guice
 
 --add-exports javafx.graphics/com.sun.javafx.sg.prism=ALL-UNNAMED
 
