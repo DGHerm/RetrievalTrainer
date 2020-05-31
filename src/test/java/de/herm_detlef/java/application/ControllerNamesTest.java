@@ -16,9 +16,19 @@
  *
  */
 
-package de.herm_detlef.java.application.mvc.controller.preferences;
+package de.herm_detlef.java.application;
 
-public interface PreferencesController {
+import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl;
+import org.junit.jupiter.api.Test;
 
-    void openDialog();
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class ControllerNamesTest {
+
+    @Test
+    void values() {
+        assertEquals( Main.class.getName(), ControllerNames.MAIN );
+        assertEquals( PreferencesControllerImpl.class.getName(), ControllerNames.PREFERENCES );
+    }
+
 }

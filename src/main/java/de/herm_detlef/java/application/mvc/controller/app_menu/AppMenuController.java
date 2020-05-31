@@ -20,10 +20,13 @@ package de.herm_detlef.java.application.mvc.controller.app_menu;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.mvc.controller.about.AboutController;
 import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesController;
+import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -46,6 +49,7 @@ public class AppMenuController implements Initializable {
 
     private final CommonData commonData;
     private final Remote     remote;
+
 
     private AppMenuController( CommonData commonData,
                                Remote remote ) {
@@ -92,7 +96,8 @@ public class AppMenuController implements Initializable {
     @FXML
     private void onOpenPreferences( ActionEvent event ) {
 
-        PreferencesController pc = new PreferencesController( commonData );
+        PreferencesController pc = remote.getPreferencesController();
+
         pc.openDialog();
     }
 

@@ -137,7 +137,7 @@ public class CustomPreloader extends Preloader {
 
         preloaderStage.close();
         stage.setAlwaysOnTop( true );
-        stage.show();
+        stage.show();// about dialog
     }
 
     public static void main( String[] args ) {

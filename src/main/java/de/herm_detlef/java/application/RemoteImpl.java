@@ -22,6 +22,7 @@ import de.herm_detlef.java.application.mvc.controller.app_menu.AppMenuController
 import de.herm_detlef.java.application.mvc.controller.edit_menu.EditMenuController;
 import de.herm_detlef.java.application.mvc.controller.exerciseitemlist_menu.ExerciseItemListMenuController;
 import de.herm_detlef.java.application.mvc.controller.file_menu.FileMenuController;
+import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesController;
 import de.herm_detlef.java.application.mvc.view.Viewer;
 
 import javax.inject.Singleton;
@@ -43,6 +44,7 @@ public class RemoteImpl implements Remote {
     private ExerciseItemListMenuController exerciseMenuController;
     private EditMenuController     editMenuController;
     private Viewer                 viewer;
+    private PreferencesController  preferencesController;
 
     /**
      * TODO
@@ -174,5 +176,17 @@ public class RemoteImpl implements Remote {
     public void setViewer(Viewer viewer) {
 
         this.viewer = viewer;
+    }
+
+
+    @Override
+    public PreferencesController getPreferencesController() {
+        return preferencesController;
+    }
+
+    @Override
+    public void setPreferencesController(PreferencesController preferencesController) {
+
+        this.preferencesController = preferencesController;
     }
 }

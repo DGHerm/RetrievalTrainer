@@ -2,20 +2,29 @@ package de.herm_detlef.java.application;
 
 import com.google.inject.AbstractModule;
 
-import javax.inject.Singleton;
+import com.google.inject.name.Names;
+import javafx.stage.Stage;
 
-@Singleton
-public class StageModule<T> extends AbstractModule {
-    private final Class<T> type;
-    private final T stage;
 
-    public StageModule( Class<T> theType, T theStage ) {
-        type  = theType;
-        stage = theStage;
+public class StageModule extends AbstractModule {
+    private final Stage stage;
+    private final String controllerName;
+
+    public StageModule( Stage stage, String controllerName ) {
+        this.stage = stage;
+        this.controllerName = controllerName;
+    }
+
+    public StageModule( String controllerName ) {
+        this.stage = new Stage();
+        this.controllerName = controllerName;
     }
 
     @Override
     public void configure() {
-        bind( type ).toProvider( () -> stage ).asEagerSingleton();
+        bind( Stage.class )
+                .annotatedWith( Names.named(controllerName) )
+                .toProvider( () -> stage )
+                .asEagerSingleton();
     }
 }

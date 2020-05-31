@@ -16,9 +16,13 @@
  *
  */
 
-package de.herm_detlef.java.application.mvc.controller.preferences;
+package de.herm_detlef.java.application;
 
-public interface PreferencesController {
 
-    void openDialog();
+public interface ControllerNames {
+
+    String MAIN
+            = "de.herm_detlef.java.application.Main";
+    String PREFERENCES
+            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
 }

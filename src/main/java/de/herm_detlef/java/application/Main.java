@@ -28,6 +28,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ControllerNames.MAIN;
+import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
 
 /* @formatter:off */
 
@@ -58,11 +60,12 @@ public class Main extends Application {
     @Override
     public void start( Stage primaryStage ) {
 
-        primaryStage.setTitle( ApplicationConstants.TITLE_OF_MAIN_DIALOG );
-
         Injector injector = Guice.createInjector(
-                new StageModule<>( Stage.class, primaryStage ),
+                new StageModule( primaryStage, MAIN ),
+                new StageModule( PREFERENCES ),
                 new BasicModule() );
+
+        primaryStage.setTitle( ApplicationConstants.TITLE_OF_MAIN_DIALOG );
 
         CommonData commonData = injector.getInstance(CommonData.class);
 
