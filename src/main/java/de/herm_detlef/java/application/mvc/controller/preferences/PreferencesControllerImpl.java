@@ -40,6 +40,9 @@ import javafx.util.StringConverter;
 import javax.inject.Named;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES;
+import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
+import static javafx.stage.Modality.APPLICATION_MODAL;
 
 /* @formatter:off */
 
@@ -49,28 +52,27 @@ import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
  * @since 1.0
  *
  */
-public class PreferencesControllerImpl implements Initializable, PreferencesController {
+public class PreferencesControllerImpl implements PreferencesController, Initializable {
 
-    private final Stage                  stage;
-    private final CommonData             commonData;
+    private final Stage stage;
+    private final CommonData commonData;
 
     @Inject
     private final ApplicationPreferences applicationPreferences;
 
     @FXML
-    private Parent                       root;
+    private Parent root;
 
     @FXML
-    private ChoiceBox< Locale >          languageChoice;
+    private ChoiceBox<Locale> languageChoice;
     @FXML
-    private CheckBox                     selectRandomly;
+    private CheckBox selectRandomly;
     @FXML
-    private TextField                    maxNumberOfItems;
-
+    private TextField maxNumberOfItems;
 
 
     @Inject
-    public PreferencesControllerImpl(@Named(ControllerNames.PREFERENCES) Stage stage, CommonData commonData, Remote remote ) {
+    public PreferencesControllerImpl(@Named(PREFERENCES) Stage stage, CommonData commonData, Remote remote) {
 
         this.commonData = commonData;
         this.stage = stage;
@@ -87,135 +89,136 @@ public class PreferencesControllerImpl implements Initializable, PreferencesCont
             return;
         }
 
-        stage.setTitle( ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES );
+        stage.setTitle(TITLE_OF_DIALOG_PREFERENCES);
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
-            this,
-            "Preferences.fxml",
-            "Preferences",
-            commonData );
+                this,
+                "Preferences.fxml",
+                "Preferences",
+                commonData);
 
         if (DEBUG) assert root != null;
-        if ( root == null ) return;
+        if (root == null) return;
 
-        final Scene scene = new Scene( root );
-        stage.setScene( scene );
-        stage.setResizable( false );
+        final Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setResizable(false);
         stage.centerOnScreen();
         stage.sizeToScene();
-        stage.initOwner( commonData.getPrimaryStage() );
-        stage.initModality( Modality.APPLICATION_MODAL );
+        stage.initOwner(commonData.getPrimaryStage());
+        stage.initModality(APPLICATION_MODAL);
 
         applicationPreferences.setStagePositionAndSizeBasedOnUserPreferences(
-            stage,
-            "PreferencesStageOriginX",
-            "PreferencesStageOriginY",
-            "PreferencesStageWidth",
-            "PreferencesStageHeight" );
+                stage,
+                "PreferencesStageOriginX",
+                "PreferencesStageOriginY",
+                "PreferencesStageWidth",
+                "PreferencesStageHeight");
 
         stage.show();
     }
 
     @Override
-    public void initialize( URL location, ResourceBundle resources ) {
+    public void initialize(URL location, ResourceBundle resources) {
 
         languageChoice.getItems().addAll(
-            Locale.US,
-            Locale.GERMANY );
+                Locale.US,
+                Locale.GERMANY);
 
-        languageChoice.setValue(
-            commonData.getCurrentLocale() );
+        languageChoice.setValue( commonData.getCurrentLocale() );
 
         languageChoice.setConverter(
-            new StringConverter< Locale >() {
+                new StringConverter<Locale>() {
 
-                @Override
-                public String toString( Locale object ) {
+                    @Override
+                    public String toString(Locale object) {
 
-                    return object.getDisplayLanguage(
-                        commonData.getCurrentLocale() );
-                }
+                        return object.getDisplayLanguage( commonData.getCurrentLocale() );
+                    }
 
-                @Override
-                public Locale fromString( String string ) {
-
-                    return null;
-                }
-            } );
+                    @Override
+                    public Locale fromString(String string) {
+                        return null;
+                    }
+                });
 
         languageChoice.valueProperty().addListener(
-            ( obj, oldValue, newValue ) -> {
-                commonData.setCurrentLocale(
-                    newValue );
-                applicationPreferences.getUserPreferencesNode().put(
-                    "Locale",
-                    newValue.toString() );
-                reloadFXML();
-            } );
+                (obj, oldValue, newValue) -> {
+                    commonData.setCurrentLocale(newValue);
+                    applicationPreferences.getUserPreferencesNode().put(
+                            "Locale",
+                            newValue.toString());
+                    reloadFXML();
+                });
 
         applicationPreferences.saveStagePositionAndSizeToUserPreferences(
-            stage,
-            "PreferencesStageOriginX",
-            "PreferencesStageOriginY",
-            "PreferencesStageWidth",
-            "PreferencesStageHeight" );
-        selectRandomly.setSelected( commonData.isShuffledSubset() );
-        maxNumberOfItems.setDisable( ! commonData.isShuffledSubset() );
-        selectRandomly.selectedProperty().addListener( (obj, oldValue, newValue) -> {
-            commonData.setShuffledSubset( newValue );
+                stage,
+                "PreferencesStageOriginX",
+                "PreferencesStageOriginY",
+                "PreferencesStageWidth",
+                "PreferencesStageHeight");
+
+        selectRandomly.setSelected(commonData.isShuffledSubset());
+
+        maxNumberOfItems.setDisable(!commonData.isShuffledSubset());
+
+        selectRandomly.selectedProperty().addListener((obj, oldValue, newValue) -> {
+            commonData.setShuffledSubset(newValue);
             applicationPreferences
-                      .getUserPreferencesNode()
-                      .put( "RandomOrder", newValue.toString() );
-            maxNumberOfItems.setDisable( ! newValue );
+                    .getUserPreferencesNode()
+                    .put("RandomOrder", newValue.toString());
+            maxNumberOfItems.setDisable(!newValue);
         });
-        maxNumberOfItems.setText( Integer.toString( commonData.getMaxLengthOfSubset() ) );
-        maxNumberOfItems.addEventFilter( KeyEvent.KEY_TYPED, keyEvent -> {
+
+        maxNumberOfItems.setText(Integer.toString(commonData.getMaxLengthOfSubset()));
+
+        maxNumberOfItems.addEventFilter(KeyEvent.KEY_TYPED, keyEvent -> {
             String digits = "0123456789";
-            if ( ! digits.contains( keyEvent.getCharacter() ) )
+            if (!digits.contains(keyEvent.getCharacter()))
                 keyEvent.consume();
-            if ( maxNumberOfItems.getText().isEmpty() )
+            if (maxNumberOfItems.getText().isEmpty())
                 return;
-            if ( maxNumberOfItems.getText().length() > 2 )
+            if (maxNumberOfItems.getText().length() > 2)
                 keyEvent.consume();
         });
-        maxNumberOfItems.textProperty().addListener( (obj, oldValue, newValue) -> {
-            if ( ! newValue.isEmpty() ) {
-                commonData.setMaxLengthOfSubset( Integer.parseInt( newValue ) );
+
+        maxNumberOfItems.textProperty().addListener((obj, oldValue, newValue) -> {
+            if (!newValue.isEmpty()) {
+                commonData.setMaxLengthOfSubset(Integer.parseInt(newValue));
                 applicationPreferences.getUserPreferencesNode().put(
-                    "MaximumLengthOfSubset",
-                    newValue );
+                        "MaximumLengthOfSubset",
+                        newValue);
             }
         });
     }
 
     @FXML
-    void onLanguageChoice( ActionEvent event ) {
+    void onLanguageChoice(ActionEvent event) {
 
         if ( languageChoice.getValue() == null ) {
-            commonData.setCurrentLocale(
-                languageChoice.getValue() );
+            commonData.setCurrentLocale( languageChoice.getValue() );
         }
     }
 
     private void reloadFXML() {
 
-        stage.setTitle(
-            ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES );
+        stage.setTitle(TITLE_OF_DIALOG_PREFERENCES);
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
-            this,
-            "Preferences.fxml",
-            "Preferences",
-            commonData );
+                this,
+                "Preferences.fxml",
+                "Preferences",
+                commonData);
 
         if (DEBUG) assert root != null;
-        if ( root == null ) return;
+        if (root == null) return;
 
-        Scene scene = new Scene( root,
-                                 stage.getScene().getWidth(),
-                                 stage.getScene().getHeight() );
+        Scene scene = new Scene(
+                root,
+                stage.getScene().getWidth(),
+                stage.getScene().getHeight());
 
         // change scene
-        stage.setScene( scene );
+        stage.setScene(scene);
     }
 }
