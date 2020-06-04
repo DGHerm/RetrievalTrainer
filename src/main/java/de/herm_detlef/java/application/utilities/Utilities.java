@@ -18,6 +18,7 @@ package de.herm_detlef.java.application.utilities;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -100,11 +101,11 @@ public class Utilities {
     }
 
     public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,
-                                                                     String xmlResourceName,
+                                                                     String fxmlResourcePath,
                                                                      String languageResourceBundleName,
                                                                      CommonData commonData ) {
 
-        if ( controller == null || xmlResourceName == null ) {
+        if ( controller == null || fxmlResourcePath == null ) {
             assert false;
             return null;
         }
@@ -120,15 +121,17 @@ public class Utilities {
                 commonData.getCurrentLocale() );
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                controller.getClass().getResource( xmlResourceName ),
-                languageResourcesBundle );
+        FXMLLoader fxmlLoader = new FXMLLoader();
 
-        fxmlLoader.setController(
-            controller );
+        fxmlLoader.setResources( languageResourcesBundle );
 
-        try {
-            fxmlLoader.load(); // invokes method 'initialize' on return
+        fxmlLoader.setController( controller );
+
+        try (InputStream inputstream = controller
+                .getClass()
+                .getClassLoader()
+                .getResourceAsStream( fxmlResourcePath ) ) {
+            fxmlLoader.load( inputstream ); // invokes method 'initialize' on return
         } catch ( IOException e ) {
             // TODO
 //            Utilities.showErrorMessage(

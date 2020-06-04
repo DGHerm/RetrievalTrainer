@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.beans.property.BooleanProperty;
@@ -72,7 +73,7 @@ public class ExerciseItemListMenuController implements Initializable {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             exerciseMenu,
-            "ExerciseItemListMenu.fxml",
+                ViewResourcesPath.EXERCISE_ITEM_LIST_MENU,
             "ExerciseItemListMenu",
             commonData );
 

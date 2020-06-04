@@ -33,7 +33,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -93,7 +92,7 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
-                "Preferences.fxml",
+                ViewResourcesPath.PREFERENCES,
                 "Preferences",
                 commonData);
 
@@ -206,7 +205,7 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
-                "Preferences.fxml",
+                ViewResourcesPath.PREFERENCES,
                 "Preferences",
                 commonData);
 

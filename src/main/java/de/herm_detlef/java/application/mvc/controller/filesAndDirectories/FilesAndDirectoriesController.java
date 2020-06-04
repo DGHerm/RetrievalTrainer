@@ -21,6 +21,7 @@ import java.io.File;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -71,7 +72,7 @@ public class FilesAndDirectoriesController {
     private void prepareStageForFileChooser(Stage primaryStage, CommonData commonData, Stage stage) {
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
-            "FilesAndDirectories.fxml",
+                ViewResourcesPath.FILES_AND_DIRECTORIES,
             null,
             commonData );
 

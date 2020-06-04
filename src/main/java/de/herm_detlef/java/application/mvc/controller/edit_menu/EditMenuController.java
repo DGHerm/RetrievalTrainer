@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.io.Export;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
@@ -115,7 +116,7 @@ public class EditMenuController implements Initializable {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             editor,
-            "EditMenu.fxml",
+                ViewResourcesPath.EDIT_MENU,
             "EditMenu",
             commonData );
 

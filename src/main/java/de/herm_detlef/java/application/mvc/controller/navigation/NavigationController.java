@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.utilities.Utilities;
 import de.herm_detlef.java.application.mvc.view.Navigation;
@@ -83,7 +84,7 @@ public class NavigationController implements Initializable {
 
         HBox root = Utilities.createSceneGraphObjectFromFXMLResource(
             navi,
-            "Navigation.fxml",
+                ViewResourcesPath.NAVIGATION,
             "Navigation",
             commonData );
 

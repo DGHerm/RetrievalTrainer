@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
@@ -162,7 +163,7 @@ public class ToolsPanelController implements Initializable {
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             tools,
-            "ToolsPanelController.fxml",
+                ViewResourcesPath.TOOLS_PANEL,
             "ToolsPanel",
             commonData );
 

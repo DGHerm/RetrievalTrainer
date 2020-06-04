@@ -18,8 +18,10 @@ package de.herm_detlef.java.application.mvc.controller.about;
 
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import de.herm_detlef.java.application.ApplicationConstants;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,11 +57,14 @@ public class AboutController {
 
     public Scene createScene() {
 
-        final FXMLLoader fxmlLoader = new FXMLLoader( getClass().getResource( "About.fxml" ) );
+        final FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setController( this );
 
-        try {
-            fxmlLoader.load();
+        try (InputStream inputstream = this
+                .getClass()
+                .getClassLoader()
+                .getResourceAsStream( ViewResourcesPath.ABOUT ) ) {
+            fxmlLoader.load(inputstream); // invokes method 'initialize' on return
         } catch ( IOException e ) {
             Utilities.showErrorMessage(
                 e.getClass().getSimpleName(),

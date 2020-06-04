@@ -24,6 +24,7 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.mvc.controller.filesAndDirectories.FilesAndDirectoriesController;
 import de.herm_detlef.java.application.io.ExerciseItemListFactory;
@@ -49,7 +50,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
  */
 public class FileMenuController implements Initializable {
 
-    private final static String xmlResourceName            = "FileMenu.fxml";
+    private final static String xmlResourceName            = ViewResourcesPath.FILE_MENU;
     private final static String languageResourceBundleName = "FileMenu";
 
     private final CommonData    commonData;

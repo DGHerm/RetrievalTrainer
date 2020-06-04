@@ -27,6 +27,9 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+import java.net.URL;
+import java.util.Objects;
+
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ControllerNames.MAIN;
 import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
@@ -79,7 +82,7 @@ public class Main extends Application {
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 appController,
-                "Application.fxml",
+                ViewResourcesPath.APP,
                 null,
                 commonData);
 
@@ -87,10 +90,11 @@ public class Main extends Application {
         if ( root == null ) return;
 
         Scene scene = new Scene( root, 800, 800 );
-        scene.getStylesheets()
-                .add( ApplicationController.class
-                        .getResource("application.css")
-                        .toExternalForm() );
+        URL url = ApplicationController.class
+                .getClassLoader()
+                .getResource( ViewResourcesPath.APP_CSS );
+        if (DEBUG) assert url != null;
+        if ( url != null ) scene.getStylesheets().add( url.toString() );
 
         primaryStage.setScene( scene );
         primaryStage.setResizable( true );
