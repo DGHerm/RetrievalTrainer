@@ -65,7 +65,7 @@ public class AppMenuController implements Initializable {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
             appMenu,
-                ViewResourcesPath.APP_MENU,
+                ViewResourcesPath.APP_MENU_FXML,
             null,
             commonData );
 

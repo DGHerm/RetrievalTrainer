@@ -83,10 +83,10 @@ public class NavigationController implements Initializable {
                                                               remote );
 
         HBox root = Utilities.createSceneGraphObjectFromFXMLResource(
-            navi,
-                ViewResourcesPath.NAVIGATION,
-            "Navigation",
-            commonData );
+                navi,
+                ViewResourcesPath.NAVIGATION_FXML,
+                ViewResourcesPath.NAVIGATION_RESOURCE_BUNDLE,
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return null;

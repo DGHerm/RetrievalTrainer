@@ -92,8 +92,8 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
-                ViewResourcesPath.PREFERENCES,
-                "Preferences",
+                ViewResourcesPath.PREFERENCES_FXML,
+                ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE,
                 commonData);
 
         if (DEBUG) assert root != null;
@@ -205,8 +205,8 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
-                ViewResourcesPath.PREFERENCES,
-                "Preferences",
+                ViewResourcesPath.PREFERENCES_FXML,
+                ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE,
                 commonData);
 
         if (DEBUG) assert root != null;

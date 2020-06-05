@@ -63,19 +63,21 @@ public class ExerciseItemListMenuController implements Initializable {
 
         this.commonData = commonData;
         this.remote = remote;
-
         remote.setExerciseMenuController( this );
     }
 
-    public static ExerciseItemListMenuController create( final MenuBar menuBar, CommonData commonData, Remote remote ) {
+    public static ExerciseItemListMenuController create(
+            final MenuBar menuBar,
+            CommonData commonData,
+            Remote remote ) {
 
         ExerciseItemListMenuController exerciseMenu = new ExerciseItemListMenuController( commonData, remote );
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
-            exerciseMenu,
-                ViewResourcesPath.EXERCISE_ITEM_LIST_MENU,
-            "ExerciseItemListMenu",
-            commonData );
+                exerciseMenu,
+                ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_FXML,
+                ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE,
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return null;

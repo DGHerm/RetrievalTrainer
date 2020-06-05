@@ -72,7 +72,7 @@ public class FilesAndDirectoriesController {
     private void prepareStageForFileChooser(Stage primaryStage, CommonData commonData, Stage stage) {
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
-                ViewResourcesPath.FILES_AND_DIRECTORIES,
+                ViewResourcesPath.FILES_AND_DIRECTORIES_FXML,
             null,
             commonData );
 

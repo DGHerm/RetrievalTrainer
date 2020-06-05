@@ -28,7 +28,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.net.URL;
-import java.util.Objects;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ControllerNames.MAIN;
@@ -82,7 +81,7 @@ public class Main extends Application {
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 appController,
-                ViewResourcesPath.APP,
+                ViewResourcesPath.APP_FXML,
                 null,
                 commonData);
 

@@ -162,10 +162,10 @@ public class ToolsPanelController implements Initializable {
         tools.getStage().setTitle( ApplicationConstants.TITLE_OF_DIALOG_EDITOR_TOOLS );
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
-            tools,
-                ViewResourcesPath.TOOLS_PANEL,
-            "ToolsPanel",
-            commonData );
+                tools,
+                ViewResourcesPath.TOOLS_PANEL_FXML,
+                ViewResourcesPath.TOOLS_PANEL_RESOURCE_BUNDLE,
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return null;

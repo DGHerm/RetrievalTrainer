@@ -81,25 +81,6 @@ public class Utilities {
         return result.isPresent() && result.get() == ButtonType.YES;
     }
 
-    public static String createPackagePath( Object obj, String resourceName ) {
-
-        return Utilities.createPackagePath(
-            obj.getClass(),
-            resourceName );
-    }
-
-    public static String createPackagePath( Class< ? > cls, String resourceName ) {
-
-        if ( resourceName == null ) return null;
-
-        if ( cls.getPackage() == null ) return resourceName; // default package
-
-        StringBuilder packagePath = new StringBuilder( cls.getPackage().getName() );
-        packagePath.append( ApplicationConstants.PACKAGE_NAME_SEPARATOR )
-                .append( resourceName );
-        return packagePath.toString();
-    }
-
     public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,
                                                                      String fxmlResourcePath ) {
         return createSceneGraphObjectFromFXMLResource(
@@ -111,7 +92,7 @@ public class Utilities {
 
     public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,
                                                                      String fxmlResourcePath,
-                                                                     String languageResourceBundleName,
+                                                                     String languageResourceBundlePath,
                                                                      CommonData commonData ) {
 
         if ( controller == null || fxmlResourcePath == null ) {
@@ -123,28 +104,25 @@ public class Utilities {
 
         fxmlLoader.setController( controller );
 
-        if ( languageResourceBundleName != null
+        if ( languageResourceBundlePath != null
                 && commonData != null ) {
 
-            String languageResourceBundlePath = Utilities.createPackagePath(
-                    controller,
-                    languageResourceBundleName );
-
-            ResourceBundle languageResourcesBundle = null;
-            if ( languageResourceBundlePath != null ) {
-                languageResourcesBundle = ResourceBundle.getBundle(
-                        languageResourceBundlePath,
-                        commonData.getCurrentLocale() );
-            }
+            ResourceBundle languageResourcesBundle =
+                    ResourceBundle.getBundle(
+                            languageResourceBundlePath,
+                            commonData.getCurrentLocale(),
+                            controller.getClass().getClassLoader() );
 
             fxmlLoader.setResources( languageResourcesBundle );
         }
 
-        try (InputStream inputstream = controller
+        try ( InputStream inputstream = controller
                 .getClass()
                 .getClassLoader()
                 .getResourceAsStream( fxmlResourcePath ) ) {
+
             fxmlLoader.load( inputstream ); // invokes method 'initialize' on return
+
         } catch ( IOException e ) {
             // TODO
 //            Utilities.showErrorMessage(

@@ -27,47 +27,88 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ViewResourcesPathTest implements ViewResourcesPath {
 
+    final String resourcePathPrefix = System.getProperty("user.dir") + "/src/main/resources/";
+
+    final String failureMessagePrefix = "checked resource path: ";
+
+
     @Test
     void values() {
 
-        checkResourcePath( ABOUT );
+        checkResourcePath( ABOUT_FXML );
         checkResourcePath( ABOUT_CSS );
+        checkResourcePath( ABOUT_RESOURCE_BUNDLE + ".properties" );
 
-        checkResourcePath( APP );
+        checkResourcePath( APP_FXML );
         checkResourcePath( APP_CSS );
+        checkResourcePath( APP_RESOURCE_BUNDLE + ".properties" );
 
-        checkResourcePath( APP_MENU );
+        checkResourcePath( APP_MENU_FXML );
+        checkResourcePath( APP_MENU_RESOURCE_BUNDLE + ".properties" );
 
-        checkResourcePath( EDIT_MENU );
+        checkResourcePath( EDIT_MENU_FXML );
         checkResourcePath( EDIT_MENU_CSS );
+        checkResourcePath( EDIT_MENU_RESOURCE_BUNDLE + ".properties" );
+        checkResourcePath( EDIT_MENU_RESOURCE_BUNDLE + "_de.properties" );
+        checkResourcePath( EDIT_MENU_RESOURCE_BUNDLE + "_en.properties" );
 
-        checkResourcePath( TOOLS_PANEL );
+        checkResourcePath( TOOLS_PANEL_FXML );
         checkResourcePath( TOOLS_PANEL_CSS );
+        checkResourcePath( TOOLS_PANEL_RESOURCE_BUNDLE + ".properties" );
+        checkResourcePath( TOOLS_PANEL_RESOURCE_BUNDLE + "_de.properties" );
+        checkResourcePath( TOOLS_PANEL_RESOURCE_BUNDLE + "_en.properties" );
 
-        checkResourcePath( EXERCISE_ITEM_LIST_MENU );
+        checkResourcePath( EXERCISE_ITEM_LIST_MENU_FXML );
+        checkResourcePath( EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE + ".properties" );
+        checkResourcePath( EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE + "_de.properties" );
+        checkResourcePath( EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE + "_en.properties" );
 
-        checkResourcePath( FILE_MENU );
+        checkResourcePath( FILE_MENU_FXML );
+        checkResourcePath( FILE_MENU_RESOURCE_BUNDLE + ".properties" );
+        checkResourcePath( FILE_MENU_RESOURCE_BUNDLE + "_de.properties" );
+        checkResourcePath( FILE_MENU_RESOURCE_BUNDLE + "_en.properties" );
 
-        checkResourcePath( FILES_AND_DIRECTORIES );
+        checkResourcePath( FILES_AND_DIRECTORIES_FXML );
         checkResourcePath( FILES_AND_DIRECTORIES_CSS );
+        checkResourcePath( FILES_AND_DIRECTORIES_RESOURCE_BUNDLE + ".properties" );
 
-        checkResourcePath( NAVIGATION );
+        checkResourcePath( NAVIGATION_FXML );
+        checkResourcePath( NAVIGATION_RESOURCE_BUNDLE + ".properties" );
+        checkResourcePath( NAVIGATION_RESOURCE_BUNDLE + "_de.properties" );
+        checkResourcePath( NAVIGATION_RESOURCE_BUNDLE + "_en.properties" );
 
-        checkResourcePath( PREFERENCES );
+        checkResourcePath( PREFERENCES_FXML );
         checkResourcePath( PREFERENCES_CSS );
+        checkResourcePath( PREFERENCES_RESOURCE_BUNDLE + ".properties" );
+        checkResourcePath( PREFERENCES_RESOURCE_BUNDLE + "_de.properties" );
+        checkResourcePath( PREFERENCES_RESOURCE_BUNDLE + "_en.properties" );
     }
+
 
     private void checkResourcePath( final String resourcePath ) {
 
-        final String prefix = System.getProperty("user.dir") + "/src/main/resources/";
+        final String msg = getFailureMessage( resourcePath );
 
-        Path absolutePath = Path.of(prefix, resourcePath);
+        final Path absolutePath = Path.of( resourcePathPrefix, resourcePath );
 
-        assertTrue( Files.exists(        absolutePath, NOFOLLOW_LINKS ) );
-        assertTrue( Files.isRegularFile( absolutePath, NOFOLLOW_LINKS ) );
+        assertTrue( Files.exists(        absolutePath, NOFOLLOW_LINKS ), msg );
+        assertTrue( Files.isRegularFile( absolutePath, NOFOLLOW_LINKS ), msg );
 
-        String fileName = absolutePath.getFileName().toString();
-        assertEquals( fileName.toLowerCase(), fileName );
+        final String fileName = absolutePath.getFileName().toString();
+        assertEquals( fileName.toLowerCase(), fileName, msg );
+    }
+
+
+    private String getFailureMessage( final String resourcePath ) {
+
+        final StringBuilder failureMessage = new StringBuilder(150);
+
+        return failureMessage
+                .append( failureMessagePrefix )
+                .append( "\"" )
+                .append( resourcePath )
+                .append( "\"" )
+                .toString();
     }
 
 }

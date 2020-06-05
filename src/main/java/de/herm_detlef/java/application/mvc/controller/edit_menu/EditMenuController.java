@@ -110,15 +110,18 @@ public class EditMenuController implements Initializable {
         remote.setEditMenuController( this );
     }
 
-    public static EditMenuController create( MenuBar menuBar, CommonData commonData, Remote remote ) {
+    public static EditMenuController create(
+            MenuBar menuBar,
+            CommonData commonData,
+            Remote remote ) {
 
         EditMenuController editor = new EditMenuController( commonData, remote );
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
-            editor,
-                ViewResourcesPath.EDIT_MENU,
-            "EditMenu",
-            commonData );
+                editor,
+                ViewResourcesPath.EDIT_MENU_FXML,
+                ViewResourcesPath.EDIT_MENU_RESOURCE_BUNDLE,
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return null;

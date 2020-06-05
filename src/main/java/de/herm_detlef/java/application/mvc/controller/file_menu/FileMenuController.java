@@ -50,8 +50,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
  */
 public class FileMenuController implements Initializable {
 
-    private final static String xmlResourceName            = ViewResourcesPath.FILE_MENU;
-    private final static String languageResourceBundleName = "FileMenu";
+    private final static String languageResourceBundleName = "de/herm_detlef/java/application/mvc/view/file_menu/FileMenu";
 
     private final CommonData    commonData;
     private final Remote        remote;
@@ -62,23 +61,27 @@ public class FileMenuController implements Initializable {
     @FXML
     private MenuItem            menuItemSaveAs;
 
-    private FileMenuController( CommonData commonData,
-                                Remote remote ) {
+    private FileMenuController(
+            CommonData commonData,
+            Remote remote ) {
+
         this.commonData = commonData;
         this.remote = remote;
-
         remote.setFileMenuController( this );
     }
 
-    public static FileMenuController create( final MenuBar menuBar, CommonData commonData, Remote remote ) {
+    public static FileMenuController create(
+            final MenuBar menuBar,
+            CommonData commonData,
+            Remote remote ) {
 
         FileMenuController fileMenu = new FileMenuController( commonData, remote );
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
-            fileMenu,
-            FileMenuController.xmlResourceName,
-            FileMenuController.languageResourceBundleName,
-            commonData );
+                fileMenu,
+                ViewResourcesPath.FILE_MENU_FXML,
+                ViewResourcesPath.FILE_MENU_RESOURCE_BUNDLE,
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return null;

@@ -56,7 +56,7 @@ public class AboutController {
 
     public Scene createScene() {
 
-        Parent root = createSceneGraphObjectFromFXMLResource( this, ViewResourcesPath.ABOUT );
+        Parent root = createSceneGraphObjectFromFXMLResource( this, ViewResourcesPath.ABOUT_FXML);
 
         if ( licenseNotice == null || javaNotice == null || progressBar == null ) {
             assert false;
