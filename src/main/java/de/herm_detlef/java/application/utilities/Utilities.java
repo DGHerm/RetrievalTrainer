@@ -101,6 +101,15 @@ public class Utilities {
     }
 
     public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,
+                                                                     String fxmlResourcePath ) {
+        return createSceneGraphObjectFromFXMLResource(
+                controller,
+                fxmlResourcePath,
+                null,
+                null );
+    }
+
+    public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,
                                                                      String fxmlResourcePath,
                                                                      String languageResourceBundleName,
                                                                      CommonData commonData ) {
@@ -110,22 +119,26 @@ public class Utilities {
             return null;
         }
 
-        String languageResourceBundlePath = Utilities.createPackagePath(
-            controller,
-            languageResourceBundleName );
-
-        ResourceBundle languageResourcesBundle = null;
-        if ( languageResourceBundlePath != null ) {
-            languageResourcesBundle = ResourceBundle.getBundle(
-                languageResourceBundlePath,
-                commonData.getCurrentLocale() );
-        }
-
         FXMLLoader fxmlLoader = new FXMLLoader();
 
-        fxmlLoader.setResources( languageResourcesBundle );
-
         fxmlLoader.setController( controller );
+
+        if ( languageResourceBundleName != null
+                && commonData != null ) {
+
+            String languageResourceBundlePath = Utilities.createPackagePath(
+                    controller,
+                    languageResourceBundleName );
+
+            ResourceBundle languageResourcesBundle = null;
+            if ( languageResourceBundlePath != null ) {
+                languageResourcesBundle = ResourceBundle.getBundle(
+                        languageResourceBundlePath,
+                        commonData.getCurrentLocale() );
+            }
+
+            fxmlLoader.setResources( languageResourcesBundle );
+        }
 
         try (InputStream inputstream = controller
                 .getClass()

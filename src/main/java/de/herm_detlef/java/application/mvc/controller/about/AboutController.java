@@ -17,14 +17,10 @@
 package de.herm_detlef.java.application.mvc.controller.about;
 
 
-import java.io.IOException;
-import java.io.InputStream;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.ViewResourcesPath;
-import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
@@ -32,6 +28,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.utilities.Utilities.createSceneGraphObjectFromFXMLResource;
 
 /* @formatter:off */
 
@@ -57,63 +56,34 @@ public class AboutController {
 
     public Scene createScene() {
 
-        final FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setController( this );
-
-        try (InputStream inputstream = this
-                .getClass()
-                .getClassLoader()
-                .getResourceAsStream( ViewResourcesPath.ABOUT ) ) {
-            fxmlLoader.load(inputstream); // invokes method 'initialize' on return
-        } catch ( IOException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
-            return null;
-        }
+        Parent root = createSceneGraphObjectFromFXMLResource( this, ViewResourcesPath.ABOUT );
 
         if ( licenseNotice == null || javaNotice == null || progressBar == null ) {
             assert false;
             return null;
         }
 
-        assert licenseNotice.getText().isEmpty();
-        assert javaNotice.getText().isEmpty();
-        assert !progressBar.isVisible();
+        if (DEBUG) {
+            assert licenseNotice.getText().isEmpty();
+            assert javaNotice.getText().isEmpty();
+            assert ! progressBar.isVisible();
+        }
 
-        licenseNotice.setText(
-            ApplicationConstants.LICENSE_NOTICE );
-        licenseNotice.setWrapText(
-            true );
-        licenseNotice.setEditable(
-            false );
-        licenseNotice.setFont(
-            Font.font(
-                "Verdana",
-                13 ) );
-        licenseNotice.setMouseTransparent(
-            true );
-        licenseNotice.setFocusTraversable(
-            false );
+        licenseNotice.setText( ApplicationConstants.LICENSE_NOTICE );
+        licenseNotice.setWrapText( true );
+        licenseNotice.setEditable( false );
+        licenseNotice.setFont( Font.font("Verdana",13 ) );
+        licenseNotice.setMouseTransparent( true );
+        licenseNotice.setFocusTraversable( false );
 
-        javaNotice.setText(
-            ApplicationConstants.JAVA_VERSION_NOTICE );
-        javaNotice.setWrapText(
-            true );
-        javaNotice.setEditable(
-            false );
-        javaNotice.setFont(
-            Font.font(
-                "Verdana",
-                13 ) );
-        javaNotice.setMouseTransparent(
-            true );
-        javaNotice.setFocusTraversable(
-            false );
+        javaNotice.setText( ApplicationConstants.JAVA_VERSION_NOTICE );
+        javaNotice.setWrapText( true );
+        javaNotice.setEditable( false );
+        javaNotice.setFont( Font.font("Verdana", 13 ) );
+        javaNotice.setMouseTransparent( true );
+        javaNotice.setFocusTraversable( false );
 
-        Parent root = fxmlLoader.getRoot();
-
-        return new Scene(root,400,250);
+        return new Scene( root,400,250 );
     }
 
     public void showAbout( Stage primaryStage ) {
@@ -121,23 +91,18 @@ public class AboutController {
         assert primaryStage != null;
 
         final Stage stage = new Stage();
-        stage.setTitle(
-            "About" );
+        stage.setTitle( "About" );
         Scene scene = createScene();
         if ( scene == null ) {
             assert false;
             return;
         }
-        stage.setScene(
-            scene );
-        stage.setResizable(
-            false );
+        stage.setScene( scene );
+        stage.setResizable( false );
         stage.centerOnScreen();
         stage.sizeToScene();
-        stage.initOwner(
-            primaryStage );
-        stage.initModality(
-            Modality.APPLICATION_MODAL );
+        stage.initOwner( primaryStage );
+        stage.initModality( Modality.APPLICATION_MODAL );
         stage.show();
     }
 
