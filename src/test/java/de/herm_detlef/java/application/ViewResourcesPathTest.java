@@ -46,6 +46,8 @@ class ViewResourcesPathTest {
 
         checkResourcePath( APP_MENU_FXML.path() );
         checkResourcePath( APP_MENU_RESOURCE_BUNDLE.path() + ".properties" );
+        checkResourcePath( APP_MENU_RESOURCE_BUNDLE.path() + "_de.properties" );
+        checkResourcePath( APP_MENU_RESOURCE_BUNDLE.path() + "_en.properties" );
 
         checkResourcePath( EDIT_MENU_FXML.path() );
         checkResourcePath( EDIT_MENU_CSS.path() );

@@ -34,6 +34,7 @@ import javafx.scene.control.MenuBar;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ViewResourcesPath.APP_MENU_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.APP_MENU_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 
@@ -64,9 +65,10 @@ public class AppMenuController implements Initializable {
                                                            remote );
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
-            appMenu, APP_MENU_FXML.path(),
-            null,
-            commonData );
+                appMenu,
+                APP_MENU_FXML.path(),
+                APP_MENU_RESOURCE_BUNDLE.path(),
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return null;

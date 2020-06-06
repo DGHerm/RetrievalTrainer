@@ -27,12 +27,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Menu mnemonicParsing="false" text="App" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Menu mnemonicParsing="false" text="%L10N_MenuBar_Menu_App" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <MenuItem mnemonicParsing="false" onAction="#onShowAbout" text="About" />
-      <MenuItem mnemonicParsing="false" onAction="#onOpenPreferences" text="Preferences ..." />
+      <MenuItem mnemonicParsing="false" onAction="#onShowAbout" text="%L10N_MenuBar_Menu_App_MenuItem_About" />
+      <MenuItem mnemonicParsing="false" onAction="#onOpenPreferences" text="%L10N_MenuBar_Menu_App_MenuItem_Preferences" />
       <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem mnemonicParsing="false" onAction="#onQuit" text="Quit">
+      <MenuItem mnemonicParsing="false" onAction="#onQuit" text="%L10N_MenuBar_Menu_App_MenuItem_Quit">
          <accelerator>
             <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
          </accelerator>
