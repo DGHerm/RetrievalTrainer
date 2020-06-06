@@ -48,6 +48,7 @@ import javafx.scene.layout.VBox;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import static de.herm_detlef.java.application.ApplicationConstants.CURRENT_LOCALE;
 import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFERENCES_NODE;
 
 /* @formatter:off */
@@ -109,9 +110,7 @@ public class ApplicationControllerImpl implements Initializable, ApplicationCont
 
         remote.setApplicationController( this );
 
-        String[] lang = USER_PREFERENCES_NODE.get( "Locale", "en_US" ).split( "_" );
-
-        commonData.setCurrentLocale( new Locale( lang[ 0 ], lang[ 1 ] ) );
+        commonData.setCurrentLocale( CURRENT_LOCALE );
     }
 
     /**

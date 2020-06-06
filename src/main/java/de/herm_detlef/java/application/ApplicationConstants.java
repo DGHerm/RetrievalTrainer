@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.Locale;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
@@ -65,6 +66,13 @@ public class ApplicationConstants {
 
     // --------------------------
     public static final Preferences USER_PREFERENCES_NODE = Preferences.userNodeForPackage( ApplicationConstants.class );
+
+    // --------------------------
+    public static final Locale CURRENT_LOCALE;
+    static {
+        String[] lang = USER_PREFERENCES_NODE.get( "Locale", "en_US" ).split( "_" );
+        CURRENT_LOCALE = new Locale( lang[ 0 ], lang[ 1 ] );
+    }
 
     // --------------------------
     public static final KeyCombination ESC                                          = new KeyCodeCombination( KeyCode.ESCAPE );
@@ -211,7 +219,7 @@ public class ApplicationConstants {
     }
 
     // --------------------------
-    public static final String  NAME_OF_OPERATING_SYSTEM_OSX = "Mac OS X";
+    public static final String  NAME_OF_OPERATING_SYSTEM_OSX = "macOS";
 
     // --------------------------
 
@@ -219,9 +227,7 @@ public class ApplicationConstants {
 
     // --------------------------
 
-    public static final Font    FONT_OF_QUESTION_CODE        = Font.font(
-        "Verdana",
-        13 );
+    public static final Font    FONT_OF_QUESTION_CODE        = Font.font("Verdana",13 );
 
     // --------------------------
     public static final String  FORM_OF_SCORE_MESSAGE;
@@ -250,9 +256,4 @@ public class ApplicationConstants {
 
     // --------------------------
     public static final int MAXIMUM_NUMBER_OF_EXERCISE_ITEMS = 999;
-
-
-
-
-
 }
