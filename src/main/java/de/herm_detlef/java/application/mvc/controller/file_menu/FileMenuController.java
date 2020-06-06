@@ -38,6 +38,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.FILE_MENU_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.FILE_MENU_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 
@@ -79,8 +81,8 @@ public class FileMenuController implements Initializable {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
                 fileMenu,
-                ViewResourcesPath.FILE_MENU_FXML,
-                ViewResourcesPath.FILE_MENU_RESOURCE_BUNDLE,
+                FILE_MENU_FXML.path(),
+                FILE_MENU_RESOURCE_BUNDLE.path(),
                 commonData );
 
         if (DEBUG) assert root != null;

@@ -30,8 +30,11 @@ import javafx.scene.Scene;
 import java.net.URL;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_MAIN_DIALOG;
 import static de.herm_detlef.java.application.ControllerNames.MAIN;
 import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
+import static de.herm_detlef.java.application.ViewResourcesPath.APP_CSS;
+import static de.herm_detlef.java.application.ViewResourcesPath.APP_FXML;
 
 /* @formatter:off */
 
@@ -67,7 +70,7 @@ public class Main extends Application {
                 new StageModule( PREFERENCES ),
                 new BasicModule() );
 
-        primaryStage.setTitle( ApplicationConstants.TITLE_OF_MAIN_DIALOG );
+        primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );
 
         CommonData commonData = injector.getInstance(CommonData.class);
 
@@ -81,7 +84,7 @@ public class Main extends Application {
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 appController,
-                ViewResourcesPath.APP_FXML,
+                APP_FXML.path(),
                 null,
                 commonData);
 
@@ -91,7 +94,7 @@ public class Main extends Application {
         Scene scene = new Scene( root, 800, 800 );
         URL url = ApplicationController.class
                 .getClassLoader()
-                .getResource( ViewResourcesPath.APP_CSS );
+                .getResource( APP_CSS.path() );
         if (DEBUG) assert url != null;
         if ( url != null ) scene.getStylesheets().add( url.toString() );
 

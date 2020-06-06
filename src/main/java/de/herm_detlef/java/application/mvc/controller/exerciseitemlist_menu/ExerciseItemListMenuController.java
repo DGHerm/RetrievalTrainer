@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.beans.property.BooleanProperty;
@@ -35,6 +34,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 
@@ -75,8 +76,8 @@ public class ExerciseItemListMenuController implements Initializable {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
                 exerciseMenu,
-                ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_FXML,
-                ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE,
+                EXERCISE_ITEM_LIST_MENU_FXML.path(),
+                EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE.path(),
                 commonData );
 
         if (DEBUG) assert root != null;

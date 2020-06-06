@@ -35,6 +35,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.HBox;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.NAVIGATION_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.NAVIGATION_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 
@@ -84,8 +86,8 @@ public class NavigationController implements Initializable {
 
         HBox root = Utilities.createSceneGraphObjectFromFXMLResource(
                 navi,
-                ViewResourcesPath.NAVIGATION_FXML,
-                ViewResourcesPath.NAVIGATION_RESOURCE_BUNDLE,
+                NAVIGATION_FXML.path(),
+                NAVIGATION_RESOURCE_BUNDLE.path(),
                 commonData );
 
         if (DEBUG) assert root != null;

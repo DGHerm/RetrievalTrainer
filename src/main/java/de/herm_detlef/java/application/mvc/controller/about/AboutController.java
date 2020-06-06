@@ -30,6 +30,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.ABOUT_FXML;
 import static de.herm_detlef.java.application.utilities.Utilities.createSceneGraphObjectFromFXMLResource;
 
 /* @formatter:off */
@@ -56,7 +57,7 @@ public class AboutController {
 
     public Scene createScene() {
 
-        Parent root = createSceneGraphObjectFromFXMLResource( this, ViewResourcesPath.ABOUT_FXML);
+        Parent root = createSceneGraphObjectFromFXMLResource( this, ABOUT_FXML.path() );
 
         if ( licenseNotice == null || javaNotice == null || progressBar == null ) {
             assert false;

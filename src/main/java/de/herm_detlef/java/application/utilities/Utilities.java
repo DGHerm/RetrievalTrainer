@@ -22,15 +22,16 @@ import java.io.InputStream;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
-import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ApplicationConstants.*;
+import static javafx.scene.control.Alert.AlertType.*;
+import static javafx.scene.control.ButtonType.NO;
+import static javafx.scene.control.ButtonType.YES;
 
 /* @formatter:off */
 
@@ -44,41 +45,35 @@ public class Utilities {
 
     public static void showErrorMessage( String header, String content ) {
 
-        Alert alert = new Alert( AlertType.ERROR );
-        alert.setTitle(
-            ApplicationConstants.TITLE_OF_DIALOG_ERROR_MESSAGE );
-        alert.setHeaderText(
-            header );
-        alert.setContentText(
-            content );
+        Alert alert = new Alert( ERROR );
+        alert.setTitle( TITLE_OF_DIALOG_ERROR_MESSAGE );
+        alert.setHeaderText( header );
+        alert.setContentText( content );
         alert.showAndWait();
     }
 
     public static void showScoreMessage( String header, String content ) {
 
-        Alert alert = new Alert( AlertType.INFORMATION );
-        alert.setTitle(
-            ApplicationConstants.TITLE_OF_DIALOG_SCORE_MESSAGE );
-        alert.setHeaderText(
-            header );
-        alert.setContentText(
-            content );
+        Alert alert = new Alert( INFORMATION );
+        alert.setTitle( TITLE_OF_DIALOG_SCORE_MESSAGE );
+        alert.setHeaderText( header );
+        alert.setContentText( content );
         alert.showAndWait();
     }
 
     public static boolean showConfirmationMessage( String header, String content ) {
 
-        Alert alert = new Alert( AlertType.CONFIRMATION, content, ButtonType.YES, ButtonType.NO );
+        Alert alert = new Alert( CONFIRMATION, content, YES, NO );
         alert.setTitle(null);
         alert.setHeaderText( header );
 
-        Button yesButton = (Button) alert.getDialogPane().lookupButton( ButtonType.YES );
+        Button yesButton = (Button) alert.getDialogPane().lookupButton( YES );
         yesButton.setDefaultButton( false );
-        Button noButton = (Button) alert.getDialogPane().lookupButton( ButtonType.NO );
+        Button noButton = (Button) alert.getDialogPane().lookupButton( NO );
         noButton.setDefaultButton( true );
 
         Optional<ButtonType> result = alert.showAndWait();
-        return result.isPresent() && result.get() == ButtonType.YES;
+        return result.isPresent() && result.get() == YES;
     }
 
     public static < T, R > R createSceneGraphObjectFromFXMLResource( T controller,
@@ -124,12 +119,10 @@ public class Utilities {
             fxmlLoader.load( inputstream ); // invokes method 'initialize' on return
 
         } catch ( IOException e ) {
-            // TODO
-//            Utilities.showErrorMessage(
-//                e.getClass().getSimpleName(),
-//                e.getMessage() );
+            Utilities.showErrorMessage(
+                e.getClass().getSimpleName(),
+                e.getMessage() );
             if (DEBUG) e.printStackTrace();
-            e.printStackTrace();
             return null;
         }
 

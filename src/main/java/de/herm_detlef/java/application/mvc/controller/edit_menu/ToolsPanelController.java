@@ -41,6 +41,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.TOOLS_PANEL_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.TOOLS_PANEL_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 
@@ -163,8 +165,8 @@ public class ToolsPanelController implements Initializable {
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 tools,
-                ViewResourcesPath.TOOLS_PANEL_FXML,
-                ViewResourcesPath.TOOLS_PANEL_RESOURCE_BUNDLE,
+                TOOLS_PANEL_FXML.path(),
+                TOOLS_PANEL_RESOURCE_BUNDLE.path(),
                 commonData );
 
         if (DEBUG) assert root != null;

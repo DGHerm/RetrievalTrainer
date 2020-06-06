@@ -42,6 +42,8 @@ import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.EDIT_MENU_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.EDIT_MENU_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 
@@ -119,8 +121,8 @@ public class EditMenuController implements Initializable {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
                 editor,
-                ViewResourcesPath.EDIT_MENU_FXML,
-                ViewResourcesPath.EDIT_MENU_RESOURCE_BUNDLE,
+                EDIT_MENU_FXML.path(),
+                EDIT_MENU_RESOURCE_BUNDLE.path(),
                 commonData );
 
         if (DEBUG) assert root != null;

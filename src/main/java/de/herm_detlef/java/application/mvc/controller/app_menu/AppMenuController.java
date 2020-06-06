@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.ViewResourcesPath;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.mvc.controller.about.AboutController;
 import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesController;
@@ -34,6 +33,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.APP_MENU_FXML;
 
 /* @formatter:off */
 
@@ -64,8 +64,7 @@ public class AppMenuController implements Initializable {
                                                            remote );
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
-            appMenu,
-                ViewResourcesPath.APP_MENU_FXML,
+            appMenu, APP_MENU_FXML.path(),
             null,
             commonData );
 

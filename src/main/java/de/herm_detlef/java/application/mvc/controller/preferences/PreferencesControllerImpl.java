@@ -41,6 +41,8 @@ import javax.inject.Named;
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_DIALOG_PREFERENCES;
 import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
+import static de.herm_detlef.java.application.ViewResourcesPath.PREFERENCES_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE;
 import static javafx.stage.Modality.APPLICATION_MODAL;
 
 /* @formatter:off */
@@ -92,8 +94,8 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
-                ViewResourcesPath.PREFERENCES_FXML,
-                ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE,
+                PREFERENCES_FXML.path(),
+                PREFERENCES_RESOURCE_BUNDLE.path(),
                 commonData);
 
         if (DEBUG) assert root != null;
@@ -205,8 +207,8 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
-                ViewResourcesPath.PREFERENCES_FXML,
-                ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE,
+                PREFERENCES_FXML.path(),
+                PREFERENCES_RESOURCE_BUNDLE.path(),
                 commonData);
 
         if (DEBUG) assert root != null;

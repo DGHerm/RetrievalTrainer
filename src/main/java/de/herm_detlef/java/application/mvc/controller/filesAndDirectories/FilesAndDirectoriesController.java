@@ -31,6 +31,7 @@ import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ViewResourcesPath.FILES_AND_DIRECTORIES_FXML;
 
 /* @formatter:off */
 
@@ -72,7 +73,7 @@ public class FilesAndDirectoriesController {
     private void prepareStageForFileChooser(Stage primaryStage, CommonData commonData, Stage stage) {
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
             this,
-                ViewResourcesPath.FILES_AND_DIRECTORIES_FXML,
+                FILES_AND_DIRECTORIES_FXML.path(),
             null,
             commonData );
 
