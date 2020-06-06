@@ -106,6 +106,11 @@ public class ApplicationControllerImpl implements Initializable, ApplicationCont
         this.remote = remote;
 
         remote.setApplicationController( this );
+
+        String[] lang = commonData.getApplicationPreferences()
+                .getUserPreferencesNode().get( "Locale", "en_US" ).split( "_" );
+
+        commonData.setCurrentLocale( new Locale( lang[ 0 ], lang[ 1 ] ) );
     }
 
     /**
@@ -122,11 +127,6 @@ public class ApplicationControllerImpl implements Initializable, ApplicationCont
         });
 
         commonData.getEditingModeProperty().addListener( (obj, oldValue, newValue) -> buttonScore.setDisable( newValue ) );
-
-        String[] lang = commonData.getApplicationPreferences()
-                                  .getUserPreferencesNode().get( "Locale", "en_US" ).split( "_" );
-
-        commonData.setCurrentLocale( new Locale( lang[ 0 ], lang[ 1 ] ) );
 
         AppMenuController.create( menuBar, commonData, remote );
 

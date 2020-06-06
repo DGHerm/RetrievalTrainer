@@ -72,8 +72,8 @@
         <items>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
-                  <Button fx:id="buttonScore" disable="true" mnemonicParsing="false" onAction="#onScore" text="Score" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="buttonCheck" mnemonicParsing="false" onAction="#onCheck" text="Check" visible="false">
+                  <Button fx:id="buttonScore" disable="true" mnemonicParsing="false" onAction="#onScore" text="%L10N_ToolBar_Button_Score" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="buttonCheck" mnemonicParsing="false" onAction="#onCheck" text="%L10N_ToolBar_Button_Check" visible="false">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

@@ -33,8 +33,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_MAIN_DIALOG;
 import static de.herm_detlef.java.application.ControllerNames.MAIN;
 import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
-import static de.herm_detlef.java.application.ViewResourcesPath.APP_CSS;
-import static de.herm_detlef.java.application.ViewResourcesPath.APP_FXML;
+import static de.herm_detlef.java.application.ViewResourcesPath.*;
 
 /* @formatter:off */
 
@@ -85,8 +84,8 @@ public class Main extends Application {
         Parent root = Utilities.createSceneGraphObjectFromFXMLResource(
                 appController,
                 APP_FXML.path(),
-                null,
-                commonData);
+                APP_RESOURCE_BUNDLE.path(),
+                commonData );
 
         if (DEBUG) assert root != null;
         if ( root == null ) return;
