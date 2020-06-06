@@ -29,8 +29,8 @@
 
 <Menu mnemonicParsing="false" text="%L10N_MenuBar_Menu_ExerciseItemList" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <MenuItem fx:id="menuItemNewExerciseItemList" mnemonicParsing="false" text="New Exercise Item List" />
+      <MenuItem fx:id="menuItemNewExerciseItemList" mnemonicParsing="false" text="%L10N_MenuBar_Menu_ExerciseItemList_New_Exercise_Item_list" />
       <SeparatorMenuItem mnemonicParsing="false" />
-      <CheckMenuItem fx:id="checkMenuItemEditExercise" disable="true" mnemonicParsing="false" text="Edit Exercise Item List" />
+      <CheckMenuItem fx:id="checkMenuItemEditExercise" disable="true" mnemonicParsing="false" text="%L10N_MenuBar_Menu_ExerciseItemList_Edit_Exercise_Item_list" />
    </items>
 </Menu>
