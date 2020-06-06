@@ -78,7 +78,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
                                  <children>
-                                    <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" text="select exercise items randomly" VBox.vgrow="ALWAYS">
+                                    <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" text="%L10N_Stage_Preferences_Label_Select_Exercise_Items_Randomly" VBox.vgrow="ALWAYS">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -113,7 +113,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" maxWidth="300.0" minWidth="300.0" prefWidth="300.0">
                                  <children>
-                                    <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" text="maximum number of selected exercise items" VBox.vgrow="ALWAYS">
+                                    <Label alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="50.0" prefWidth="300.0" text="%L10N_Stage_Preferences_Label_Maximum_Number_Selected_Exercise_Items" VBox.vgrow="ALWAYS">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
