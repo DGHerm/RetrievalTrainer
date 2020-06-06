@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.logging.Logger;
+import java.util.prefs.Preferences;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
@@ -61,6 +62,9 @@ public class ApplicationConstants {
 
         // see JLS, 14.21
     }
+
+    // --------------------------
+    public static final Preferences USER_PREFERENCES_NODE = Preferences.userNodeForPackage( ApplicationConstants.class );
 
     // --------------------------
     public static final KeyCombination ESC                                          = new KeyCodeCombination( KeyCode.ESCAPE );

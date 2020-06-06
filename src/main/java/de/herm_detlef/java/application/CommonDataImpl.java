@@ -37,6 +37,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
+import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFERENCES_NODE;
 
 /* @formatter:off */
 
@@ -97,15 +98,9 @@ public class CommonDataImpl implements CommonData {
 
         recentlyOpenedFileProperty     = new SimpleObjectProperty<>();
         recentlySavedFileProperty      = new SimpleObjectProperty<>();
-        shuffledSubset                 = Boolean.parseBoolean(
-                                            applicationPreferences
-                                                .getUserPreferencesNode()
-                                                .get( "RandomOrder", "false" ) );
+        shuffledSubset                 = Boolean.parseBoolean( USER_PREFERENCES_NODE.get( "RandomOrder", "false" ) );
 
-        maxLengthOfSubset              = Integer.parseInt(
-                                            applicationPreferences
-                                                .getUserPreferencesNode()
-                                                .get( "MaximumLengthOfSubset", 
+        maxLengthOfSubset              = Integer.parseInt( USER_PREFERENCES_NODE.get( "MaximumLengthOfSubset",
                                                       Integer.toString( ApplicationConstants.MAXIMUM_NUMBER_OF_EXERCISE_ITEMS ) ) );
         exerciseItemListMasterChangeListener = c -> {
 

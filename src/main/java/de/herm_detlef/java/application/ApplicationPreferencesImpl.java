@@ -23,6 +23,8 @@ import javafx.stage.Stage;
 
 import javax.inject.Singleton;
 
+import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFERENCES_NODE;
+
 /* @formatter:off */
 
 /**
@@ -35,23 +37,6 @@ import javax.inject.Singleton;
 @Singleton
 public class ApplicationPreferencesImpl implements ApplicationPreferences {
 
-    private final Preferences userPreferencesNode;
-
-    public ApplicationPreferencesImpl() {
-
-        userPreferencesNode = Preferences.userNodeForPackage( getClass() );
-    }
-
-    /**
-     * TODO
-     * <p>
-     *
-     * @since 1.0
-     */
-    public Preferences getUserPreferencesNode() {
-
-        return userPreferencesNode;
-    }
 
     /**
      * TODO
@@ -67,22 +52,22 @@ public class ApplicationPreferencesImpl implements ApplicationPreferences {
 
         stage.xProperty().addListener( ( observable, oldValue, newValue ) -> {
             if ( !stage.isShowing() ) return;
-            userPreferencesNode.put( keyStageOriginX, Integer.toString( newValue.intValue() ) );
+            USER_PREFERENCES_NODE.put( keyStageOriginX, Integer.toString( newValue.intValue() ) );
         } );
 
         stage.yProperty().addListener( ( observable, oldValue, newValue ) -> {
             if ( !stage.isShowing() ) return;
-            userPreferencesNode.put( keyStageOriginY, Integer.toString( newValue.intValue() ) );
+            USER_PREFERENCES_NODE.put( keyStageOriginY, Integer.toString( newValue.intValue() ) );
         } );
 
         stage.widthProperty().addListener( ( observable, oldValue, newValue ) -> {
             if ( !stage.isShowing() ) return;
-            userPreferencesNode.put( keyStageWidth, Integer.toString( newValue.intValue() ) );
+            USER_PREFERENCES_NODE.put( keyStageWidth, Integer.toString( newValue.intValue() ) );
         } );
 
         stage.heightProperty().addListener( ( observable, oldValue, newValue ) -> {
             if ( !stage.isShowing() ) return;
-            userPreferencesNode.put( keyStageHeight, Integer.toString( newValue.intValue() ) );
+            USER_PREFERENCES_NODE.put( keyStageHeight, Integer.toString( newValue.intValue() ) );
         } );
     }
 
@@ -99,13 +84,13 @@ public class ApplicationPreferencesImpl implements ApplicationPreferences {
                                                                final String keyStageHeight ) {
 
         double originX = Double.parseDouble(
-            userPreferencesNode.get( keyStageOriginX, Double.toString( stage.getX() ) ) );
+                USER_PREFERENCES_NODE.get( keyStageOriginX, Double.toString( stage.getX() ) ) );
         double originY = Double.parseDouble(
-            userPreferencesNode.get( keyStageOriginY, Double.toString( stage.getY() ) ) );
+                USER_PREFERENCES_NODE.get( keyStageOriginY, Double.toString( stage.getY() ) ) );
         double width = Double.parseDouble(
-            userPreferencesNode.get( keyStageWidth, Double.toString( stage.getWidth() ) ) );
+                USER_PREFERENCES_NODE.get( keyStageWidth, Double.toString( stage.getWidth() ) ) );
         double height = Double.parseDouble(
-            userPreferencesNode.get( keyStageHeight, Double.toString( stage.getHeight() ) ) );
+                USER_PREFERENCES_NODE.get( keyStageHeight, Double.toString( stage.getHeight() ) ) );
 
         stage.setX( originX );
         stage.setY( originY );

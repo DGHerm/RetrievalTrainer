@@ -22,8 +22,6 @@ import java.util.prefs.Preferences;
 
 public interface ApplicationPreferences {
 
-    Preferences getUserPreferencesNode();
-
     void saveStagePositionAndSizeToUserPreferences(final Stage stage,
                                                    final String keyStageOriginX,
                                                    final String keyStageOriginY,
