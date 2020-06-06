@@ -19,14 +19,16 @@ package de.herm_detlef.java.application;
 import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl;
 import org.junit.jupiter.api.Test;
 
+import static de.herm_detlef.java.application.ControllerNames.MAIN;
+import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ControllerNamesTest {
 
     @Test
     void values() {
-        assertEquals( Main.class.getName(), ControllerNames.MAIN );
-        assertEquals( PreferencesControllerImpl.class.getName(), ControllerNames.PREFERENCES );
+        assertEquals( Main.class.getName(), MAIN );
+        assertEquals( PreferencesControllerImpl.class.getName(), PREFERENCES );
     }
 
 }

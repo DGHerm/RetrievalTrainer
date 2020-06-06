@@ -19,6 +19,8 @@ package de.herm_detlef.java.application;
 
 public interface ControllerNames {
 
+    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
+
     String MAIN
             = "de.herm_detlef.java.application.Main";
     String PREFERENCES
