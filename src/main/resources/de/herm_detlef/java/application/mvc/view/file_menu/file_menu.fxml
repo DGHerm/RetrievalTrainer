@@ -29,17 +29,17 @@
 
 <Menu mnemonicParsing="false" text="%L10N_MenuBar_Menu_File" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <items>
-      <MenuItem mnemonicParsing="false" onAction="#onOpenFileChooser" text="Read Exercise Item List ...">
+      <MenuItem mnemonicParsing="false" onAction="#onOpenFileChooser" text="%L10N_MenuBar_Menu_File_Read_Exercise_Item_List">
          <accelerator>
             <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
          </accelerator>
       </MenuItem>
       <SeparatorMenuItem mnemonicParsing="false" />
-      <MenuItem fx:id="menuItemSave" disable="true" mnemonicParsing="false" text="Save Exercise Item List">
+      <MenuItem fx:id="menuItemSave" disable="true" mnemonicParsing="false" text="%L10N_MenuBar_Menu_File_Save_Exercise_Item_List">
          <accelerator>
             <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
          </accelerator>
       </MenuItem>
-      <MenuItem fx:id="menuItemSaveAs" disable="true" mnemonicParsing="false" text="Save As..." />
+      <MenuItem fx:id="menuItemSaveAs" disable="true" mnemonicParsing="false" text="%L10N_MenuBar_Menu_File_Save_As" />
    </items>
 </Menu>
