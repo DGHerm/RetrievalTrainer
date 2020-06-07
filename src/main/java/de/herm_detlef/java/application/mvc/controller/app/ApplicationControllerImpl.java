@@ -60,7 +60,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFEREN
  *
  */
 @Singleton
-public class ApplicationControllerImpl implements Initializable, ApplicationController {
+class ApplicationControllerImpl implements Initializable, ApplicationController {
 
     private final CommonData       commonData;
     private final Remote remote;
@@ -103,7 +103,7 @@ public class ApplicationControllerImpl implements Initializable, ApplicationCont
      * @since 1.0
      */
     @Inject
-    public ApplicationControllerImpl(CommonData commonData,
+    private ApplicationControllerImpl(CommonData commonData,
                                      Remote remote ) {
         this.commonData = commonData;
         this.remote = remote;

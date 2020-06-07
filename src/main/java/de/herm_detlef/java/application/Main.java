@@ -20,6 +20,7 @@ package de.herm_detlef.java.application;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
+import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Application;
 import javafx.application.Preloader;
@@ -67,6 +68,7 @@ public class Main extends Application {
         Injector injector = Guice.createInjector(
                 new StageModule( primaryStage, MAIN ),
                 new StageModule( PREFERENCES ),
+                new ApplicationModule(),
                 new BasicModule() );
 
         primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );

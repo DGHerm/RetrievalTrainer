@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import de.herm_detlef.java.application.io.Export;
-import de.herm_detlef.java.application.mvc.controller.app.ApplicationControllerImpl;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -204,18 +203,6 @@ public class CommonDataImpl implements CommonData {
             exerciseItemListMasterChangeListener );
     }
 
-    /**
-     * <em>Getter</em> method.
-     * <p>
-     * Returns a reference to the instance of class {@code Stage},
-     * which has been given as argument to method {@link de.herm_detlef.java.application.Main#start start}
-     * of class {@link de.herm_detlef.java.application.Main Main}.
-     * <p>
-     * This stage uses the scene for the root node, which is
-     * controlled by the instance of class {@link ApplicationControllerImpl ApplicationController}
-     * <p>
-     * @since 1.0
-     */
     @Override
     public Stage getPrimaryStage() {
 
