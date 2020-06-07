@@ -14,15 +14,17 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.mvc.controller.preferences;
 
+import org.junit.jupiter.api.Test;
 
-public interface ControllerNames {
+import static de.herm_detlef.java.application.BindingAnnotationNames.PREFERENCES;
+import static org.junit.jupiter.api.Assertions.*;
 
-    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
+class PreferencesControllerImplTest {
 
-    String MAIN
-            = "de.herm_detlef.java.application.Main";
-    String PREFERENCES
-            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
+    @Test
+    void bindingAnnotationName() {
+        assertEquals( PreferencesControllerImpl.class.getName(), PREFERENCES );
+    }
 }

@@ -39,7 +39,7 @@ import javafx.util.StringConverter;
 import javax.inject.Named;
 
 import static de.herm_detlef.java.application.ApplicationConstants.*;
-import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
+import static de.herm_detlef.java.application.BindingAnnotationNames.PREFERENCES;
 import static de.herm_detlef.java.application.ViewResourcesPath.PREFERENCES_FXML;
 import static de.herm_detlef.java.application.ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE;
 import static javafx.stage.Modality.APPLICATION_MODAL;
@@ -52,7 +52,7 @@ import static javafx.stage.Modality.APPLICATION_MODAL;
  * @since 1.0
  *
  */
-public class PreferencesControllerImpl implements PreferencesController, Initializable {
+class PreferencesControllerImpl implements PreferencesController, Initializable {
 
     private final Stage stage;
     private final CommonData commonData;
@@ -72,7 +72,7 @@ public class PreferencesControllerImpl implements PreferencesController, Initial
 
 
     @Inject
-    public PreferencesControllerImpl(@Named(PREFERENCES) Stage stage, CommonData commonData, Remote remote) {
+    private PreferencesControllerImpl(@Named(PREFERENCES) Stage stage, CommonData commonData, Remote remote) {
 
         this.commonData = commonData;
         this.stage = stage;

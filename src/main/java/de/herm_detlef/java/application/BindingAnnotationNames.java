@@ -16,19 +16,13 @@
 
 package de.herm_detlef.java.application;
 
-import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl;
-import org.junit.jupiter.api.Test;
 
-import static de.herm_detlef.java.application.ControllerNames.MAIN;
-import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+public interface BindingAnnotationNames {
 
-class ControllerNamesTest {
+    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
 
-    @Test
-    void values() {
-        assertEquals( Main.class.getName(), MAIN );
-        assertEquals( PreferencesControllerImpl.class.getName(), PREFERENCES );
-    }
-
+    String MAIN
+            = "de.herm_detlef.java.application.Main";
+    String PREFERENCES
+            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
 }

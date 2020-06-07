@@ -21,6 +21,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
+import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesModule;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Application;
 import javafx.application.Preloader;
@@ -32,8 +33,8 @@ import java.net.URL;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_MAIN_DIALOG;
-import static de.herm_detlef.java.application.ControllerNames.MAIN;
-import static de.herm_detlef.java.application.ControllerNames.PREFERENCES;
+import static de.herm_detlef.java.application.BindingAnnotationNames.MAIN;
+import static de.herm_detlef.java.application.BindingAnnotationNames.PREFERENCES;
 import static de.herm_detlef.java.application.ViewResourcesPath.*;
 
 /* @formatter:off */
@@ -69,6 +70,7 @@ public class Main extends Application {
                 new StageModule( primaryStage, MAIN ),
                 new StageModule( PREFERENCES ),
                 new ApplicationModule(),
+                new PreferencesModule(),
                 new BasicModule() );
 
         primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );

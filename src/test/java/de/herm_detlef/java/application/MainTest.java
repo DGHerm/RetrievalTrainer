@@ -16,24 +16,15 @@
 
 package de.herm_detlef.java.application;
 
-import com.google.inject.AbstractModule;
+import org.junit.jupiter.api.Test;
 
-public class BasicModule extends AbstractModule {
+import static de.herm_detlef.java.application.BindingAnnotationNames.MAIN;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    @Override
-    protected void configure() {
+class MainTest {
 
-        bind(ApplicationPreferences.class)
-                .to(ApplicationPreferencesImpl.class)
-                .asEagerSingleton();
-
-        bind(Remote.class)
-                .to(RemoteImpl.class)
-                .asEagerSingleton();
-
-        bind(CommonData.class)
-                .to(CommonDataImpl.class)
-                .asEagerSingleton();
+    @Test
+    void bindingAnnotationName() {
+        assertEquals( Main.class.getName(), MAIN );
     }
-
 }

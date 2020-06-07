@@ -14,26 +14,17 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.mvc.controller.preferences;
 
 import com.google.inject.AbstractModule;
 
-public class BasicModule extends AbstractModule {
+public class PreferencesModule extends AbstractModule {
 
     @Override
     protected void configure() {
 
-        bind(ApplicationPreferences.class)
-                .to(ApplicationPreferencesImpl.class)
-                .asEagerSingleton();
-
-        bind(Remote.class)
-                .to(RemoteImpl.class)
-                .asEagerSingleton();
-
-        bind(CommonData.class)
-                .to(CommonDataImpl.class)
+        bind(PreferencesController.class)
+                .to(PreferencesControllerImpl.class)
                 .asEagerSingleton();
     }
-
 }
