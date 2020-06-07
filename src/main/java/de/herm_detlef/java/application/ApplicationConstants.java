@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
@@ -35,6 +36,8 @@ import org.jdom2.input.sax.XMLReaderJDOMFactory;
 import org.jdom2.input.sax.XMLReaderXSDFactory;
 
 import javax.xml.transform.stream.StreamSource;
+
+import static de.herm_detlef.java.application.ViewResourcesPath.*;
 
 /* @formatter:off */
 
@@ -172,31 +175,79 @@ public class ApplicationConstants {
     public static final String TITLE_OF_MAIN_DIALOG          = "RetrievalTrainer";
 
     // --------------------------
-    public static final String TITLE_OF_DIALOG_FILE_CHOOSER_OPEN  = "Choose Resource File To Open";
+    public static final String TITLE_OF_DIALOG_FILE_CHOOSER_OPEN;
+
+    static {
+        TITLE_OF_DIALOG_FILE_CHOOSER_OPEN = ResourceBundle
+                .getBundle( FILES_AND_DIRECTORIES_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_TITLE_OF_DIALOG_FILE_CHOOSER_OPEN" );
+    }
 
     // --------------------------
-    public static final String TITLE_OF_DIALOG_FILE_CHOOSER_SAVE  = "Save Resource File As";
+    public static final String TITLE_OF_DIALOG_FILE_CHOOSER_SAVE;
+
+    static {
+        TITLE_OF_DIALOG_FILE_CHOOSER_SAVE = ResourceBundle
+                .getBundle( FILES_AND_DIRECTORIES_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_TITLE_OF_DIALOG_FILE_CHOOSER_SAVE" );
+    }
 
     // --------------------------
-    public static final String TITLE_OF_DIALOG_PREFERENCES   = "Preferences";
+    public static final String TITLE_OF_DIALOG_PREFERENCES;
+
+    static {
+        TITLE_OF_DIALOG_PREFERENCES = ResourceBundle
+                .getBundle( PREFERENCES_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_Stage_Preferences" );
+    }
 
     // --------------------------
     public static final String TITLE_OF_DIALOG_ERROR_MESSAGE = "Error Message";
 
     // --------------------------
-    public static final String TITLE_OF_DIALOG_SCORE_MESSAGE = "Score";
+    public static final String TITLE_OF_DIALOG_SCORE_MESSAGE;
+
+    static {
+        TITLE_OF_DIALOG_SCORE_MESSAGE = ResourceBundle
+                .getBundle( APP_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_ToolBar_Button_Score" );
+    }
 
     // --------------------------
-    public static final String PLACEHOLDER_QUESTION_TEXT     = "type your question text here";
+    public static final String PLACEHOLDER_QUESTION_TEXT;
+
+    static {
+        PLACEHOLDER_QUESTION_TEXT = ResourceBundle
+                .getBundle( APP_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_PLACEHOLDER_QUESTION_TEXT" );
+    }
 
     // --------------------------
-    public static final String PLACEHOLDER_QUESTION_CODE     = "type your code example here";
+    public static final String PLACEHOLDER_QUESTION_CODE;
+
+    static {
+        PLACEHOLDER_QUESTION_CODE = ResourceBundle
+                .getBundle( APP_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_PLACEHOLDER_QUESTION_CODE" );
+    }
 
     // --------------------------
-    public static final String PLACEHOLDER_ANSWER_TEXT       = "type your answer text here";
+    public static final String PLACEHOLDER_ANSWER_TEXT;
+
+    static {
+        PLACEHOLDER_ANSWER_TEXT = ResourceBundle
+                .getBundle( APP_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_PLACEHOLDER_ANSWER_TEXT" );
+    }
 
     // --------------------------
-    public static final String PLACEHOLDER_SOLUTION_TEXT     = "type your solution text here";
+    public static final String PLACEHOLDER_SOLUTION_TEXT;
+
+    static {
+        PLACEHOLDER_SOLUTION_TEXT = ResourceBundle
+                .getBundle( APP_RESOURCE_BUNDLE.path(), CURRENT_LOCALE )
+                .getString("L10N_PLACEHOLDER_SOLUTION_TEXT" );
+    }
 
     // ----- macOS specific -----
     public static final String NAME_OF_OPERATING_SYSTEM;

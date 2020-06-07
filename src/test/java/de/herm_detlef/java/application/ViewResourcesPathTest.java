@@ -76,6 +76,8 @@ class ViewResourcesPathTest {
         checkResourcePath( FILES_AND_DIRECTORIES_FXML.path() );
         checkResourcePath( FILES_AND_DIRECTORIES_CSS.path() );
         checkResourcePath( FILES_AND_DIRECTORIES_RESOURCE_BUNDLE.path() + ".properties" );
+        checkResourcePath( FILES_AND_DIRECTORIES_RESOURCE_BUNDLE.path() + "_de.properties" );
+        checkResourcePath( FILES_AND_DIRECTORIES_RESOURCE_BUNDLE.path() + "_en.properties" );
 
         checkResourcePath( NAVIGATION_FXML.path() );
         checkResourcePath( NAVIGATION_RESOURCE_BUNDLE.path() + ".properties" );
