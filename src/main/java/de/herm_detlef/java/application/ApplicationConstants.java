@@ -111,21 +111,12 @@ public class ApplicationConstants {
     public static final String         NAME_OF_XML_ATTRIBUTE_ANSWER_TEXT_MARK       = "mark";
 
     // --------------------------
-    public static final String         FILE_NAME_SEPARATOR                          = "/";
-
-        // see javafx/application/Preloader.java,
-
-    // --------------------------
-    public static final String PACKAGE_NAME_SEPARATOR = ".";
-
-    // --------------------------
     public static final String LINE_SEPARATOR;
 
     static {
         // see javafx/application/Preloader.java,
         String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty(
-                "line.separator" ) );
+            ( PrivilegedAction< String > ) () -> System.getProperty( "line.separator" ) );
         LINE_SEPARATOR = prop != null ? prop : "\n";
     }
 
@@ -146,8 +137,7 @@ public class ApplicationConstants {
 
     static {
         String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty(
-                "java.version" ) );
+            ( PrivilegedAction< String > ) () -> System.getProperty( "java.version" ) );
         VERSION_OF_JAVA_RUNTIME_ENVIRONMENT = prop != null ? prop : "data not retrievable";
     }
 
@@ -208,22 +198,17 @@ public class ApplicationConstants {
     // --------------------------
     public static final String PLACEHOLDER_SOLUTION_TEXT     = "type your solution text here";
 
-    // --------------------------
+    // ----- macOS specific -----
     public static final String NAME_OF_OPERATING_SYSTEM;
 
     static {
         String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty(
-                "os.name" ) );
+            ( PrivilegedAction< String > ) () -> System.getProperty( "os.name" ) );
         NAME_OF_OPERATING_SYSTEM = prop != null ? prop : "data not retrievable";
     }
 
-    // --------------------------
-    public static final String  NAME_OF_OPERATING_SYSTEM_OSX = "macOS";
-
-    // --------------------------
-
-    public static final boolean USE_SYSTEM_MENU_BAR          = false;
+    public static final String[]  NAME_OF_OPERATING_SYSTEM_OSX = { "Mac OS X", "OS X", "macOS" };
+    public static final boolean USE_SYSTEM_MENU_BAR          = true;
 
     // --------------------------
 

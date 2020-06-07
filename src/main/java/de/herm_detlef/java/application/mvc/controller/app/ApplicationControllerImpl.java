@@ -18,7 +18,7 @@ package de.herm_detlef.java.application.mvc.controller.app;
 
 
 import java.net.URL;
-import java.util.Locale;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.ApplicationConstants;
@@ -140,8 +140,9 @@ public class ApplicationControllerImpl implements Initializable, ApplicationCont
 
         viewer = new Viewer( commonData, remote, questionPart, answerPart, solutionPart );
 
-        if ( ApplicationConstants.NAME_OF_OPERATING_SYSTEM.equals(
-            ApplicationConstants.NAME_OF_OPERATING_SYSTEM_OSX ) ) {
+        if ( Arrays.stream(ApplicationConstants.NAME_OF_OPERATING_SYSTEM_OSX)
+                .filter( name -> name.equals(ApplicationConstants.NAME_OF_OPERATING_SYSTEM) )
+                .count() == 1 ) {
             menuBar.setUseSystemMenuBar( ApplicationConstants.USE_SYSTEM_MENU_BAR );
         }
 
