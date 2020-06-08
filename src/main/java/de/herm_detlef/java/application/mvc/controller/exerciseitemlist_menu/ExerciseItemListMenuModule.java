@@ -14,25 +14,16 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller.edit_menu;
+package de.herm_detlef.java.application.mvc.controller.exerciseitemlist_menu;
 
-import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.Remote;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Menu;
-import javafx.scene.control.RadioMenuItem;
+import com.google.inject.AbstractModule;
 
-public interface EditMenuController {
-    Menu create(CommonData commonData,
-                Remote remote);
+public class ExerciseItemListMenuModule extends AbstractModule {
 
-    Menu getMenuEdit();
-
-    CheckMenuItem getCheckMenuItemPreviewExerciseItem();
-
-    RadioMenuItem getRadioMenuItemSingleChoice();
-
-    RadioMenuItem getRadioMenuItemMultipleChoice();
-
-    CheckMenuItem getCheckMenuItemShowTools();
+    @Override
+    protected void configure() {
+        bind(ExerciseItemListMenuController.class)
+                .to(ExerciseItemListMenuControllerImpl.class)
+                .asEagerSingleton();
+    }
 }

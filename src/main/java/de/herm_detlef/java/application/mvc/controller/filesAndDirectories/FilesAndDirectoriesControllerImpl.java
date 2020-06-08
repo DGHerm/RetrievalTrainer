@@ -29,6 +29,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
 
+import javax.inject.Singleton;
+
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ViewResourcesPath.FILES_AND_DIRECTORIES_FXML;
 
@@ -40,6 +42,7 @@ import static de.herm_detlef.java.application.ViewResourcesPath.FILES_AND_DIRECT
  * @since 1.0
  *
  */
+@Singleton
 class FilesAndDirectoriesControllerImpl implements FilesAndDirectoriesController {
 
     @Override

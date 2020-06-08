@@ -16,23 +16,14 @@
 
 package de.herm_detlef.java.application.mvc.controller.edit_menu;
 
-import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.Remote;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Menu;
-import javafx.scene.control.RadioMenuItem;
+import com.google.inject.AbstractModule;
 
-public interface EditMenuController {
-    Menu create(CommonData commonData,
-                Remote remote);
+public class EditMenuModule extends AbstractModule {
 
-    Menu getMenuEdit();
-
-    CheckMenuItem getCheckMenuItemPreviewExerciseItem();
-
-    RadioMenuItem getRadioMenuItemSingleChoice();
-
-    RadioMenuItem getRadioMenuItemMultipleChoice();
-
-    CheckMenuItem getCheckMenuItemShowTools();
+    @Override
+    protected void configure() {
+        bind(EditMenuController.class)
+                .to(EditMenuControllerImpl.class)
+                .asEagerSingleton();
+    }
 }

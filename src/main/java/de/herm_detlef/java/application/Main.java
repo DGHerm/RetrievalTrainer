@@ -21,9 +21,12 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
-import de.herm_detlef.java.application.mvc.controller.file_menu.FileMenuController;
+import de.herm_detlef.java.application.mvc.controller.app_menu.AppMenuModule;
+import de.herm_detlef.java.application.mvc.controller.edit_menu.EditMenuModule;
+import de.herm_detlef.java.application.mvc.controller.exerciseitemlist_menu.ExerciseItemListMenuModule;
 import de.herm_detlef.java.application.mvc.controller.file_menu.FileMenuModule;
 import de.herm_detlef.java.application.mvc.controller.filesAndDirectories.FilesAndDirectoriesModule;
+import de.herm_detlef.java.application.mvc.controller.navigation.NavigationModule;
 import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesModule;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Application;
@@ -76,6 +79,10 @@ public class Main extends Application {
                 new PreferencesModule(),
                 new FileMenuModule(),
                 new FilesAndDirectoriesModule(),
+                new AppMenuModule(),
+                new EditMenuModule(),
+                new ExerciseItemListMenuModule(),
+                new NavigationModule(),
                 new BasicModule() );
 
         primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );

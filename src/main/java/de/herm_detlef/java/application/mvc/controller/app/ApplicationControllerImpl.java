@@ -17,9 +17,7 @@
 package de.herm_detlef.java.application.mvc.controller.app;
 
 
-import java.net.URL;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
@@ -36,8 +34,8 @@ import de.herm_detlef.java.application.utilities.Utilities;
 import de.herm_detlef.java.application.mvc.view.Navigation;
 import de.herm_detlef.java.application.mvc.view.Viewer;
 import javafx.event.ActionEvent;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -46,7 +44,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import static de.herm_detlef.java.application.ApplicationConstants.CURRENT_LOCALE;
-import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFERENCES_NODE;
 
 /* @formatter:off */
 
@@ -57,14 +54,17 @@ import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFEREN
  *
  */
 @Singleton
-class ApplicationControllerImpl implements Initializable, ApplicationController {
+class ApplicationControllerImpl implements ApplicationController {
 
+    private final NavigationController navigationController;
+    private final ExerciseItemListMenuController exerciseItemListMenuController;
+    private final EditMenuController editMenuController;
+    private final AppMenuController appMenuController;
     private final FileMenuController fileMenuController;
     private final CommonData       commonData;
     private final Remote remote;
 
     private Viewer                 viewer;
-    private NavigationController   navi;
 
     @FXML
     private Parent                 root;
@@ -101,9 +101,18 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
      * @since 1.0
      */
     @Inject
-    private ApplicationControllerImpl( FileMenuController fileMenuController,
+    private ApplicationControllerImpl( NavigationController navigationController,
+                                       ExerciseItemListMenuController exerciseItemListMenuController,
+                                       EditMenuController editMenuController,
+                                       AppMenuController appMenuController,
+                                       FileMenuController fileMenuController,
                                        CommonData commonData,
                                        Remote remote ) {
+
+        this.navigationController = navigationController;
+        this.exerciseItemListMenuController = exerciseItemListMenuController;
+        this.editMenuController = editMenuController;
+        this.appMenuController = appMenuController;
         this.fileMenuController = fileMenuController;
         this.commonData = commonData;
         this.remote = remote;
@@ -118,8 +127,8 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
      * <p>
      * @since 1.0
      */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    private void initialize() {
 
         commonData.getPrimaryStage().setOnCloseRequest( e -> {
             e.consume();
@@ -128,15 +137,16 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
 
         commonData.getEditingModeProperty().addListener( (obj, oldValue, newValue) -> buttonScore.setDisable( newValue ) );
 
-        AppMenuController.create( menuBar, commonData, remote );
+        menuBar.getMenus().add( appMenuController.create( commonData, remote ) );
 
         menuBar.getMenus().add( fileMenuController.create( commonData, remote ) );
 
-        ExerciseItemListMenuController.create( menuBar, commonData, remote );
+        menuBar.getMenus().add( exerciseItemListMenuController.create( commonData, remote ) );
 
-        EditMenuController.create( menuBar, commonData, remote );
+        menuBar.getMenus().add( editMenuController.create( commonData, remote ) );
 
-        navi = NavigationController.create( toolBar, commonData, remote );
+        toolBar.getItems().add(0, navigationController.create( commonData, remote ) );
+        navigationController.addEventHandler(toolBar);
 
         viewer = new Viewer( commonData, remote, questionPart, answerPart, solutionPart );
 
@@ -168,7 +178,7 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
 
             viewer.prepareExerciseItem( -1 );
 
-            navi.setDisable( true, true, true, true );
+            navigationController.setDisable( true, true, true, true );
 
             buttonScore.setDisable( true );
 
@@ -176,7 +186,7 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
 
             int index = viewer.prepareExerciseItem( commonData.getCurrentExerciseItem() );
 
-            navi.setDisable(
+            navigationController.setDisable(
                     index == 0,
                     index == 0,
                     commonData.getExerciseItemListShuffledSubset().size() - 1 == index,
@@ -184,13 +194,13 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
 
             buttonScore.setDisable( commonData.isEditingMode() );
 
-            Navigation.init( commonData, remote, navi, viewer::prepareExerciseItem, root );
+            Navigation.init( commonData, remote, navigationController, viewer::prepareExerciseItem, root );
 
         } else {
 
             viewer.prepareExerciseItem( 0 );
 
-            navi.setDisable(
+            navigationController.setDisable(
                     true,
                     true,
                     commonData.getExerciseItemListShuffledSubset().size() <= 1,
@@ -198,7 +208,7 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
 
             buttonScore.setDisable( commonData.isEditingMode() );
 
-            Navigation.init( commonData, remote, navi, viewer::prepareExerciseItem, root );
+            Navigation.init( commonData, remote, navigationController, viewer::prepareExerciseItem, root );
         }
 
         remote.getEditMenuController().getMenuEdit().setVisible( commonData.isEditingMode() );

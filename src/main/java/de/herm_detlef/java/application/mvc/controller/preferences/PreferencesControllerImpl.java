@@ -37,6 +37,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import static de.herm_detlef.java.application.ApplicationConstants.*;
 import static de.herm_detlef.java.application.BindingAnnotationNames.PREFERENCES;
@@ -52,7 +53,8 @@ import static javafx.stage.Modality.APPLICATION_MODAL;
  * @since 1.0
  *
  */
-class PreferencesControllerImpl implements PreferencesController, Initializable {
+@Singleton
+class PreferencesControllerImpl implements PreferencesController {
 
     private final Stage stage;
     private final CommonData commonData;
@@ -118,8 +120,8 @@ class PreferencesControllerImpl implements PreferencesController, Initializable 
         stage.show();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    private void initialize() {
 
         languageChoice.getItems().addAll(
                 Locale.US,
