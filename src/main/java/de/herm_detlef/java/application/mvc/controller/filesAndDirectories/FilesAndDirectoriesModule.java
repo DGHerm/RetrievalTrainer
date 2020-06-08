@@ -14,19 +14,16 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller.file_menu;
+package de.herm_detlef.java.application.mvc.controller.filesAndDirectories;
 
-import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.Remote;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import com.google.inject.AbstractModule;
 
+public class FilesAndDirectoriesModule extends AbstractModule {
+    @Override
+    protected void configure() {
 
-public interface FileMenuController {
-
-    Menu create( CommonData commonData, Remote remote );
-
-    MenuItem getMenuItemSave();
-
-    MenuItem getMenuItemSaveAs();
+        bind(FilesAndDirectoriesController.class)
+                .to(FilesAndDirectoriesControllerImpl.class)
+                .asEagerSingleton();
+    }
 }

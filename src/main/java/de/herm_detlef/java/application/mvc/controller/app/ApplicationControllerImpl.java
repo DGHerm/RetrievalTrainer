@@ -39,10 +39,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToolBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
 import javax.inject.Inject;
@@ -62,6 +59,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFEREN
 @Singleton
 class ApplicationControllerImpl implements Initializable, ApplicationController {
 
+    private final FileMenuController fileMenuController;
     private final CommonData       commonData;
     private final Remote remote;
 
@@ -103,8 +101,10 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
      * @since 1.0
      */
     @Inject
-    private ApplicationControllerImpl(CommonData commonData,
-                                     Remote remote ) {
+    private ApplicationControllerImpl( FileMenuController fileMenuController,
+                                       CommonData commonData,
+                                       Remote remote ) {
+        this.fileMenuController = fileMenuController;
         this.commonData = commonData;
         this.remote = remote;
 
@@ -130,7 +130,7 @@ class ApplicationControllerImpl implements Initializable, ApplicationController 
 
         AppMenuController.create( menuBar, commonData, remote );
 
-        FileMenuController.create( menuBar, commonData, remote );
+        menuBar.getMenus().add( fileMenuController.create( commonData, remote ) );
 
         ExerciseItemListMenuController.create( menuBar, commonData, remote );
 

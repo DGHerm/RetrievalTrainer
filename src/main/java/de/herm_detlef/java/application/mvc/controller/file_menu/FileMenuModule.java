@@ -16,17 +16,15 @@
 
 package de.herm_detlef.java.application.mvc.controller.file_menu;
 
-import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.Remote;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import com.google.inject.AbstractModule;
 
+public class FileMenuModule extends AbstractModule {
 
-public interface FileMenuController {
+    @Override
+    protected void configure() {
 
-    Menu create( CommonData commonData, Remote remote );
-
-    MenuItem getMenuItemSave();
-
-    MenuItem getMenuItemSaveAs();
+        bind(FileMenuController.class)
+                .to(FileMenuControllerImpl.class)
+                .asEagerSingleton();
+    }
 }
