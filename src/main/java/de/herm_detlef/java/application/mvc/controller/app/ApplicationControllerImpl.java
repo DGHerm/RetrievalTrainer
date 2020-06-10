@@ -143,7 +143,7 @@ class ApplicationControllerImpl implements ApplicationController {
 
         menuBar.getMenus().add( exerciseItemListMenuController.create( commonData, remote ) );
 
-        menuBar.getMenus().add( editMenuController.create( commonData, remote ) );
+        menuBar.getMenus().add( editMenuController.create() );
 
         toolBar.getItems().add(0, navigationController.create( commonData, remote ) );
         navigationController.addEventHandler(toolBar);

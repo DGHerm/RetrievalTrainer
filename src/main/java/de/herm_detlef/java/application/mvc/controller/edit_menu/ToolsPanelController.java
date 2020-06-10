@@ -18,6 +18,7 @@ package de.herm_detlef.java.application.mvc.controller.edit_menu;
 
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import de.herm_detlef.java.application.ApplicationConstants;
@@ -142,13 +143,15 @@ public class ToolsPanelController implements Initializable {
                                                EventHandler< ActionEvent > onNewSolutionText,
                                                EventHandler< ActionEvent > onDeleteItemPart ) {
 
-        assert onNewExerciseItem != null;
-        assert onDeleteCurrentExerciseItem != null;
-        assert onNewQuestionText != null;
-        assert onNewQuestionCode != null;
-        assert onNewAnswerText != null;
-        assert onNewSolutionText != null;
-        assert onDeleteItemPart != null;
+        Objects.requireNonNull( commonData );
+        Objects.requireNonNull( remote );
+        Objects.requireNonNull( onNewExerciseItem );
+        Objects.requireNonNull( onDeleteCurrentExerciseItem );
+        Objects.requireNonNull( onNewQuestionText );
+        Objects.requireNonNull( onNewQuestionCode );
+        Objects.requireNonNull( onNewAnswerText );
+        Objects.requireNonNull( onNewSolutionText );
+        Objects.requireNonNull( onDeleteItemPart );
 
         ToolsPanelController tools = new ToolsPanelController( commonData,
                                                                remote,

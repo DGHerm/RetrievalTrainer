@@ -23,8 +23,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.RadioMenuItem;
 
 public interface EditMenuController {
-    Menu create(CommonData commonData,
-                Remote remote);
+
+    Menu create();
 
     Menu getMenuEdit();
 

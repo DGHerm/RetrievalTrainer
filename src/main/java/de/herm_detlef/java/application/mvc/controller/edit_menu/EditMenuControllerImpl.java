@@ -103,8 +103,8 @@ class EditMenuControllerImpl implements EditMenuController {
     private CheckMenuItem        checkMenuItemShowTools;
 
     @Inject
-    private EditMenuControllerImpl(CommonData commonData,
-                                   Remote remote ) {
+    private EditMenuControllerImpl( CommonData commonData,
+                                    Remote remote ) {
 
         this.commonData = commonData;
         this.remote = remote;
@@ -113,8 +113,7 @@ class EditMenuControllerImpl implements EditMenuController {
     }
 
     @Override
-    public Menu create(CommonData commonData,
-                       Remote remote) {
+    public Menu create() {
 
         Menu root = Utilities.createSceneGraphObjectFromFXMLResource(
                 this,
@@ -143,6 +142,8 @@ class EditMenuControllerImpl implements EditMenuController {
             this::onNewAnswerText,
             this::onNewSolutionText,
             this::onDeleteItemPart );
+
+        Objects.requireNonNull( tools );
 
         commonData.setExerciseItemComponentsChangeListener( c -> {
             boolean isValid = Export.validateCurrentExerciseItem( commonData, false );
@@ -387,11 +388,7 @@ class EditMenuControllerImpl implements EditMenuController {
     }
 
     private void openEditorToolsDialog() {
-
-        if ( tools == null ) {
-            assert false;
-            return;
-        }
+        Objects.requireNonNull( tools );
 
         if ( !tools.isDialogOpen() ) {
             tools.openDialog();
@@ -399,11 +396,7 @@ class EditMenuControllerImpl implements EditMenuController {
     }
 
     private void closeEditorToolsDialog() {
-
-        if ( tools == null ) {
-            assert false;
-            return;
-        }
+        Objects.requireNonNull( tools );
 
         if ( tools.isDialogOpen() ) {
             tools.closeDialog();

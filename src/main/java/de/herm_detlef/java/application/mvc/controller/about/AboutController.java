@@ -57,11 +57,12 @@ public class AboutController {
     }
 
     public Scene createScene() {
+
+        Parent root = createSceneGraphObjectFromFXMLResource( this, ABOUT_FXML.path() );
+
         Objects.requireNonNull( licenseNotice );
         Objects.requireNonNull( javaNotice );
         Objects.requireNonNull( progressBar );
-
-        Parent root = createSceneGraphObjectFromFXMLResource( this, ABOUT_FXML.path() );
 
         if (DEBUG) {
             assert ! licenseNotice.getText().isEmpty();
@@ -101,7 +102,7 @@ public class AboutController {
     }
 
     public ProgressBar getProgressBar() {
-        Objects.requireNonNull( progressBar );
+
         return progressBar;
     }
 
