@@ -22,10 +22,12 @@ import java.io.InputStream;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
+import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -100,8 +102,12 @@ public class ApplicationConstants {
         } catch ( JDOMException | IOException e ) {
             if (DEBUG) e.printStackTrace();
             LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+            System.exit(0);
         }
-        XML_READER_JDOM_FACTORY = tmp;// null indicates uninitialized status
+        XML_READER_JDOM_FACTORY = Objects.requireNonNull( tmp );// null indicates uninitialized status
     }
 
     // --------------------------
@@ -118,9 +124,18 @@ public class ApplicationConstants {
 
     static {
         // see javafx/application/Preloader.java,
-        String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty( "line.separator" ) );
-        LINE_SEPARATOR = prop != null ? prop : "\n";
+        String prop = null;
+        try {
+            prop = AccessController.doPrivileged( (PrivilegedAction< String >) () -> System.getProperty( "line.separator" ) );
+        } catch ( Exception e ) {
+            if (DEBUG) e.printStackTrace();
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+            System.exit(0);
+        }
+        LINE_SEPARATOR = Objects.requireNonNull( prop );
     }
 
     // --------------------------
@@ -139,9 +154,18 @@ public class ApplicationConstants {
     public static final String VERSION_OF_JAVA_RUNTIME_ENVIRONMENT;
 
     static {
-        String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty( "java.version" ) );
-        VERSION_OF_JAVA_RUNTIME_ENVIRONMENT = prop != null ? prop : "data not retrievable";
+        String prop = null;
+        try {
+            prop = AccessController.doPrivileged( (PrivilegedAction< String >) () -> System.getProperty( "java.version" ) );
+        } catch ( Exception e ) {
+            if (DEBUG) e.printStackTrace();
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+            System.exit(0);
+        }
+        VERSION_OF_JAVA_RUNTIME_ENVIRONMENT = Objects.requireNonNull( prop );
     }
 
     // --------------------------
@@ -253,9 +277,18 @@ public class ApplicationConstants {
     public static final String NAME_OF_OPERATING_SYSTEM;
 
     static {
-        String prop = AccessController.doPrivileged(
-            ( PrivilegedAction< String > ) () -> System.getProperty( "os.name" ) );
-        NAME_OF_OPERATING_SYSTEM = prop != null ? prop : "data not retrievable";
+        String prop = null;
+        try {
+            prop = AccessController.doPrivileged( (PrivilegedAction< String >) () -> System.getProperty( "os.name" ) );
+        } catch ( Exception e ) {
+            if (DEBUG) e.printStackTrace();
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+            System.exit(0);
+        }
+        NAME_OF_OPERATING_SYSTEM = Objects.requireNonNull( prop );
     }
 
     public static final String[]  NAME_OF_OPERATING_SYSTEM_OSX = { "Mac OS X", "OS X", "macOS" };
