@@ -19,7 +19,6 @@ package de.herm_detlef.java.application.mvc.controller.about;
 
 
 import de.herm_detlef.java.application.ApplicationConstants;
-import de.herm_detlef.java.application.ViewResourcesPath;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +27,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ViewResourcesPath.ABOUT_FXML;
@@ -56,18 +57,16 @@ public class AboutController {
     }
 
     public Scene createScene() {
+        Objects.requireNonNull( licenseNotice );
+        Objects.requireNonNull( javaNotice );
+        Objects.requireNonNull( progressBar );
 
         Parent root = createSceneGraphObjectFromFXMLResource( this, ABOUT_FXML.path() );
 
-        if ( licenseNotice == null || javaNotice == null || progressBar == null ) {
-            assert false;
-            return null;
-        }
-
         if (DEBUG) {
-            assert licenseNotice.getText().isEmpty();
-            assert javaNotice.getText().isEmpty();
-            assert ! progressBar.isVisible();
+            assert ! licenseNotice.getText().isEmpty();
+            assert ! javaNotice.getText().isEmpty();
+            assert progressBar.isVisible();
         }
 
         licenseNotice.setText( ApplicationConstants.LICENSE_NOTICE );
@@ -88,17 +87,11 @@ public class AboutController {
     }
 
     public void showAbout( Stage primaryStage ) {
-
-        assert primaryStage != null;
+        Objects.requireNonNull( primaryStage );
 
         final Stage stage = new Stage();
         stage.setTitle( "About" );
-        Scene scene = createScene();
-        if ( scene == null ) {
-            assert false;
-            return;
-        }
-        stage.setScene( scene );
+        stage.setScene( createScene() );
         stage.setResizable( false );
         stage.centerOnScreen();
         stage.sizeToScene();
@@ -108,8 +101,7 @@ public class AboutController {
     }
 
     public ProgressBar getProgressBar() {
-
-        assert progressBar != null;
+        Objects.requireNonNull( progressBar );
         return progressBar;
     }
 
