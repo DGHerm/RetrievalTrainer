@@ -19,6 +19,7 @@ package de.herm_detlef.java.application.utilities;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -90,10 +91,8 @@ public class Utilities {
                                                                      String languageResourceBundlePath,
                                                                      CommonData commonData ) {
 
-        if ( controller == null || fxmlResourcePath == null ) {
-            assert false;
-            return null;
-        }
+        Objects.requireNonNull( controller );
+        Objects.requireNonNull( fxmlResourcePath );
 
         FXMLLoader fxmlLoader = new FXMLLoader();
 
@@ -119,11 +118,12 @@ public class Utilities {
             fxmlLoader.load( inputstream ); // invokes method 'initialize' on return
 
         } catch ( IOException e ) {
-            Utilities.showErrorMessage(
-                e.getClass().getSimpleName(),
-                e.getMessage() );
             if (DEBUG) e.printStackTrace();
-            return null;
+            LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );
+            Utilities.showErrorMessage(
+                    e.getClass().getSimpleName(),
+                    e.getMessage());
+            System.exit(0);
         }
 
         return fxmlLoader.getRoot();
