@@ -23,6 +23,7 @@ import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
 import de.herm_detlef.java.application.mvc.controller.app_menu.AppMenuModule;
 import de.herm_detlef.java.application.mvc.controller.edit_menu.EditMenuModule;
+import de.herm_detlef.java.application.mvc.controller.edit_menu.ToolsPanelModule;
 import de.herm_detlef.java.application.mvc.controller.exerciseitemlist_menu.ExerciseItemListMenuModule;
 import de.herm_detlef.java.application.mvc.controller.file_menu.FileMenuModule;
 import de.herm_detlef.java.application.mvc.controller.filesAndDirectories.FilesAndDirectoriesModule;
@@ -39,8 +40,7 @@ import java.net.URL;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_MAIN_DIALOG;
-import static de.herm_detlef.java.application.BindingAnnotationNames.MAIN;
-import static de.herm_detlef.java.application.BindingAnnotationNames.PREFERENCES;
+import static de.herm_detlef.java.application.BindingAnnotationNames.*;
 import static de.herm_detlef.java.application.ViewResourcesPath.*;
 
 /* @formatter:off */
@@ -75,6 +75,7 @@ public class Main extends Application {
         Injector injector = Guice.createInjector(
                 new StageModule( primaryStage, MAIN ),
                 new StageModule( PREFERENCES ),
+                new StageModule( TOOLS_PANEL ),
                 new ApplicationModule(),
                 new PreferencesModule(),
                 new FileMenuModule(),
@@ -83,6 +84,7 @@ public class Main extends Application {
                 new EditMenuModule(),
                 new ExerciseItemListMenuModule(),
                 new NavigationModule(),
+                new ToolsPanelModule(),
                 new BasicModule() );
 
         primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );

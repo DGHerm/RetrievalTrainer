@@ -104,10 +104,12 @@ class EditMenuControllerImpl implements EditMenuController {
 
     @Inject
     private EditMenuControllerImpl( CommonData commonData,
-                                    Remote remote ) {
+                                    Remote remote,
+                                    ToolsPanelController tools ) {
 
         this.commonData = commonData;
         this.remote = remote;
+        this.tools = tools;
 
         remote.setEditMenuController( this );
     }
@@ -132,18 +134,15 @@ class EditMenuControllerImpl implements EditMenuController {
         // ExerciseItem.initializeGUI(); called by
         // ToolsPanelController.initialize
 
-        tools = ToolsPanelController.create(
-            commonData,
-            remote,
-            this::onNewExerciseItem,
-            this::onDeleteExerciseItem,
-            this::onNewQuestionText,
-            this::onNewQuestionCode,
-            this::onNewAnswerText,
-            this::onNewSolutionText,
-            this::onDeleteItemPart );
+        tools.create( commonData );
 
-        Objects.requireNonNull( tools );
+        tools.getButtonAppendNewExerciseItem().setOnAction( this::onNewExerciseItem );
+        tools.getButtonDeleteCurrentExerciseItem().setOnAction( this::onDeleteExerciseItem );
+        tools.getButtonAppendQuestionText().setOnAction( this::onNewQuestionText );
+        tools.getButtonAppendQuestionCode().setOnAction( this::onNewQuestionCode );
+        tools.getButtonAppendAnswer().setOnAction( this::onNewAnswerText );
+        tools.getButtonAppendSolution().setOnAction( this::onNewSolutionText );
+        tools.getButtonDeleteItemPart().setOnAction( this::onDeleteItemPart );
 
         commonData.setExerciseItemComponentsChangeListener( c -> {
             boolean isValid = Export.validateCurrentExerciseItem( commonData, false );

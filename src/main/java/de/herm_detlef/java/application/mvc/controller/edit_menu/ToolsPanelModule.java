@@ -14,17 +14,16 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.mvc.controller.edit_menu;
 
+import com.google.inject.AbstractModule;
 
-public interface BindingAnnotationNames {
+public class ToolsPanelModule extends AbstractModule {
 
-    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
-
-    String MAIN
-            = "de.herm_detlef.java.application.Main";
-    String PREFERENCES
-            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
-    String TOOLS_PANEL
-            = "de.herm_detlef.java.application.mvc.controller.edit_menu.ToolsPanelControllerImpl";
+    @Override
+    protected void configure() {
+        bind(ToolsPanelController.class)
+                .to(ToolsPanelControllerImpl.class)
+                .asEagerSingleton();
+    }
 }
