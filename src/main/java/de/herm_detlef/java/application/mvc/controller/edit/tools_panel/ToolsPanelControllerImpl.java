@@ -39,9 +39,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import static de.herm_detlef.java.application.BindingAnnotationNames.TOOLS_PANEL;
-import static de.herm_detlef.java.application.ViewResourcesPath.TOOLS_PANEL_FXML;
-import static de.herm_detlef.java.application.ViewResourcesPath.TOOLS_PANEL_RESOURCE_BUNDLE;
+import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.TOOLS_PANEL;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.TOOLS_PANEL_FXML;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.TOOLS_PANEL_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 

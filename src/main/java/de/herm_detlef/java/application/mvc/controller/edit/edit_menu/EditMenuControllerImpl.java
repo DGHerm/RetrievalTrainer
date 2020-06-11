@@ -41,8 +41,8 @@ import javafx.scene.control.ToggleGroup;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import static de.herm_detlef.java.application.ViewResourcesPath.EDIT_MENU_FXML;
-import static de.herm_detlef.java.application.ViewResourcesPath.EDIT_MENU_RESOURCE_BUNDLE;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.EDIT_MENU_FXML;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.EDIT_MENU_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 

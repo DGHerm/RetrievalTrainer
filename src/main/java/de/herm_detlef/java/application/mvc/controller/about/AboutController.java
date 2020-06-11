@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
-import static de.herm_detlef.java.application.ViewResourcesPath.ABOUT_FXML;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.ABOUT_FXML;
 import static de.herm_detlef.java.application.utilities.Utilities.createSceneGraphObjectFromFXMLResource;
 
 /* @formatter:off */

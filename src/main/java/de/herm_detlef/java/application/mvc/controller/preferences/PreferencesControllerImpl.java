@@ -17,16 +17,13 @@
 package de.herm_detlef.java.application.mvc.controller.preferences;
 
 
-import java.net.URL;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 import com.google.inject.Inject;
 import de.herm_detlef.java.application.*;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
@@ -40,9 +37,9 @@ import javax.inject.Named;
 import javax.inject.Singleton;
 
 import static de.herm_detlef.java.application.ApplicationConstants.*;
-import static de.herm_detlef.java.application.BindingAnnotationNames.PREFERENCES;
-import static de.herm_detlef.java.application.ViewResourcesPath.PREFERENCES_FXML;
-import static de.herm_detlef.java.application.ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE;
+import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.PREFERENCES;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.PREFERENCES_FXML;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE;
 import static javafx.stage.Modality.APPLICATION_MODAL;
 
 /* @formatter:off */

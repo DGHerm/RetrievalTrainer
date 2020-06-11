@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.mvc.view;
 
 public enum ViewResourcesPath {
 

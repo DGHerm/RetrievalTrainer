@@ -14,14 +14,14 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.mvc.view;
 
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static de.herm_detlef.java.application.ViewResourcesPath.*;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.*;
 import static java.nio.file.LinkOption.NOFOLLOW_LINKS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

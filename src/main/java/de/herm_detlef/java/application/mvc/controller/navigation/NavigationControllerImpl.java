@@ -34,8 +34,8 @@ import javafx.scene.layout.HBox;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import static de.herm_detlef.java.application.ViewResourcesPath.NAVIGATION_FXML;
-import static de.herm_detlef.java.application.ViewResourcesPath.NAVIGATION_RESOURCE_BUNDLE;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.NAVIGATION_FXML;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.NAVIGATION_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 

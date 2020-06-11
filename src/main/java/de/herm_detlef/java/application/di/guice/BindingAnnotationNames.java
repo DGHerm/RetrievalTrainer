@@ -14,26 +14,17 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.di.guice;
 
-import com.google.inject.AbstractModule;
 
-public class BasicModule extends AbstractModule {
+public interface BindingAnnotationNames {
 
-    @Override
-    protected void configure() {
+    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
 
-        bind(ApplicationPreferences.class)
-                .to(ApplicationPreferencesImpl.class)
-                .asEagerSingleton();
-
-        bind(Remote.class)
-                .to(RemoteImpl.class)
-                .asEagerSingleton();
-
-        bind(CommonData.class)
-                .to(CommonDataImpl.class)
-                .asEagerSingleton();
-    }
-
+    String MAIN
+            = "de.herm_detlef.java.application.main.Main";
+    String PREFERENCES
+            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
+    String TOOLS_PANEL
+            = "de.herm_detlef.java.application.mvc.controller.edit.edit_menu.ToolsPanelControllerImpl";
 }

@@ -20,9 +20,9 @@ package de.herm_detlef.java.application.main;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.herm_detlef.java.application.ApplicationPreferences;
-import de.herm_detlef.java.application.BasicModule;
+import de.herm_detlef.java.application.di.guice.BasicModule;
 import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.StageModule;
+import de.herm_detlef.java.application.di.guice.StageModule;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
 import de.herm_detlef.java.application.mvc.controller.app_menu.AppMenuModule;
@@ -45,8 +45,8 @@ import java.net.URL;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_MAIN_DIALOG;
-import static de.herm_detlef.java.application.BindingAnnotationNames.*;
-import static de.herm_detlef.java.application.ViewResourcesPath.*;
+import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.*;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.*;
 
 /* @formatter:off */
 

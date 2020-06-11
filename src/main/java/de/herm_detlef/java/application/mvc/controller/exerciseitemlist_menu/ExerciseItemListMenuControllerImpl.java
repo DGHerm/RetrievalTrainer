@@ -33,8 +33,8 @@ import javafx.scene.control.MenuItem;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import static de.herm_detlef.java.application.ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_FXML;
-import static de.herm_detlef.java.application.ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_FXML;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE;
 
 /* @formatter:off */
 

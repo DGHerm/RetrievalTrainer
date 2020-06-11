@@ -40,7 +40,7 @@ import org.jdom2.input.sax.XMLReaderXSDFactory;
 
 import javax.xml.transform.stream.StreamSource;
 
-import static de.herm_detlef.java.application.ViewResourcesPath.*;
+import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.*;
 
 /* @formatter:off */
 

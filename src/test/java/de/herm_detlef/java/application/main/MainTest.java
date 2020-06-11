@@ -16,10 +16,9 @@
 
 package de.herm_detlef.java.application.main;
 
-import de.herm_detlef.java.application.main.Main;
 import org.junit.jupiter.api.Test;
 
-import static de.herm_detlef.java.application.BindingAnnotationNames.MAIN;
+import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.MAIN;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MainTest {
