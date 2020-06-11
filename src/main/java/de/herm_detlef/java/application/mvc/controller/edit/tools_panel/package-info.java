@@ -14,25 +14,4 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller.edit_menu;
-
-import de.herm_detlef.java.application.CommonData;
-import de.herm_detlef.java.application.Remote;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Menu;
-import javafx.scene.control.RadioMenuItem;
-
-public interface EditMenuController {
-
-    Menu create();
-
-    Menu getMenuEdit();
-
-    CheckMenuItem getCheckMenuItemPreviewExerciseItem();
-
-    RadioMenuItem getRadioMenuItemSingleChoice();
-
-    RadioMenuItem getRadioMenuItemMultipleChoice();
-
-    CheckMenuItem getCheckMenuItemShowTools();
-}
+package de.herm_detlef.java.application.mvc.controller.edit.tools_panel;

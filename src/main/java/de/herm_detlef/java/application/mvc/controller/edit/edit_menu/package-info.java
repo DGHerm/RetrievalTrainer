@@ -14,17 +14,11 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+/**
+ * TODO
+ * @author Detlef G. Herm, 2016-09-26
+ * @since 1.0
+ *
+ */
+package de.herm_detlef.java.application.mvc.controller.edit.edit_menu;
 
-
-public interface BindingAnnotationNames {
-
-    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
-
-    String MAIN
-            = "de.herm_detlef.java.application.Main";
-    String PREFERENCES
-            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
-    String TOOLS_PANEL
-            = "de.herm_detlef.java.application.mvc.controller.edit.edit_menu.ToolsPanelControllerImpl";
-}

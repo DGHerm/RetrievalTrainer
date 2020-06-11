@@ -14,11 +14,23 @@
  *   limitations under the License.
  */
 
-/**
- * TODO
- * @author Detlef G. Herm, 2016-09-26
- * @since 1.0
- *
- */
-package de.herm_detlef.java.application.mvc.controller.edit_menu;
+package de.herm_detlef.java.application.mvc.controller.edit.edit_menu;
 
+import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Menu;
+import javafx.scene.control.RadioMenuItem;
+
+public interface EditMenuController {
+
+    Menu create();
+
+    Menu getMenuEdit();
+
+    CheckMenuItem getCheckMenuItemPreviewExerciseItem();
+
+    RadioMenuItem getRadioMenuItemSingleChoice();
+
+    RadioMenuItem getRadioMenuItemMultipleChoice();
+
+    CheckMenuItem getCheckMenuItemShowTools();
+}

@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller.edit_menu;
+package de.herm_detlef.java.application.mvc.controller.edit.edit_menu;
 
 
 import java.util.Objects;
@@ -23,6 +23,7 @@ import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.io.Export;
+import de.herm_detlef.java.application.mvc.controller.edit.tools_panel.ToolsPanelController;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem.MultipleChoiceAnswerText;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem.SingleChoiceAnswerText;

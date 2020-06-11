@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller.edit_menu;
+package de.herm_detlef.java.application.mvc.controller.edit.tools_panel;
 
 import com.google.inject.AbstractModule;
 
