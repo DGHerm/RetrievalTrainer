@@ -1,24 +1,28 @@
 /*
- *  Copyright 2016 Detlef Gregor Herm
+ *   Copyright 2016 Detlef Gregor Herm
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
  */
 
-package de.herm_detlef.java.application;
+package de.herm_detlef.java.application.main;
 
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import de.herm_detlef.java.application.ApplicationPreferences;
+import de.herm_detlef.java.application.BasicModule;
+import de.herm_detlef.java.application.CommonData;
+import de.herm_detlef.java.application.StageModule;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
 import de.herm_detlef.java.application.mvc.controller.app_menu.AppMenuModule;
@@ -90,7 +94,7 @@ public class Main extends Application {
 
         primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );
 
-        CommonData commonData = injector.getInstance(CommonData.class);
+        CommonData commonData = injector.getInstance( CommonData.class);
 
         ApplicationController appController = injector.getInstance( ApplicationController.class );
 

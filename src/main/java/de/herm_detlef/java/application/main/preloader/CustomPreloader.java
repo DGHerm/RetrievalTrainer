@@ -24,7 +24,7 @@ package de.herm_detlef.java.application.main.preloader;
 import com.sun.javafx.application.LauncherImpl;
 
 import de.herm_detlef.java.application.ApplicationConstants;
-import de.herm_detlef.java.application.Main;
+import de.herm_detlef.java.application.main.Main;
 import de.herm_detlef.java.application.mvc.controller.about.AboutController;
 import javafx.application.Preloader;
 import javafx.scene.Scene;

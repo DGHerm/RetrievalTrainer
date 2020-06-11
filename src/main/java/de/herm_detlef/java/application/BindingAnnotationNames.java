@@ -22,7 +22,7 @@ public interface BindingAnnotationNames {
     // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
 
     String MAIN
-            = "de.herm_detlef.java.application.Main";
+            = "de.herm_detlef.java.application.main.Main";
     String PREFERENCES
             = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
     String TOOLS_PANEL
