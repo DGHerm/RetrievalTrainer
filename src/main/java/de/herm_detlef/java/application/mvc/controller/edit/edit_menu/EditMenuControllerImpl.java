@@ -22,7 +22,7 @@ import java.util.Objects;
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.Remote;
-import de.herm_detlef.java.application.io.Export;
+import de.herm_detlef.java.application.io.xml.serialization.Output;
 import de.herm_detlef.java.application.mvc.controller.edit.tools_panel.ToolsPanelController;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem.MultipleChoiceAnswerText;
@@ -146,7 +146,7 @@ class EditMenuControllerImpl implements EditMenuController {
         tools.getButtonDeleteItemPart().setOnAction( this::onDeleteItemPart );
 
         commonData.setExerciseItemComponentsChangeListener( c -> {
-            boolean isValid = Export.validateCurrentExerciseItem( commonData, false );
+            boolean isValid = Output.validateCurrentExerciseItem( commonData, false );
             menuItemNewExerciseItem.setDisable( !isValid );
             tools.getButtonAppendNewExerciseItem().setDisable( !isValid );
             remote.getApplicationController().updateView();
@@ -154,7 +154,7 @@ class EditMenuControllerImpl implements EditMenuController {
 
         checkMenuItemPreviewExerciseItem.selectedProperty().addListener( ( observable, oldValue, newValue ) -> {
 
-            if ( newValue && !Export.validateCurrentExerciseItem( commonData, true ) ) {
+            if ( newValue && !Output.validateCurrentExerciseItem( commonData, true ) ) {
                 checkMenuItemPreviewExerciseItem.selectedProperty().set( false );
                 if ( tools == null )
                     return;

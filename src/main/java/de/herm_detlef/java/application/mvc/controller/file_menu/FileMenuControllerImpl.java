@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.Remote;
 import de.herm_detlef.java.application.mvc.controller.filesAndDirectories.FilesAndDirectoriesController;
-import de.herm_detlef.java.application.io.ExerciseItemListFactory;
+import de.herm_detlef.java.application.io.xml.ExerciseItemList;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.event.ActionEvent;
@@ -132,7 +132,7 @@ class FileMenuControllerImpl implements FileMenuController {
                 commonData.removeExerciseItemListMasterChangeListener();
             }
 
-            list = ExerciseItemListFactory.importExerciseItemListFromFile( selectedFile.getAbsolutePath() );
+            list = ExerciseItemList.readFromFile( selectedFile.getAbsolutePath() );
             if ( list.isEmpty() ) {
                 menuItemSave.setDisable( true );
                 menuItemSaveAs.setDisable( true );
@@ -185,7 +185,7 @@ class FileMenuControllerImpl implements FileMenuController {
             file = commonData.getRecentlySavedFileProperty().get();
         }
 
-        ExerciseItemListFactory.exportExerciseItemListToFile(
+        ExerciseItemList.writeToFile(
             commonData,
             file );
 
@@ -199,7 +199,7 @@ class FileMenuControllerImpl implements FileMenuController {
 
         if ( saveToFile == null ) return;
 
-        ExerciseItemListFactory.exportExerciseItemListToFile(
+        ExerciseItemList.writeToFile(
             commonData,
             saveToFile );
 

@@ -21,7 +21,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import de.herm_detlef.java.application.io.Export;
+import de.herm_detlef.java.application.io.xml.serialization.Output;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -399,7 +399,7 @@ public class CommonDataImpl implements CommonData {
 
             newItem.addSolutionText(null);
 
-            Export.validateCurrentExerciseItem( this, false );
+            Output.validateCurrentExerciseItem( this, false );
         }
     }
 

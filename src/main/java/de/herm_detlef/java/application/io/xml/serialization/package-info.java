@@ -20,5 +20,5 @@
  * @since 1.0
  *
  */
-package de.herm_detlef.java.application.io;
+package de.herm_detlef.java.application.io.xml.serialization;
 

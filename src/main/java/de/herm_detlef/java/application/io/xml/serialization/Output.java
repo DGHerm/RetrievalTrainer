@@ -1,20 +1,20 @@
 /*
- *  Copyright 2016 Detlef Gregor Herm
+ *   Copyright 2016 Detlef Gregor Herm
  *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *       http://www.apache.org/licenses/LICENSE-2.0
  *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License.
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.io;
+package de.herm_detlef.java.application.io.xml.serialization;
 
 
 import java.io.ByteArrayInputStream;
@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import de.herm_detlef.java.application.io.xml.TAG;
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -57,12 +58,14 @@ import static de.herm_detlef.java.application.ApplicationConstants.*;
  * @since 1.0
  *
  */
-public class Export {
+public class Output {
 
     private static boolean isQuestionPart = false;
     private static boolean isAnswerPart   = false;
 
-    public static void exportExerciseItemListToFile( CommonData commonData, File file ) throws JDOMException, IOException {
+    private Output() {}
+
+    public static void writeExerciseItemListToFile( CommonData commonData, File file ) throws JDOMException, IOException {
 
         commonData.markSelectedAnswerPartItems();
 
