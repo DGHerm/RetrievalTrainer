@@ -29,6 +29,7 @@ import de.herm_detlef.java.application.mvc.controller.file_menu.FileMenuModule;
 import de.herm_detlef.java.application.mvc.controller.filesAndDirectories.FilesAndDirectoriesModule;
 import de.herm_detlef.java.application.mvc.controller.navigation.NavigationModule;
 import de.herm_detlef.java.application.mvc.controller.preferences.PreferencesModule;
+import de.herm_detlef.java.application.preloader.StageNotification;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.application.Application;
 import javafx.application.Preloader;

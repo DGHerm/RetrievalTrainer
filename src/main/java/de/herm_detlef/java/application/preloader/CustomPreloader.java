@@ -25,7 +25,6 @@ import com.sun.javafx.application.LauncherImpl;
 
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.Main;
-import de.herm_detlef.java.application.StageNotification;
 import de.herm_detlef.java.application.mvc.controller.about.AboutController;
 import javafx.application.Preloader;
 import javafx.scene.Scene;
