@@ -29,13 +29,13 @@ public enum ViewResourcesPath {
     APP_MENU_FXML("de/herm_detlef/java/application/mvc/view/app_menu/app_menu.fxml"),
     APP_MENU_RESOURCE_BUNDLE("de/herm_detlef/java/application/mvc/view/app_menu/app_menu"),
 
-    EDIT_MENU_FXML("de/herm_detlef/java/application/mvc/view/edit_menu/edit_menu.fxml"),
-    EDIT_MENU_CSS("de/herm_detlef/java/application/mvc/view/edit_menu/edit_menu.css"),
-    EDIT_MENU_RESOURCE_BUNDLE("de/herm_detlef/java/application/mvc/view/edit_menu/edit_menu"),
+    EDIT_MENU_FXML( "de/herm_detlef/java/application/mvc/view/edit/edit_menu/edit_menu.fxml" ),
+    EDIT_MENU_CSS( "de/herm_detlef/java/application/mvc/view/edit/edit_menu/edit_menu.css" ),
+    EDIT_MENU_RESOURCE_BUNDLE( "de/herm_detlef/java/application/mvc/view/edit/edit_menu/edit_menu" ),
 
-    TOOLS_PANEL_FXML("de/herm_detlef/java/application/mvc/view/edit_menu/tools_panel.fxml"),
-    TOOLS_PANEL_CSS("de/herm_detlef/java/application/mvc/view/edit_menu/tools_panel.css"),
-    TOOLS_PANEL_RESOURCE_BUNDLE("de/herm_detlef/java/application/mvc/view/edit_menu/tools_panel"),
+    TOOLS_PANEL_FXML( "de/herm_detlef/java/application/mvc/view/edit/tools_panel/tools_panel.fxml" ),
+    TOOLS_PANEL_CSS( "de/herm_detlef/java/application/mvc/view/edit/tools_panel/tools_panel.css" ),
+    TOOLS_PANEL_RESOURCE_BUNDLE( "de/herm_detlef/java/application/mvc/view/edit/tools_panel/tools_panel" ),
 
     EXERCISE_ITEM_LIST_MENU_FXML("de/herm_detlef/java/application/mvc/view/exerciseitemlist_menu/exercise_item_list_menu.fxml"),
     EXERCISE_ITEM_LIST_MENU_RESOURCE_BUNDLE("de/herm_detlef/java/application/mvc/view/exerciseitemlist_menu/exercise_item_list_menu"),
