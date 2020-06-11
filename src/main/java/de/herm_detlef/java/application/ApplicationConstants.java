@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
+import de.herm_detlef.java.application.io.xml.deserialization.Input;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
@@ -97,7 +98,7 @@ public class ApplicationConstants {
 
     static {
         XMLReaderJDOMFactory tmp = null;
-        try ( InputStream in = ApplicationConstants.class.getResourceAsStream( XML_SCHEMA_DEFINITION ) ) {
+        try ( InputStream in = Input.class.getResourceAsStream( XML_SCHEMA_DEFINITION ) ) {
              tmp = new XMLReaderXSDFactory( new StreamSource( in ) );
         } catch ( JDOMException | IOException e ) {
             if (DEBUG) e.printStackTrace();
