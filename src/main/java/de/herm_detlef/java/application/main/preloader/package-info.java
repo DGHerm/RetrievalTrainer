@@ -14,35 +14,11 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.preloader;
-
-
-import javafx.application.Preloader;
-import javafx.stage.Stage;
-
-/* @formatter:off */
-
 /**
  * TODO
  * @author Detlef G. Herm, 2016-09-26
  * @since 1.0
  *
  */
-public class StageNotification implements Preloader.PreloaderNotification {
+package de.herm_detlef.java.application.main.preloader;
 
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public final Stage stage;
-
-    /**
-     * TODO
-     * <p>
-     * @since 1.0
-     */
-    public StageNotification( Stage stage ) {
-        this.stage = stage;
-    }
-}

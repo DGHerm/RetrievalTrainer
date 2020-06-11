@@ -126,6 +126,6 @@ In your home directory create a folder "jpackage", and inside this folder two mo
 
 Put all resources in the input folder, i.e. in my case this is the jar file of RetrievalTrainer and the jar file of jdom2, and the apache licence document (given twice, a copy thereof also in folder "jpackage").
 
-`./jpackage --app-version 1.0.4 --copyright "Copyright 2016 Detlef Gregor Herm" --name RetrievalTrainer --license-file ${HOME}/jpackage/LICENSE --input ${HOME}/jpackage/input --dest ${HOME}/jpackage/output --main-jar RetrievalTrainer-1.0.4.jar --main-class de.herm_detlef.java.application.preloader.CustomPreloader --runtime-image ${HOME}/jdk11+fx14_slim --arguments "--add-exports" --arguments "javafx.graphics/com.sun.javafx.application=ALL-UNNAMED"`
+`./jpackage --app-version 1.0.4 --copyright "Copyright 2016 Detlef Gregor Herm" --name RetrievalTrainer --license-file ${HOME}/jpackage/LICENSE --input ${HOME}/jpackage/input --dest ${HOME}/jpackage/output --main-jar RetrievalTrainer-1.0.4.jar --main-class de.herm_detlef.java.application.main.preloader.CustomPreloader --runtime-image ${HOME}/jdk11+fx14_slim --arguments "--add-exports" --arguments "javafx.graphics/com.sun.javafx.application=ALL-UNNAMED"`
 
 The "jpackage" tool is only contained in JDK 14 onwards, and it is not on the binary path.

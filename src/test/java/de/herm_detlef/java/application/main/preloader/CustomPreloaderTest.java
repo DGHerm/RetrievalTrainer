@@ -14,7 +14,8 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.preloader;
+package de.herm_detlef.java.application.main.preloader;
+
 
 import org.junit.jupiter.api.Test;
 
