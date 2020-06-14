@@ -19,9 +19,8 @@ package de.herm_detlef.java.application.main;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.herm_detlef.java.application.ApplicationPreferences;
+import de.herm_detlef.java.application.*;
 import de.herm_detlef.java.application.di.guice.BasicModule;
-import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.di.guice.StageModule;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
@@ -90,6 +89,9 @@ public class Main extends Application {
                 new ExerciseItemListMenuModule(),
                 new NavigationModule(),
                 new ToolsPanelModule(),
+                new CommonDataModule(),
+                new RemoteModule(),
+                new ApplicationPreferencesModule(),
                 new BasicModule() );
 
         primaryStage.setTitle( TITLE_OF_MAIN_DIALOG );

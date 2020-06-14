@@ -36,7 +36,7 @@ import javax.inject.Singleton;
  *
  */
 @Singleton
-public class RemoteImpl implements Remote {
+class RemoteImpl implements Remote {
 
     private ApplicationController  applicationController;
     private AppMenuController      appMenuController;

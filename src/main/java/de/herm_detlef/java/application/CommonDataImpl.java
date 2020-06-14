@@ -47,7 +47,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFEREN
  *
  */
 @Singleton
-public class CommonDataImpl implements CommonData {
+class CommonDataImpl implements CommonData {
 
     private final ApplicationPreferences                        applicationPreferences;
 

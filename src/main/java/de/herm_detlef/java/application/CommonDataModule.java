@@ -14,16 +14,17 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.di.guice;
+package de.herm_detlef.java.application;
 
 import com.google.inject.AbstractModule;
-import de.herm_detlef.java.application.*;
 
-public class BasicModule extends AbstractModule {
+public class CommonDataModule extends AbstractModule {
 
     @Override
     protected void configure() {
 
+        bind( CommonData.class)
+                .to( CommonDataImpl.class)
+                .asEagerSingleton();
     }
-
 }

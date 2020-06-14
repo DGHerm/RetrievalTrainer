@@ -35,7 +35,7 @@ import static de.herm_detlef.java.application.ApplicationConstants.USER_PREFEREN
  *
  */
 @Singleton
-public class ApplicationPreferencesImpl implements ApplicationPreferences {
+class ApplicationPreferencesImpl implements ApplicationPreferences {
 
 
     /**
