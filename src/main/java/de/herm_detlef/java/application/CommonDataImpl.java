@@ -169,14 +169,7 @@ class CommonDataImpl implements CommonData {
 
     private void prepareEditingMode( boolean isEditingMode) {
 
-        for ( ExerciseItem exItem : exerciseItemListMaster ) {
-            for ( ExerciseItem.ItemPart itemPart : exItem.getExerciseItemParts() ) {
-                if ( itemPart instanceof ExerciseItem.AnswerText ) {
-                    ExerciseItem.AnswerText answerPart = (ExerciseItem.AnswerText) itemPart;
-                    answerPart.setSelected( isEditingMode && answerPart.isInitialMark() );
-                }
-            }
-        }
+        CommonData.prepareEditingMode( isEditingMode, exerciseItemListMaster );
     }
 
     /**
@@ -411,9 +404,7 @@ class CommonDataImpl implements CommonData {
     @Override
     public void markSelectedAnswerPartItems() {
 
-        for ( ExerciseItem exItem : exerciseItemListMaster ) {
-            exItem.markSelectedAnswerPartItems();
-        }
+        CommonData.markSelectedAnswerPartItems( exerciseItemListMaster );
     }
 
 

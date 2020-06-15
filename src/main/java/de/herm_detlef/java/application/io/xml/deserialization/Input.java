@@ -53,23 +53,22 @@ public class Input {
 
     private Input() {}
 
-    public static ArrayList<ExerciseItem> readExerciseItemListFromFile( String filename)
+    public static ArrayList<ExerciseItem> readExerciseItemListFromFile( File file )
             throws JDOMException, IOException, SAXException {
 
         exerciseItemList = new ArrayList<>();
 
-        Document doc = createDocument( filename );
+        Document doc = createDocument( file );
         Element catalogElement = doc.getRootElement();
         createNode( catalogElement );
 
         return exerciseItemList;
     }
 
-    private static Document createDocument( String filename ) throws JDOMException, IOException {
+    private static Document createDocument( File file ) throws JDOMException, IOException {
 
         SAXBuilder builder = new SAXBuilder( XML_READER_JDOM_FACTORY );
-        File xmlFile = new File(filename);
-        return builder.build( xmlFile );// XML validation happens here
+        return builder.build( file );// XML validation happens here
     }
 
     private static void createNode( Element child ) throws JDOMException, SAXException {

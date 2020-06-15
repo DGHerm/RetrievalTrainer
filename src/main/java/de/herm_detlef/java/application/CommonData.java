@@ -25,6 +25,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public interface CommonData {
@@ -66,6 +67,12 @@ public interface CommonData {
 
     void markSelectedAnswerPartItems();
 
+    static void markSelectedAnswerPartItems( List< ExerciseItem > items ) {
+        for ( ExerciseItem item : items ) {
+            item.markSelectedAnswerPartItems();
+        }
+    }
+
     boolean checkNeedsSave();
 
     void savedExerciseItemListMaster();
@@ -93,4 +100,15 @@ public interface CommonData {
     int getMaxLengthOfSubset();
 
     void setMaxLengthOfSubset(int maxLengthOfSubset);
+
+    static void prepareEditingMode( boolean isEditingMode, List< ExerciseItem > items ) {
+        for ( ExerciseItem item : items ) {
+            for ( ExerciseItem.ItemPart itemPart : item.getExerciseItemParts() ) {
+                if ( itemPart instanceof ExerciseItem.AnswerText ) {
+                    ExerciseItem.AnswerText answerPart = (ExerciseItem.AnswerText) itemPart;
+                    answerPart.setSelected( isEditingMode && answerPart.isInitialMark() );
+                }
+            }
+        }
+    }
 }

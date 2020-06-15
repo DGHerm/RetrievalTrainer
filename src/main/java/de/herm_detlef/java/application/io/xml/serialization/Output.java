@@ -22,6 +22,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 import de.herm_detlef.java.application.io.xml.TAG;
 import org.jdom2.Attribute;
@@ -69,18 +70,9 @@ public class Output {
 
         commonData.markSelectedAnswerPartItems();
 
-        final Document doc = createJdomDocument( commonData.getExerciseItemListMaster() );
-        if (DEBUG) assert doc != null;
+        List< ExerciseItem > exerciseItems = commonData.getExerciseItemListMaster();
 
-        XMLOutputter xmlOutput = new XMLOutputter();
-        xmlOutput.setFormat( Format.getPrettyFormat() );
-
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream(1_000_000);
-        xmlOutput.output(doc, outputStream);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
-        validateDocument(inputStream);
-
-        xmlOutput.output(doc, new FileWriter(file.getCanonicalPath()));
+        writeExerciseItemListToFile( exerciseItems, file );
 
         commonData.savedExerciseItemListMaster();
         commonData.setRecentlySavedFile(file);
@@ -88,6 +80,22 @@ public class Output {
 
         commonData.getExerciseItemListInitialMaster().clear();
         commonData.getExerciseItemListInitialMaster().addAll(commonData.getExerciseItemListMaster());
+    }
+
+    public static void writeExerciseItemListToFile( List< ExerciseItem > exerciseItems, File file ) throws IOException, JDOMException {
+
+        final Document doc = createJdomDocument( exerciseItems );
+        if (DEBUG) assert doc != null;
+
+        XMLOutputter xmlOutput = new XMLOutputter();
+        xmlOutput.setFormat( Format.getPrettyFormat() );
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream( 1_000_000);
+        xmlOutput.output(doc, outputStream);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream( outputStream.toByteArray());
+        validateDocument(inputStream);
+
+        xmlOutput.output(doc, new FileWriter( file.getCanonicalPath()));
     }
 
     private static void validateDocument( ByteArrayInputStream inputStream ) throws JDOMException, IOException {
@@ -100,7 +108,7 @@ public class Output {
         builder.build( inputStream );
     }
 
-    private static Document createJdomDocument( ObservableList< ExerciseItem > exerciseItemList ) {
+    private static Document createJdomDocument( List< ExerciseItem > exerciseItemList ) {
 
         Namespace ns = Namespace.getNamespace( XML_NAMESPACE );
         Element catalog = new Element( TAG.CATALOG.name(), ns );

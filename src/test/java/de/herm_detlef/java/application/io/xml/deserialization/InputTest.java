@@ -16,10 +16,13 @@
 
 package de.herm_detlef.java.application.io.xml.deserialization;
 
+import org.apache.commons.io.FileUtils;
 import org.jdom2.input.JDOMParseException;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
+
+import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,9 +32,9 @@ class InputTest {
     void importExerciseItemListFromFile() {
 
         // empty file
-        String fileName01 = InputTest.class.getResource( "01.xml").getPath();
+        File file01 = FileUtils.toFile( InputTest.class.getResource( "01.xml") );
 
-        Exception exception = assertThrows( JDOMParseException.class, () -> Input.readExerciseItemListFromFile( fileName01 ) );
+        Exception exception = assertThrows( JDOMParseException.class, () -> Input.readExerciseItemListFromFile( file01 ) );
 
         String className = exception.getClass().getName();
         assertEquals("org.jdom2.input.JDOMParseException", className );
@@ -44,9 +47,9 @@ class InputTest {
 
 
         // xml node CATALOG has no children
-        String fileName02 = InputTest.class.getResource( "02.xml").getPath();
+        File file02 = FileUtils.toFile( InputTest.class.getResource( "02.xml") );
 
-        exception = assertThrows( SAXException.class, () -> Input.readExerciseItemListFromFile( fileName02 ) );
+        exception = assertThrows( SAXException.class, () -> Input.readExerciseItemListFromFile( file02 ) );
 
         className = exception.getClass().getName();
         assertEquals("org.xml.sax.SAXException", className );
@@ -57,9 +60,9 @@ class InputTest {
 
 
         // xml node with invalid attribute value
-        String fileName03 = InputTest.class.getResource( "03.xml").getPath();
+        File file03 = FileUtils.toFile( InputTest.class.getResource( "03.xml") );
 
-        exception = assertThrows( JDOMParseException.class, () -> Input.readExerciseItemListFromFile( fileName03 ) );
+        exception = assertThrows( JDOMParseException.class, () -> Input.readExerciseItemListFromFile( file03 ) );
 
         className = exception.getClass().getName();
         assertEquals("org.jdom2.input.JDOMParseException", className );
@@ -72,9 +75,9 @@ class InputTest {
 
 
         // xml node ID has invalid content: value cannot be parsed as integer, too big
-        String fileName04 = InputTest.class.getResource( "04.xml").getPath();
+        File file04 = FileUtils.toFile( InputTest.class.getResource( "04.xml") );
 
-        exception = assertThrows( SAXException.class, () -> Input.readExerciseItemListFromFile( fileName04 ) );
+        exception = assertThrows( SAXException.class, () -> Input.readExerciseItemListFromFile( file04 ) );
 
         className = exception.getClass().getName();
         assertEquals("org.xml.sax.SAXException", className );
@@ -85,9 +88,9 @@ class InputTest {
 
 
         // xml node ID has invalid content: value represents a negative Integer
-        String fileName05 = InputTest.class.getResource( "05.xml").getPath();
+        File file05 = FileUtils.toFile( InputTest.class.getResource( "05.xml") );
 
-        exception = assertThrows( JDOMParseException.class, () -> Input.readExerciseItemListFromFile( fileName05 ) );
+        exception = assertThrows( JDOMParseException.class, () -> Input.readExerciseItemListFromFile( file05 ) );
 
         className = exception.getClass().getName();
         assertEquals("org.jdom2.input.JDOMParseException", className );

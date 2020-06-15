@@ -41,9 +41,9 @@ public class ExerciseItemList {
 
     private ExerciseItemList() {}
 
-    public static ArrayList<ExerciseItem> readFromFile( String filename ) {
+    public static ArrayList<ExerciseItem> readFromFile( File file ) {
         try {
-            return Input.readExerciseItemListFromFile( filename );
+            return Input.readExerciseItemListFromFile( file );
         } catch ( Exception e ) {
             if (DEBUG) e.printStackTrace();
             LOGGER.severe( e.getClass().getSimpleName() + ": " + e.getMessage() );

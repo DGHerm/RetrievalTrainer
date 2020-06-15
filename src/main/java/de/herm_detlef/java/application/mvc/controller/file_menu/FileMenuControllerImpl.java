@@ -132,7 +132,7 @@ class FileMenuControllerImpl implements FileMenuController {
                 commonData.removeExerciseItemListMasterChangeListener();
             }
 
-            list = ExerciseItemList.readFromFile( selectedFile.getAbsolutePath() );
+            list = ExerciseItemList.readFromFile( selectedFile );
             if ( list.isEmpty() ) {
                 menuItemSave.setDisable( true );
                 menuItemSaveAs.setDisable( true );

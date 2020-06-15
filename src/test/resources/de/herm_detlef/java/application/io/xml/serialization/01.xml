@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG xmlns="RetrievalTrainer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="RetrievalTrainerXMLSchemaDefinition.xsd">
+  <ITEM>
+    <ID>1</ID>
+    <QUESTION>
+      <TEXT />
+    </QUESTION>
+    <SINGLE_CHOICE_ANSWER>
+      <TEXT />
+      <TEXT mark="true" />
+    </SINGLE_CHOICE_ANSWER>
+    <SOLUTION>
+      <TEXT />
+    </SOLUTION>
+  </ITEM>
+  <ITEM>
+    <ID>2</ID>
+    <QUESTION>
+      <TEXT />
+    </QUESTION>
+    <MULTIPLE_CHOICE_ANSWER>
+      <TEXT />
+      <TEXT mark="true" />
+      <TEXT mark="true" />
+    </MULTIPLE_CHOICE_ANSWER>
+    <SOLUTION>
+      <TEXT />
+    </SOLUTION>
+  </ITEM>
+  <ITEM>
+    <ID>3</ID>
+    <QUESTION>
+      <TEXT>A</TEXT>
+      <CODE>B</CODE>
+      <TEXT2>C</TEXT2>
+    </QUESTION>
+    <SINGLE_CHOICE_ANSWER>
+      <TEXT mark="true">D</TEXT>
+      <TEXT>E</TEXT>
+    </SINGLE_CHOICE_ANSWER>
+    <SOLUTION>
+      <TEXT>F</TEXT>
+    </SOLUTION>
+  </ITEM>
+</CATALOG>
