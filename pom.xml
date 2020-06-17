@@ -110,7 +110,6 @@
 			<version>4.2.3</version>
 			<classifier>no_aop</classifier>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<dependency>
 			<groupId>commons-io</groupId>

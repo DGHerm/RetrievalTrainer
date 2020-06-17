@@ -21,6 +21,7 @@ import java.util.Locale;
 
 import com.google.inject.Inject;
 import de.herm_detlef.java.application.*;
+import de.herm_detlef.java.application.di.guice.annotations.Preferences;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,11 +34,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import static de.herm_detlef.java.application.ApplicationConstants.*;
-import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.PREFERENCES;
 import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.PREFERENCES_FXML;
 import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.PREFERENCES_RESOURCE_BUNDLE;
 import static javafx.stage.Modality.APPLICATION_MODAL;
@@ -71,7 +70,7 @@ class PreferencesControllerImpl implements PreferencesController {
 
 
     @Inject
-    private PreferencesControllerImpl(@Named(PREFERENCES) Stage stage, CommonData commonData, Remote remote) {
+    private PreferencesControllerImpl( @Preferences Stage stage, CommonData commonData, Remote remote) {
 
         this.commonData = commonData;
         this.stage = stage;

@@ -14,17 +14,14 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.main;
+package de.herm_detlef.java.application.di.guice.annotations;
 
-import org.junit.jupiter.api.Test;
+import javax.inject.Qualifier;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.MAIN;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-class MainTest {
-
-    @Test
-    void bindingAnnotationName() {
-        assertEquals( Main.class.getName(), MAIN );
-    }
-}
+@Qualifier @Target({ FIELD, PARAMETER, METHOD }) @Retention(RUNTIME)
+public @interface Preferences {}

@@ -17,29 +17,29 @@
 package de.herm_detlef.java.application.di.guice;
 
 import com.google.inject.AbstractModule;
-
-import com.google.inject.name.Names;
 import javafx.stage.Stage;
+
+import java.lang.annotation.Annotation;
 
 
 public class StageModule extends AbstractModule {
     private final Stage stage;
-    private final String controllerName;
+    private final Class< ? extends Annotation > annotation;
 
-    public StageModule( Stage stage, String controllerName ) {
+    public StageModule( Stage stage, Class< ? extends Annotation > annotation ) {
         this.stage = stage;
-        this.controllerName = controllerName;
+        this.annotation = annotation;
     }
 
-    public StageModule( String controllerName ) {
+    public StageModule( Class< ? extends Annotation > annotation ) {
         this.stage = new Stage();
-        this.controllerName = controllerName;
+        this.annotation = annotation;
     }
 
     @Override
     public void configure() {
         bind( Stage.class )
-                .annotatedWith( Names.named(controllerName) )
+                .annotatedWith( annotation )
                 .toProvider( () -> stage )
                 .asEagerSingleton();
     }

@@ -14,17 +14,14 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.di.guice;
+package de.herm_detlef.java.application.di.guice.annotations;
 
+import javax.inject.Qualifier;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-public interface BindingAnnotationNames {
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-    // Google Guice: binding annotation @Named takes a constant string ( attribute value must be constant )
-
-    String MAIN
-            = "de.herm_detlef.java.application.main.Main";
-    String PREFERENCES
-            = "de.herm_detlef.java.application.mvc.controller.preferences.PreferencesControllerImpl";
-    String TOOLS_PANEL
-            = "de.herm_detlef.java.application.mvc.controller.edit.edit_menu.ToolsPanelControllerImpl";
-}
+@Qualifier @Target({ FIELD, PARAMETER, METHOD }) @Retention(RUNTIME)
+public @interface ToolsPanel {}

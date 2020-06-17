@@ -14,17 +14,14 @@
  *   limitations under the License.
  */
 
-package de.herm_detlef.java.application.mvc.controller.preferences;
+package de.herm_detlef.java.application.di.guice.annotations;
 
-import org.junit.jupiter.api.Test;
+import javax.inject.Qualifier;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.PREFERENCES;
-import static org.junit.jupiter.api.Assertions.*;
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-class PreferencesControllerImplTest {
-
-    @Test
-    void bindingAnnotationName() {
-        assertEquals( PreferencesControllerImpl.class.getName(), PREFERENCES );
-    }
-}
+@Qualifier @Target({ FIELD, PARAMETER, METHOD }) @Retention(RUNTIME)
+public @interface Main {}

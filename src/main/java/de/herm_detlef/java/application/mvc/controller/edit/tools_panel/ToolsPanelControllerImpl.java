@@ -22,6 +22,7 @@ import java.util.Objects;
 import de.herm_detlef.java.application.ApplicationConstants;
 import de.herm_detlef.java.application.CommonData;
 import de.herm_detlef.java.application.Remote;
+import de.herm_detlef.java.application.di.guice.annotations.ToolsPanel;
 import de.herm_detlef.java.application.mvc.model.ExerciseItem;
 import de.herm_detlef.java.application.utilities.Utilities;
 import javafx.collections.ListChangeListener;
@@ -36,10 +37,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.inject.Singleton;
 
-import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.TOOLS_PANEL;
 import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.TOOLS_PANEL_FXML;
 import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.TOOLS_PANEL_RESOURCE_BUNDLE;
 
@@ -94,7 +93,7 @@ class ToolsPanelControllerImpl implements ToolsPanelController {
     private Button                            buttonDeleteItemPart;
 
     @Inject
-    private ToolsPanelControllerImpl( @Named(TOOLS_PANEL) Stage stage,
+    private ToolsPanelControllerImpl( @ToolsPanel Stage stage,
                                       CommonData commonData,
                                       Remote remote ) {
 

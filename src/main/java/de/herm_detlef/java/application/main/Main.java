@@ -22,6 +22,8 @@ import com.google.inject.Injector;
 import de.herm_detlef.java.application.*;
 import de.herm_detlef.java.application.di.guice.BasicModule;
 import de.herm_detlef.java.application.di.guice.StageModule;
+import de.herm_detlef.java.application.di.guice.annotations.Preferences;
+import de.herm_detlef.java.application.di.guice.annotations.ToolsPanel;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationController;
 import de.herm_detlef.java.application.mvc.controller.app.ApplicationModule;
 import de.herm_detlef.java.application.mvc.controller.app_menu.AppMenuModule;
@@ -44,7 +46,6 @@ import java.net.URL;
 
 import static de.herm_detlef.java.application.ApplicationConstants.DEBUG;
 import static de.herm_detlef.java.application.ApplicationConstants.TITLE_OF_MAIN_DIALOG;
-import static de.herm_detlef.java.application.di.guice.BindingAnnotationNames.*;
 import static de.herm_detlef.java.application.mvc.view.ViewResourcesPath.*;
 
 /* @formatter:off */
@@ -77,9 +78,9 @@ public class Main extends Application {
     public void start( Stage primaryStage ) {
 
         Injector injector = Guice.createInjector(
-                new StageModule( primaryStage, MAIN ),
-                new StageModule( PREFERENCES ),
-                new StageModule( TOOLS_PANEL ),
+                new StageModule( primaryStage, de.herm_detlef.java.application.di.guice.annotations.Main.class ),
+                new StageModule( Preferences.class ),
+                new StageModule( ToolsPanel.class ),
                 new ApplicationModule(),
                 new PreferencesModule(),
                 new FileMenuModule(),
